@@ -16,11 +16,15 @@ class Game extends Component {
   }
 
   currentLineCallback = (sentence) => {
-    console.log("Inside game.js, currentLineCallback");
-    // console.log(sentence);
     this.setState({currentLine: sentence}, () => {
       console.log(this.state.currentLine);
     });
+
+    let createPoem = this.state.poem;
+    createPoem.push(sentence);
+    this.setState({poem: createPoem}, () => {
+      console.log(this.state.poem);
+    })
 
   }
 
