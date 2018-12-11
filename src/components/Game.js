@@ -58,7 +58,7 @@ class Game extends Component {
 
         <PlayerSubmissionForm setCurrentLine = {this.currentLineCallback}/>
 
-        <FinalPoem />
+        <FinalPoem linesOfPoem={this.state.poem}/>
 
       </div>
     );
