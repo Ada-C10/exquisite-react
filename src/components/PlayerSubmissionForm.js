@@ -33,18 +33,17 @@ class PlayerSubmissionForm extends Component {
 
     const newLine = `The ${this.state.adjective1} ${this.state.noun1} ${this.state.adverb1} ${this.state.verb1} the ${this.state.adjective2} ${this.state.noun2}`;
 
-    this.setState = {
+    this.setState({
       adjective1: '',
       noun1: '',
       adverb1: '',
       verb1: '',
       adjective2: '',
       noun2: ''
-    };
+    });
 
-    console.log("Created a new student:", newLine);
     this.props.addLineCallback(newLine);
-    // this.setState
+    console.log(this.state);
   }
 
   render() {
@@ -68,32 +67,38 @@ class PlayerSubmissionForm extends Component {
               placeholder="Adjective"
               name='adjective1'
               type="text"
+              value={this.state.adjective1}
               onChange={this.onInputChange}/>
             <input
               placeholder="Noun"
               name='noun1'
               type="text"
+              value={this.state.noun1}
               onChange={this.onInputChange}/>
             <input
               placeholder="Adverb"
               name='adverb1'
               type="text"
+              value={this.state.adverb1}
               onChange={this.onInputChange}/>
             <input
               placeholder="Verb"
               name='verb1'
               type="text"
+              value={this.state.verb1}
               onChange={this.onInputChange}/>
             the
             <input
               placeholder="Adjective"
               name='adjective2'
               type="text"
+              value={this.state.adjective2}
               onChange={this.onInputChange}/>
             <input
               placeholder="Noun"
               name='noun2'
               type="text"
+              value={this.state.noun2}
               onChange={this.onInputChange}/>
             .
           </div>
