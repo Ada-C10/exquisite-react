@@ -20,9 +20,27 @@ class PlayerSubmissionForm extends Component {
             {
               // Put your form inputs here... We've put in one below as an example
             }
-            <input
-              placeholder="hm..."
-              type="text" />
+
+              The
+              <input placeholder="adjective" type="text" class="PlayerSubmissionForm__input--invalid" value="" />
+
+              <input placeholder="noun" type="text" class="PlayerSubmissionForm__input--invalid" value="" />
+
+              <input placeholder="adverb" type="text" class="PlayerSubmissionForm__input--invalid" value="" />
+
+              <input placeholder="verb" type="text" class="PlayerSubmissionForm__input--invalid" value="" />
+
+              the
+
+              <input placeholder="adjective" type="text" class="PlayerSubmissionForm__input--invalid" value="" />
+
+              <input placeholder="noun" type="text" class="PlayerSubmissionForm__input--invalid" value="" />
+
+              .
+
+
+
+
 
           </div>
 
