@@ -40,6 +40,11 @@ class PlayerSubmissionForm extends Component {
 
   render() {
 
+    const inputClass = {}
+    for (const field in this.state) {
+
+      inputClass[field] = `PlayerSubmissionFormt__input${this.state[field] === "" ? "--invalid" : ""}`
+    }
 
     return (
       <div className="PlayerSubmissionForm">
@@ -52,24 +57,28 @@ class PlayerSubmissionForm extends Component {
 
             <label>The</label>
             <input
+              className={inputClass.adjective}
               name="adjective"
               placeholder="adjective"
               value = {this.state.adjective}
               onChange = {this.onInputChange}
               type="text" />
             <input
+              className={inputClass.noun}
               name="noun"
               placeholder="noun"
               value = {this.state.noun}
               onChange = {this.onInputChange}
               type="text" />
             <input
+              className={inputClass.adverb}
               name="adverb"
               placeholder="adverb"
               value = {this.state.adverb}
               onChange = {this.onInputChange}
               type="text" />
             <input
+              className={inputClass.verb}
               name="verb"
               placeholder="verb"
               value = {this.state.verb}
@@ -77,12 +86,14 @@ class PlayerSubmissionForm extends Component {
               type="text" />
             <label>the</label>
               <input
+                className={inputClass.adverb2}
                 name="adverb2"
                 placeholder="adverb"
                 value = {this.state.adverb2}
                 onChange = {this.onInputChange}
                 type="text" />
               <input
+                className={inputClass.noun2}
                 name="noun2"
                 placeholder="noun"
                 value = {this.state.noun2}
