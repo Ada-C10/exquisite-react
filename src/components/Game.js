@@ -31,7 +31,7 @@ class Game extends Component {
   render() {
     let recentSub;
     if(this.state.currentLine.length > 0){
-      recentSub = <RecentSubmission />
+      recentSub = <RecentSubmission currentLine={this.state.currentLine}/>
     };
 
     const exampleFormat = FIELDS.map((field) => {
