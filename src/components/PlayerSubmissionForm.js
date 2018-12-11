@@ -5,7 +5,28 @@ class PlayerSubmissionForm extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      adj1: '',
+      noun1: '',
+      adv: '',
+      verb: '',
+      adj2: '',
+      noun2: ''
+    };
   }
+
+  onInputChange = (event) => {
+    console.log("in onInuptChange");
+
+    const field = event.target.name;
+    const value = event.target.value;
+
+    const newState = {}
+    newState[field] = value;
+    console.log( `this is new state:`)
+    console.log(newState)
+    this.setState(newState);
+  };
 
   render() {
 
@@ -16,14 +37,44 @@ class PlayerSubmissionForm extends Component {
         <form className="PlayerSubmissionForm__form" >
 
           <div className="PlayerSubmissionForm__poem-inputs">
-
-            {
-              // Put your form inputs here... We've put in one below as an example
-            }
-            <input
-              placeholder="hm..."
-              type="text" />
-
+            The
+              <input
+                placeholder="adjective"
+                type="text"
+                name="adj1"
+                value={this.state.adj1}
+                onChange={this.onInputChange} />
+              <input
+                type="text"
+                placeholder="noun"
+                name="noun1"
+                value={this.state.noun1}
+                onChange={this.onInputChange}  />
+              <input
+                type="text"
+                placeholder="adverb"
+                name="adv"
+                value={this.state.adv}
+                onChange={this.onInputChange}  />
+              <input
+                type="text"
+                placeholder="verb"
+                name="verb"
+                value={this.state.verb}
+                onChange={this.onInputChange} />
+              the
+              <input
+                type="text"
+                placeholder="adjective"
+                name="adj2"
+                value={this.state.adj2}
+                onChange={this.onInputChange}  />
+              <input
+                type="text"
+                placeholder="noun"
+                name="noun2"
+                value={this.state.noun2}
+                onChange={this.onInputChange}  />
           </div>
 
           <div className="PlayerSubmissionForm__submit">
