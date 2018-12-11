@@ -16,13 +16,43 @@ class PlayerSubmissionForm extends Component {
     }
   }
 
+  onInputChange = (event) => {
+    console.log("inside of input change");
+    const field = event.target.name;
+    const value = event.target.value;
+
+    const newState = {}
+    newState[field] = value;
+    this.setState(newState);
+  }
+
+  onFormSubmit = (event) => {
+    event.preventDefault();
+    const line = {
+      adj1: this.state.adj1,
+      noun1: this.state.noun1,
+      adverb: this.state.adverb,
+      verb: this.state.verb,
+      adj2: this.state.adj2,
+      noun2: this.state.noun2,
+    }
+
+    const {adj1, noun1, adverb, verb, adj2, noun2} = line;
+
+    const sentence = `The ${adj1} ${noun1} ${adverb} ${verb} the ${adj2} ${noun2}.`
+
+    console.log(sentence);
+    this.props.setCurrentLine(sentence);
+  }
+
   render() {
 
     return (
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{  }</h3>
 
-        <form className="PlayerSubmissionForm__form" >
+        <form className="PlayerSubmissionForm__form"
+          onSubmit={this.onFormSubmit} >
 
           <div className="PlayerSubmissionForm__poem-inputs">
             <h2>The</h2>

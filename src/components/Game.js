@@ -15,6 +15,11 @@ class Game extends Component {
     }
   }
 
+  currentLineCallback = (sentence) => {
+    console.log("Inside game.js, currentLineCallback");
+    console.log(sentence);
+  }
+
   render() {
 
     const exampleFormat = FIELDS.map((field) => {
@@ -39,7 +44,7 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm setCurrentLine = {this.currentLineCallback}/>
 
         <FinalPoem />
 
