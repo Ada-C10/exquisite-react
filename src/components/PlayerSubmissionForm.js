@@ -50,7 +50,7 @@ class PlayerSubmissionForm extends Component {
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <h3>Player Submission Form for Player #{this.props.playerCount + 1}</h3>
 
         <form
           className="PlayerSubmissionForm__form"
