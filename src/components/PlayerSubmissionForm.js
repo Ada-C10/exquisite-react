@@ -16,15 +16,11 @@ class PlayerSubmissionForm extends Component {
   }
 
   onInputChange = (event) => {
-    console.log("in onInuptChange");
-
     const field = event.target.name;
     const value = event.target.value;
 
     const newState = {}
     newState[field] = value;
-    console.log( `this is new state:`)
-    console.log(newState)
     this.setState(newState);
   };
 
@@ -34,7 +30,7 @@ class PlayerSubmissionForm extends Component {
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{  }</h3>
 
-        <form className="PlayerSubmissionForm__form" >
+        <form onSubmit={this.onFormSubmit} className="PlayerSubmissionForm__form" >
 
           <div className="PlayerSubmissionForm__poem-inputs">
             The
