@@ -11,7 +11,7 @@ class PlayerSubmissionForm extends Component {
       adverb: "",
       verb: "",
       adjective2: "",
-      noun2: ""
+      noun2: "",
     }
   }
 
@@ -29,7 +29,25 @@ class PlayerSubmissionForm extends Component {
 
   onFormSubmit = (event) => {
     event.preventDefault();
-    return;
+
+    const newLine = {
+      adjective1: this.state.adjective1,
+      noun1: this.state.noun1,
+      adverb: this.state.adverb,
+      verb: this.state.verb,
+      adjective2: this.state.adjective2,
+      noun2: this.state.noun2,
+    };
+    this.setState({
+      adjective1: '',
+      noun1: '',
+      adverb: '',
+      verb: '',
+      adjective2: '',
+      noun2: '',
+    });
+    console.log("create a line from input:", newLine);
+    // this.props.addLineToRecentCallback(newLine);
   }
 
   render() {
