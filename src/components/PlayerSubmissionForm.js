@@ -7,13 +7,15 @@ class PlayerSubmissionForm extends Component {
     super(props);
 
     this.state = {
-      adjective: "",
+      adjective: '',
       noun: '',
       adverb: '',
       verb: '',
       adverb2: '',
       noun2: ''
     }
+
+    this.baseState = this.state;
   }
 
   onInputChange = (e) => {
@@ -28,14 +30,16 @@ class PlayerSubmissionForm extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
 
-    console.log('poemLine');
+    const poemLine = `The ${this.state.adjective} ${this.state.noun} ${this.state.adverb} ${this.state.verb} ${this.state.adverb2} ${this.state.noun2}.`;
 
-    const poemLine = 'The ' + this.state.adjective + ' ' + this.state.noun + ' ' + this.state.adverb + ' ' + this.state.verb + ' the ' + this.state.adverb2 + ' ' + this.state.noun2 + '.';
+    this.setState(this.baseState);
 
     this.props.addLine(poemLine);
+
   }
 
   render() {
+
 
     return (
       <div className="PlayerSubmissionForm">
