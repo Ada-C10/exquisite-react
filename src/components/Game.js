@@ -11,7 +11,8 @@ class Game extends Component {
 
     this.state = {
       poem: [],
-      player: 0
+      player: 0,
+      reveal: false
     }
   }
 
@@ -59,7 +60,10 @@ class Game extends Component {
           addLineCallback={this.addLine}
           playerCount={this.state.player}/>
 
-        <FinalPoem />
+        <FinalPoem
+          poem={this.state.poem}
+          revealPoem={this.state.reveal}
+          revealPoemCallback={() => this.setState({reveal: true})}/>
 
       </div>
     );
