@@ -17,12 +17,17 @@ class Game extends Component {
   addLine = (poemLine) => {
     let poem = [...this.state.poem];
 
-    console.log(poemLine);
     poem.push(poemLine)
     this.setState({
       poem: poem
     });
 
+  }
+
+  revealPoem = () => {
+    this.setState({
+      displayPoem: true
+    });
   }
 
   render() {
@@ -54,7 +59,9 @@ class Game extends Component {
           addLine = {(poemLine) => this.addLine(poemLine)}
           submissionNumber = {this.state.poem.length + 1}/>
 
-        <FinalPoem />
+        <FinalPoem displayPoem={this.state.displayPoem}
+        revealPoem={this.revealPoem}
+        poem={this.state.poem}/>
 
       </div>
     );
