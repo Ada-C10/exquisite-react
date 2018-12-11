@@ -6,18 +6,12 @@ import RecentSubmission from './RecentSubmission';
 
 class Game extends Component {
 
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      currentLine: "",
-      poem: [],
-    }
-  }
 
   currentLineCallback = (sentence) => {
+    this.props.setCurrentLine(sentence)
     console.log("Inside game.js, currentLineCallback");
-    console.log(sentence);
+
   }
 
   render() {

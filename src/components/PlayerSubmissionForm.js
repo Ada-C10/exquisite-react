@@ -41,6 +41,15 @@ class PlayerSubmissionForm extends Component {
 
     const sentence = `The ${adj1} ${noun1} ${adverb} ${verb} the ${adj2} ${noun2}.`
 
+    this.setState({
+      adj1: "",
+      noun1: "",
+      adverb: "",
+      verb: "",
+      adj2: "",
+      noun2: "",
+    })
+
     console.log(sentence);
     this.props.setCurrentLine(sentence);
   }
