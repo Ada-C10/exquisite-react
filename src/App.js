@@ -4,20 +4,6 @@ import Game from './components/Game.js';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentLine: "",
-      poem: [],
-    }
-  }
-
-  currentLineCallback = (sentence) => {
-    console.log("Inside App.js, currentLineCallback");
-    console.log(sentence);
-    this.setState({currentLine: sentence});
-  }
 
   render() {
     return (
@@ -28,7 +14,7 @@ class App extends Component {
             Exquisite corpse, also known as exquisite cadaver (from the original French term cadavre exquis), is a method by which a collection of words or images is collectively assembled. Each collaborator adds to a composition in sequence, either by following a rule (e.g. "The adjective noun adverb verb the adjective noun." as in "The green duck sweetly sang the dreadful dirge.") or by being allowed to see only the end of what the previous person contributed.
           </p>
         </header>
-        <Game setCurrentLine = {this.currentLineCallback}/>
+        <Game />
       </div>
     );
   }

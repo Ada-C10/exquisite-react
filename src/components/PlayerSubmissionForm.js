@@ -50,7 +50,7 @@ class PlayerSubmissionForm extends Component {
       noun2: "",
     })
 
-    console.log(sentence);
+    // console.log(sentence);
     this.props.setCurrentLine(sentence);
   }
 

@@ -6,15 +6,29 @@ import RecentSubmission from './RecentSubmission';
 
 class Game extends Component {
 
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      currentLine: "",
+      poem: [],
+    }
+  }
 
   currentLineCallback = (sentence) => {
-    this.props.setCurrentLine(sentence)
     console.log("Inside game.js, currentLineCallback");
+    // console.log(sentence);
+    this.setState({currentLine: sentence}, () => {
+      console.log(this.state.currentLine);
+    });
 
   }
 
   render() {
+    let recentSub;
+    if(this.state.currentLine.length > 0){
+      recentSub = <RecentSubmission />
+    };
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
@@ -36,7 +50,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        {recentSub}
 
         <PlayerSubmissionForm setCurrentLine = {this.currentLineCallback}/>
 
