@@ -17,17 +17,20 @@ const FinalPoem = (props) => {
   //   });
   //   return <div>{full}</div>
   // }
-
+  //Why doesnt it like it if I space out the html elements? It throws the error 'Expected an assignment or function call and instead saw an expression'
   if (props.render) {
-    // console.log(props.submissions)
-    return <div>{props.submissions}</div>
+    return <div> <section className="FinalPoem__poem">
+            <h3>Final Poem</h3>
+            <p>{props.submissions}</p>
+          </section>
+            </div>
   }
 
 
   return (
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
-        <h3>Final Poem {props.submissions}</h3>
+        <h3>Final Poem</h3>
       </section>
 
       <div className="FinalPoem__reveal-btn-container">

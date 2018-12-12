@@ -57,6 +57,11 @@ class PlayerSubmissionForm extends Component {
 
   render() {
 
+    if (this.props.render) {
+      // console.log(props.submissions)
+      return <div></div>
+    }
+
     return (
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{this.props.player + 1}</h3>
