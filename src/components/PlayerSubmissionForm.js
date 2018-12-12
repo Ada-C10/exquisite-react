@@ -83,8 +83,8 @@ class PlayerSubmissionForm extends Component {
             <div>
               <input
                 placeholder="adverb"
-                name="adv"
-                value={this.state.adv}
+                name="adverb"
+                value={this.state.adverb}
                 onChange={this.onInputChange}/>
             </div>
             <div>

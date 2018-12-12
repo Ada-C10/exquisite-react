@@ -9,21 +9,29 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      submissions: []
+      submissions: [],
+      formDisplayed: false,
     }
   }
 
   addSubmission = (newSubmission) => {
   const submissions = this.state.submissions;
-  submissions.push(newSubmission);
+  let submission = <p>The {newSubmission.adj1} {newSubmission.noun1} {newSubmission.adverb} {newSubmission.verb} the {newSubmission.adj2} {newSubmission.noun2}</p>
+  submissions.push(submission);
   this.setState({submissions: submissions});
   // this.setState({recent: newSubmission});
   // console.log("iiii", newSubmission)
   }
 
+  finalPoemRender = (event) => {
+    this.setState({formDisplayed: true});
+    console.log('woo', this.state.submissions[0])
+  }
+
   render() {
     const submissions = this.state.submissions
-    const recent = this.state.recent
+    const formDisplayed = this.state.formDisplayed
+    const recentSubmission = [submissions - 1]
 
     // const finalPoem = submissions.map((submission, i) => {
     //   return <FinalPoem
@@ -58,16 +66,17 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission/>
 
         <PlayerSubmissionForm addSubmissionCallback={this.addSubmission} player={submissions.length}/>
 
-        <FinalPoem />
+        <FinalPoem submissions={this.state.submissions} render={formDisplayed} finalPoemCallback={this.finalPoemRender}/>
 
       </div>
     );
   }
 }
+//how come this.finalPoemRender doesnt need .state but for submissions, without .state it was undefined?
 
 const FIELDS = [
   "The",
