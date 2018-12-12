@@ -12,7 +12,7 @@ class PlayerSubmissionForm extends Component {
       adverb: '',
       verb: '',
       adjective2: '',
-      nound2: ''
+      nound: ''
     }
   }
 
@@ -45,16 +45,16 @@ class PlayerSubmissionForm extends Component {
   }
 
   onAdjective2Change = (event) => {
-    console.log('adjective1 update')
+    console.log('adjective2 update')
     this.setState({
-      adjective1: event.target.value,
+      adjective2: event.target.value,
     });
   }
 
   onNoun2Change = (event) => {
-    console.log('noun1 update')
+    console.log('noun2 update')
     this.setState({
-      noun1: event.target.value,
+      noun2: event.target.value,
     });
   }
 
