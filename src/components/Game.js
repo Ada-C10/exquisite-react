@@ -8,9 +8,30 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      submissions: [
+        {
+          adjective: 'happy',
+          noun: 'monkey balls',
+          adverb: 'laughingly',
+          verb: 'fires',
+          adjective2: 'sunny',
+          noun2: 'trees'
+        }
+      ]
+    }
+  }
+
+  addSubmission = (newSubmission) => {
+    console.log("A new submission was made!")
+    const submissions = this.state.submissions;
+    submissions.push(newSubmission);
+    this.setState({submissions: submissions})
   }
 
   render() {
+    // const submissions = this.state.submissions
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
@@ -34,7 +55,7 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm addSubmissionCallback={this.addSubmission}/>
 
         <FinalPoem />
 
