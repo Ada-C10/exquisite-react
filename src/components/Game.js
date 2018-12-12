@@ -33,9 +33,12 @@ class Game extends Component {
   render() {
 
     let poemLines = this.state.poemLines;
+    let numLines = (poemLines.length)
+    let userNum = numLines+1
+
 
     let poemDraft = poemLines.map((poemLine, i) => {
-      return <RecentSubmission
+      return <FinalPoem
       key = {i}
       index = {i}
       adjective1 = {poemLine.adjective1}
@@ -47,7 +50,33 @@ class Game extends Component {
       />
     });
 
-    let userNum = (poemDraft.length)+1
+console.log(poemDraft[0])
+
+
+
+let findRecentLine = poemLines.map((poemLine, i) => {
+  if (i+1 === numLines ) {
+  return <RecentSubmission
+  key = {i}
+  index = {i}
+  adjective1 = {poemLine.adjective1}
+  noun1 = {poemLine.noun1}
+  adverb1 = {poemLine.adverb1}
+  verb1 = {poemLine.verb1}
+  adjective2 = {poemLine.adjective2}
+  noun2 = {poemLine.noun2}
+  />}
+});
+
+      console.log(findRecentLine)
+
+
+
+
+
+
+
+
 
     // const exampleFormat = FIELDS.map((field) => {
     //   if (field.key) {
@@ -66,12 +95,12 @@ class Game extends Component {
         <p>Please follow the following format for your poetry submission:</p>
 
 
-        {poemDraft}
+        {findRecentLine}
 
         <PlayerSubmissionForm addPoemLineCB={this.addPoemLine}
           userNum={userNum}/>
 
-        <FinalPoem />
+        {poemDraft}
 
       </div>
     );
