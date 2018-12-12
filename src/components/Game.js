@@ -40,6 +40,8 @@ class Game extends Component {
         return field;
       }
     }).join(" ");
+    const currentPoem = this.state.poemLines
+    const lastLine = currentPoem.length ? <RecentSubmission line={currentPoem[currentPoem.length - 1]} /> : '';
 
     return (
       <div className="Game">
@@ -53,7 +55,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        {lastLine}
 
         <PlayerSubmissionForm
           addNewPoemLineCallback={this.addNewPoemLine}
