@@ -66,7 +66,8 @@ class Game extends Component {
             getLineCountCallback={this.getLineCount}/>
 
           <FinalPoem
-            poem={false}/>
+            poem={false}
+            revealFinalScreenCallback={this.revealFinalScreen}/>
 
         </section>
     );
@@ -85,7 +86,8 @@ class Game extends Component {
           </p>
 
           <FinalPoem
-            poem={this.state.poemLines} />
+            poem={this.state.poemLines}
+            revealFinalScreenCallback={this.revealFinalScreen} />
 
         </section>
     );

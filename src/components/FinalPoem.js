@@ -12,7 +12,6 @@ const displayPoem = (poem) => poem.map(function(line, key) {
     )
 })
 
-
 const FinalPoem = (props) => {
 
   const revealPoem = () => {
@@ -25,13 +24,23 @@ const FinalPoem = (props) => {
     )
   }
 
+  const serveRevealButton = () => {
+    return (
+      <div className="FinalPoem__reveal-btn-container">
+        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={finalRevealHandler}/>
+      </div>
+    )
+  }
+
+  const finalRevealHandler = () => {
+    console.log("final reveal!")
+    props.revealFinalScreenCallback()
+  }
+
   console.log(props.poem)
   return (
     <div className="FinalPoem">
-      {props.poem === false ? "" : revealPoem()}
-      <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
-      </div>
+      {props.poem === false ? serveRevealButton() : revealPoem()}
     </div>
   );
 }
