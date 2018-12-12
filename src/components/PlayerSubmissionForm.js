@@ -32,7 +32,11 @@ class PlayerSubmissionForm extends Component {
     event.preventDefault();
 
     const newRecentSubmission =
-`The ${this.state.adj1} ${this.state.noun1} ${this.state.adv} ${this.state.verb} the ${this.state.adj2} ${this.state.noun2}.`
+// `The ${this.state.adj1} ${this.state.noun1} ${this.state.adv} ${this.state.verb} the ${this.state.adj2} ${this.state.noun2}.`
+
+    {line: `The ${this.state.adj1} ${this.state.noun1} ${this.state.adv} ${this.state.verb} the ${this.state.adj2} ${this.state.noun2}.`
+    }
+
     // {
     //   adj1: this.state.adj1,
     //   noun1: this.state.noun1,
@@ -41,6 +45,7 @@ class PlayerSubmissionForm extends Component {
     //   adj2: this.state.adj2,
     //   noun2: this.state.noun2
     // };
+
 
     this.setState({
       adj1: '',

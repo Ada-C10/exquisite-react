@@ -8,11 +8,11 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
-    console.log(FIELDS[1].placeholder)
     this.state = {
-      submissions: [],
+      submissions: [
+
+      ],
     }
-    console.log(this.state.submissions.length)
   }
 
   addRecentSubmission = (newRecentSubmission) => {
@@ -21,6 +21,9 @@ class Game extends Component {
     this.setState({newRecentSubmission: newRecentSubmission})
     console.log(this.state.submissions)
   }
+
+
+
 
   render() {
 
@@ -31,6 +34,18 @@ class Game extends Component {
         return field;
       }
     }).join(" ");
+
+
+    let lastSubmission;
+
+    if (this.state.submissions.length !== 0) {
+      lastSubmission = <RecentSubmission recentSubmission={this.state.submissions.slice(-1)[0].line}/>
+    } else {
+      lastSubmission = undefined;
+    };
+
+
+
 
     return (
       <div className="Game">
@@ -44,7 +59,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission recentSubmission = {this.state.submissions.slice(-1)[0]} />
+        {lastSubmission}
 
         <PlayerSubmissionForm addRecentSubmissionCallback={this.addRecentSubmission}/>
 
