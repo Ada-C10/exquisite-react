@@ -58,12 +58,20 @@ class PlayerSubmissionForm extends Component {
     });
   }
 
+  onFormSubmit = (event) => {
+    event.preventDefault();
+
+    const poemLine = `${this.state.adjective1} ${this.state.noun1}`
+
+    this.props.addPoemLineCallback(poemLine)
+  }
+
 
   render() {
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <h3>Player Submission Form for Player #{}</h3>
 
         <form className="PlayerSubmissionForm__form" >
 
@@ -102,7 +110,7 @@ class PlayerSubmissionForm extends Component {
           </div>
 
           <div className="PlayerSubmissionForm__submit">
-            <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
+            <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" onClick={this.onFormSubmit}/>
           </div>
         </form>
       </div>
