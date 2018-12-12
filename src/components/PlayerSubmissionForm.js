@@ -49,7 +49,12 @@ class PlayerSubmissionForm extends Component {
     this.props.addNewPoemLineCallback(newPoemLine);
   }
 
+  validInput = (field) => {
+    return field.match(/\S+/);
+  }
+
   render() {
+    const invalidClass = "PlayerSubmissionFormt__input--invalid";
 
     return (
       <div className="PlayerSubmissionForm">
@@ -66,38 +71,44 @@ class PlayerSubmissionForm extends Component {
               type="text"
               name="firstAdjective"
               value={this.state.firstAdjective}
-              onChange={this.onInputChange}/>
+              onChange={this.onInputChange}
+              className={this.validInput(this.state.firstAdjective) ? "" : invalidClass}/>
             <input
               placeholder="noun"
               type="text"
               name="firstNoun"
               value={this.state.firstNoun}
-              onChange={this.onInputChange} />
+              onChange={this.onInputChange}
+              className={this.validInput(this.state.firstNoun) ? "" : invalidClass} />
             <input
               placeholder="adverb"
               type="text"
               name="adverb"
               value={this.state.adverb}
-              onChange={this.onInputChange} />
+              onChange={this.onInputChange}
+              className={this.validInput(this.state.adverb) ? "" : invalidClass} />
             <input
               placeholder="verb"
               type="text"
               name="verb"
               value={this.state.verb}
-              onChange={this.onInputChange} />
+              onChange={this.onInputChange}
+              className={this.validInput(this.state.verb) ? "" : invalidClass} />
             the
             <input
               placeholder="adjective"
               type="text"
               name="secondAdjective"
               value={this.state.secondAdjective}
-              onChange={this.onInputChange} />
+              onChange={this.onInputChange}
+              className={this.validInput(this.state.secondAdjective) ? "" : invalidClass} />
             <input
               placeholder="noun"
               type="text"
               name="secondNoun"
               value={this.state.secondNoun}
-              onChange={this.onInputChange} /> .
+              onChange={this.onInputChange}
+              className={this.validInput(this.state.secondNoun) ? "" : invalidClass} /> .
           </div>
 
           <div className="PlayerSubmissionForm__submit">
