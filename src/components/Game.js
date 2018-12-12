@@ -24,9 +24,9 @@ class Game extends Component {
   }
 
   getLineCount = () => {
-    console.log(this.state.poemLines.length)
     return this.state.poemLines.length + 1
   }
+
 
   render() {
 
@@ -38,7 +38,6 @@ class Game extends Component {
       }
     }).join(" ");
 
-    console.log(this.state.poemLines)
     return (
       <div className="Game">
         <h2>Game</h2>
@@ -51,7 +50,8 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission
+          poemLine={this.state.poemLines.slice(-1)[0]}/>
 
         <PlayerSubmissionForm
           addPoemLineCallback={this.addPoemLine}
