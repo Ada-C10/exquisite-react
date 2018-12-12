@@ -80,31 +80,37 @@ class PlayerSubmissionForm extends Component {
             <input
               onChange={this.onAdjective1Change}
               value={this.state.adjective1}
+              placeholder="adjective"
               name="adjective1" />
 
             <input
               onChange={this.onNoun1Change}
               value={this.state.noun1}
+              placeholder="noun"
               name="noun1" />
 
             <input
               onChange={this.onAdverbChange}
               value={this.state.adverb}
+              placeholder="adverb"
               name="adverb" />
 
             <input
               onChange={this.onVerbChange}
               value={this.state.verb}
+              placeholder="verb"
               name="verb" />
 
             <input
               onChange={this.onAdjective2Change}
               value={this.state.adjective2}
+              placeholder="adjective"
               name="adjective2" />
 
             <input
               onChange={this.onNoun2Change}
               value={this.state.noun2}
+              placeholder="noun"
               name="noun2" />
 
           </div>
