@@ -17,7 +17,6 @@ class PlayerSubmissionForm extends Component {
   }
 
   onInputChange = (event) => {
-    console.log('hereeee');
 
     const field = event.target.name;
     const value = event.target.value;
@@ -30,7 +29,6 @@ class PlayerSubmissionForm extends Component {
 
   onFormSubmit = (event) => {
     event.preventDefault();
-    console.log("created a new poem:");
 
     const newPoem = {
       firstAdjective: this.state.firstAdjective,
@@ -50,11 +48,10 @@ class PlayerSubmissionForm extends Component {
       secondNoun: '',
     });
 
-
     this.props.addPoemCallback(newPoem);
   };
 
-  
+
 
   render() {
 
@@ -66,7 +63,6 @@ class PlayerSubmissionForm extends Component {
           onSubmit={this.onFormSubmit}
           >
           <div className="PlayerSubmissionForm__poem-inputs">
-
             {
               // Put your form inputs here... We've put in one below as an example
             }
@@ -77,39 +73,49 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange}
               placeholder="adjective"
               type="text"
-              className="input-form"
+              className="input-form-background"
               />
             <input
               name="firstNoun"
               value={this.state.firstNoun}
               onChange={this.onInputChange}
               placeholder="noun"
-              type="text" />
+              type="text"
+              className="input-form-background"
+              />
             <input
               name="adverb"
               value={this.state.adverb}
               onChange={this.onInputChange}
               placeholder="adverb"
-              type="text" />
+              type="text"
+              className="input-form-background"
+              />
             <input
               name="verb"
               value={this.state.verb}
               onChange={this.onInputChange}
               placeholder="verb"
-              type="text" />
+              type="text"
+              className="input-form-background"
+              />
             the
             <input
               name="secondAdjective"
               value={this.state.secondAdjective}
               onChange={this.onInputChange}
               placeholder="adjective"
-              type="text" />
+              type="text"
+              className="input-form-background"
+              />
             <input
               name="secondNoun"
               value={this.state.secondNoun}
               onChange={this.onInputChange}
               placeholder="noun"
-              type="text" />
+              type="text"
+              className="input-form-background"
+              />
             .
           </div>
 
