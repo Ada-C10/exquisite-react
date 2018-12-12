@@ -8,7 +8,21 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      sentence: [],
+    }
+
   }
+
+
+
+addSentence = (newSentence) => {
+  const sentence = this.state.sentence;
+  sentence.push(newSentence);
+  this.setState({'sentence': sentence})
+}
+
 
   render() {
 
@@ -32,9 +46,9 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission sentences={this.sentence}/>
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm addSentenceCallback={this.addSentence} />
 
         <FinalPoem />
 
