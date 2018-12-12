@@ -14,9 +14,20 @@ class Game extends Component {
     }
   }
 
+  parseNewPoemLine(newPoemLine) {
+    return `The
+    ${newPoemLine.firstAdjective}
+    ${newPoemLine.firstNoun}
+    ${newPoemLine.adverb}
+    ${newPoemLine.verb}
+    the ${newPoemLine.secondAdjective}
+    ${newPoemLine.secondNoun}.`
+  }
+
   addNewPoemLine = (newPoemLine) => {
     const poemLines = this.state.poemLines
-    poemLines.push(newPoemLine);
+    const parsedLine = this.parseNewPoemLine(newPoemLine);
+    poemLines.push(parsedLine);
     this.setState({poemLines: poemLines})
   }
 
@@ -48,7 +59,8 @@ class Game extends Component {
           addNewPoemLineCallback={this.addNewPoemLine}
           playerNumber={this.state.poemLines.length + 1}/>
 
-        <FinalPoem />
+        <FinalPoem
+          allLines={this.state.poemLines}/>
 
       </div>
     );
