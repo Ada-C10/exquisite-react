@@ -8,6 +8,17 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      poem: [
+
+      ]
+    }
+  }
+
+  addSubmission = (newSubmission) => {
+    const amendedPoem = this.state.poem;
+    amendedPoem.push(newSubmission);
+    this.setState({poem: amendedPoem});
   }
 
   render() {
