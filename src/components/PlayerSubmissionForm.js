@@ -13,6 +13,7 @@ class PlayerSubmissionForm extends Component {
       verb: "",
       adj2: "",
       noun2: "",
+      playerNum: 1,
     }
   }
 
@@ -28,6 +29,11 @@ class PlayerSubmissionForm extends Component {
 
   onFormSubmit = (event) => {
     event.preventDefault();
+
+    const newPlayer = this.state.playerNum + 1;
+    this.setState({playerNum: newPlayer});
+
+
     const line = {
       adj1: this.state.adj1,
       noun1: this.state.noun1,
@@ -58,7 +64,7 @@ class PlayerSubmissionForm extends Component {
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <h3>Player Submission Form for Player #{ this.state.playerNum }</h3>
 
         <form className="PlayerSubmissionForm__form"
           onSubmit={this.onFormSubmit} >

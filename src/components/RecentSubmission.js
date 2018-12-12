@@ -4,6 +4,7 @@ import './RecentSubmission.css';
 const RecentSubmission = (props) => {
 
   let currentLine = props.currentLine;
+  
 
   return (
     <div className="RecentSubmission">
