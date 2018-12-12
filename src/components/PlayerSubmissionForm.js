@@ -12,7 +12,7 @@ class PlayerSubmissionForm extends Component {
       adverb: '',
       verb: '',
       adjective2: '',
-      nound: ''
+      noun2: ''
     }
   }
 
@@ -69,12 +69,35 @@ class PlayerSubmissionForm extends Component {
 
           <div className="PlayerSubmissionForm__poem-inputs">
 
-            {
-              // Put your form inputs here... We've put in one below as an example
-            }
             <input
-              placeholder="hm..."
-              type="text" />
+              onChange={this.onAdjective1Change}
+              value={this.state.adjective1}
+              name="adjective1" />
+
+            <input
+              onChange={this.onNoun1Change}
+              value={this.state.noun1}
+              name="noun1" />
+
+            <input
+              onChange={this.onAdverbChange}
+              value={this.state.adverb}
+              name="adverb" />
+
+            <input
+              onChange={this.onVerbChange}
+              value={this.state.verb}
+              name="verb" />
+
+            <input
+              onChange={this.onAdjective2Change}
+              value={this.state.adjective2}
+              name="adjective2" />
+
+            <input
+              onChange={this.onNoun2Change}
+              value={this.state.noun2}
+              name="noun2" />
 
           </div>
 
