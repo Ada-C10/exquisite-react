@@ -5,7 +5,59 @@ class PlayerSubmissionForm extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      adjective1: '',
+      noun1: '',
+      adverb: '',
+      verb: '',
+      adjective2: '',
+      nound2: ''
+    }
   }
+
+  onAdjective1Change = (event) => {
+    console.log('adjective1 update')
+    this.setState({
+      adjective1: event.target.value,
+    });
+  }
+
+  onNoun1Change = (event) => {
+    console.log('noun1 update')
+    this.setState({
+      noun1: event.target.value,
+    });
+  }
+
+  onAdverbChange = (event) => {
+    console.log('adverb update')
+    this.setState({
+      adverb: event.target.value,
+    });
+  }
+
+  onVerbChange = (event) => {
+    console.log('verb update')
+    this.setState({
+      verb: event.target.value,
+    });
+  }
+
+  onAdjective2Change = (event) => {
+    console.log('adjective1 update')
+    this.setState({
+      adjective1: event.target.value,
+    });
+  }
+
+  onNoun2Change = (event) => {
+    console.log('noun1 update')
+    this.setState({
+      noun1: event.target.value,
+    });
+  }
+
 
   render() {
 
