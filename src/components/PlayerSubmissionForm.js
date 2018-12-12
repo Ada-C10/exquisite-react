@@ -20,10 +20,9 @@ class PlayerSubmissionForm extends Component {
   // }
 
   onInputChange = (event) => {
-    let className = event.target.className
+    event.target.className = ' '
     const field = event.target.name;
     const value = event.target.value;
-    className = "";
     const newState = {}
     newState[field] = value;
     this.setState(newState);
