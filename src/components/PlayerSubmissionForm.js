@@ -38,14 +38,17 @@ class PlayerSubmissionForm extends Component {
 
     console.log(`Submission is: ${submission}`);
 
-    this.setState ({
+
+    this.setState({
+      art1: 'The',
       adj1: '',
       noun1: '',
       adv1: '',
       verb1: '',
+      art2: 'The',
       adj2: '',
       noun2: '',
-    })
+    });
 
     this.props.onPlayerSubmit(submission)
   }
