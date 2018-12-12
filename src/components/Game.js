@@ -32,6 +32,7 @@ class Game extends Component {
 
 
 
+
   render() {
 
     const exampleFormat = FIELDS.map((field) => {
@@ -43,6 +44,9 @@ class Game extends Component {
     }).join(" ");
 
     const lastSubmission = this.state.lines[this.state.lines.length - 1]
+
+    const displayRecentSubmission = this.state.lines.length > 0 ? <RecentSubmission lastSubmission={lastSubmission}/> : '' ;
+
 
     return (
       <div className="Game">
@@ -56,9 +60,9 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission lastSubmission={lastSubmission}/>
+        {displayRecentSubmission}
 
-        <PlayerSubmissionForm addPoemCallback={this.addLine}/>
+        <PlayerSubmissionForm addPoemCallback={this.addLine} playerNumber={this.state.lines.length + 1}/>
 
         <FinalPoem
           changePoemStatus={this.changePoemStatus}

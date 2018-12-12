@@ -11,9 +11,9 @@ const FinalPoem = (props) => {
 
   const lines = props.lines;
 
-  const poem = lines.map((line, i) => {
+  const finalPoem = lines.map((line, i) => {
     if (props.poemStatus) {
-      return <div>{line}</div>
+      return <p>{line}</p>
     };
   });
 
@@ -23,7 +23,7 @@ return (
   <div className="FinalPoem">
     <section className="FinalPoem__poem">
       <h3>Final Poem</h3>
-      {poem}
+      {finalPoem}
     </section>
 
     <div className="FinalPoem__reveal-btn-container">
