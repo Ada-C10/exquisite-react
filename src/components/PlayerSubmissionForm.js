@@ -12,7 +12,9 @@ class PlayerSubmissionForm extends Component {
       adv: '',
       verb: '',
       adj2: '',
-      noun2: ''
+      noun2: '',
+      number: 1
+
     }
   }
 
@@ -53,7 +55,8 @@ class PlayerSubmissionForm extends Component {
       adv: '',
       verb: '',
       adj2: '',
-      noun2: ''
+      noun2: '',
+      number: this.state.number + 1
     });
 
     console.log('created new poem line', newRecentSubmission);
@@ -66,7 +69,7 @@ class PlayerSubmissionForm extends Component {
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <h3>Player Submission Form for Player #{this.state.number}</h3>
 
         <form className="PlayerSubmissionForm__form"
           onSubmit={this.onFormSubmit} >
