@@ -39,7 +39,8 @@ class Game extends Component {
     }).join(" ");
 
     console.log(this.state.poem[this.state.poem.length - 1]);
-    const gameStarted = this.state.poem.length === 0 ? false : true;
+    const poemStarted = this.state.poem.length === 0 ? false : true;
+    const poemOngoing = !this.state.finalize;
 
     return (
       <div className="Game">
@@ -53,18 +54,19 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        {gameStarted &&
+        { poemStarted &&
           <RecentSubmission
             lastLine={this.state.poem[this.state.poem.length - 1]}/> }
 
-        <PlayerSubmissionForm
+        { poemOngoing &&
+          <PlayerSubmissionForm
           addLineCallback={this.addLine}
-          playerCount={this.state.player}/>
+          playerCount={this.state.player}/> }
 
         <FinalPoem
           poem={this.state.poem}
-          revealPoem={this.state.reveal}
-          revealPoemCallback={() => this.setState({reveal: true})}/>
+          revealPoem={this.state.finalize}
+          revealPoemCallback={() => this.setState({finalize: true})}/>
       </div>
     );
   }
