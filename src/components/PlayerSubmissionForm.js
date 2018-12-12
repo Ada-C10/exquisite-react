@@ -6,16 +6,16 @@ class PlayerSubmissionForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      adjective: '',
-      noun: '',
-      adverb: '',
-      verb: '',
-      adverb2: '',
-      noun2: ''
-    }
+    const baseState = {};
 
-    this.baseState = this.state;
+    props.fields.forEach((field) => {
+      if (typeof field === 'object') {
+          baseState[field.key] = '';
+      }
+    });
+
+    this.state = {...baseState};
+    this.baseState = {...baseState};
   }
 
   onInputChange = (e) => {
@@ -30,11 +30,18 @@ class PlayerSubmissionForm extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
 
-    const poemLine = `The ${this.state.adjective} ${this.state.noun} ${this.state.adverb} ${this.state.verb} ${this.state.adverb2} ${this.state.noun2}.`;
+    const poemLine = this.props.fields.map((field) => {
+
+      if (typeof field === 'object') {
+        return this.state[field.key];
+      } else {
+        return field;
+      }
+    });
 
     this.setState(this.baseState);
 
-    this.props.addLine(poemLine);
+    this.props.addLine(poemLine.join(' '));
 
   }
 
@@ -44,7 +51,26 @@ class PlayerSubmissionForm extends Component {
     for (const field in this.state) {
 
       inputClass[field] = `PlayerSubmissionFormt__input${this.state[field] === "" ? "--invalid" : ""}`
+
     }
+
+    const form = this.props.fields.map((field) => {
+      if (typeof field === 'object') {
+
+        const key = field.key;
+        return (<input
+          className={inputClass[key]}
+          name={key}
+          placeholder={field.placeholder}
+          value = {this.state[key]}
+          onChange = {this.onInputChange}
+          type="text" />)
+      }
+      else {
+        return (<label>{field}</label>)
+      }
+    });
+
 
     return (
       <div className="PlayerSubmissionForm">
@@ -54,53 +80,7 @@ class PlayerSubmissionForm extends Component {
           onSubmit = {this.onFormSubmit}>
 
           <div className="PlayerSubmissionForm__poem-inputs">
-
-            <label>The</label>
-            <input
-              className={inputClass.adjective}
-              name="adjective"
-              placeholder="adjective"
-              value = {this.state.adjective}
-              onChange = {this.onInputChange}
-              type="text" />
-            <input
-              className={inputClass.noun}
-              name="noun"
-              placeholder="noun"
-              value = {this.state.noun}
-              onChange = {this.onInputChange}
-              type="text" />
-            <input
-              className={inputClass.adverb}
-              name="adverb"
-              placeholder="adverb"
-              value = {this.state.adverb}
-              onChange = {this.onInputChange}
-              type="text" />
-            <input
-              className={inputClass.verb}
-              name="verb"
-              placeholder="verb"
-              value = {this.state.verb}
-              onChange = {this.onInputChange}
-              type="text" />
-            <label>the</label>
-              <input
-                className={inputClass.adverb2}
-                name="adverb2"
-                placeholder="adverb"
-                value = {this.state.adverb2}
-                onChange = {this.onInputChange}
-                type="text" />
-              <input
-                className={inputClass.noun2}
-                name="noun2"
-                placeholder="noun"
-                value = {this.state.noun2}
-                onChange = {this.onInputChange}
-                type="text" />
-            <label>.</label>
-
+            {form}
           </div>
 
           <div className="PlayerSubmissionForm__submit">

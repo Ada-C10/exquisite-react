@@ -57,7 +57,8 @@ class Game extends Component {
 
         { !this.state.displayPoem && <PlayerSubmissionForm
           addLine = {(poemLine) => this.addLine(poemLine)}
-          submissionNumber = {this.state.poem.length + 1}/>}
+          submissionNumber = {this.state.poem.length + 1}
+          fields = {FIELDS}/>}
 
         <FinalPoem displayPoem={this.state.displayPoem}
         revealPoem={this.revealPoem}
