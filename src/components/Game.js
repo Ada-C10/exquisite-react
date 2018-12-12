@@ -10,19 +10,25 @@ class Game extends Component {
     super(props);
 
     this.state = {
-      poem: []
-    }
+      lines: [],
+      poemReady: false,
+    };
   };
 
   addLine = (newLine) => {
-    const poem = this.state.poem;
+    const lines = this.state.lines;
     const line = {...newLine}
     const fullLine = `The ${line.firstAdjective} ${line.firstNoun} ${line.adverb} ${line.verb} the ${line.secondAdjective} ${line.secondNoun}`
 
-    poem.push(fullLine);
-    this.setState({poem: poem});
+    lines.push(fullLine);
+    this.setState({lines: lines});
     console.log(this.state);
-  }
+  };
+
+  changePoemStatus = () => {
+    const poemStatus = !(this.state.poemReady);
+    this.setState({poemReady: poemStatus});
+  };
 
   render() {
 
@@ -50,8 +56,11 @@ class Game extends Component {
 
         <PlayerSubmissionForm addPoemCallback={this.addLine}/>
 
-        <FinalPoem />
-
+        <FinalPoem
+          changePoemStatus={this.changePoemStatus}
+          lines={this.state.lines}
+          finalPoemStatus={this.state.poemReady}/
+          >
       </div>
     );
   }
