@@ -20,10 +20,10 @@ class PlayerSubmissionForm extends Component {
   // }
 
   onInputChange = (event) => {
-    console.log("In on input cahnge");
-
+    const className = event.target.className
     const field = event.target.name;
     const value = event.target.value;
+    className = "--invalid"
     const newState = {}
     newState[field] = value;
     this.setState(newState);
@@ -76,7 +76,7 @@ class PlayerSubmissionForm extends Component {
                 placeholder="adjective"
                 name="adj1"
                 value={this.state.adj1}
-                onChange={this.onInputChange} />
+                onChange={this.onInputChange}/>
             </div>
             <div>
               <input
@@ -114,6 +114,7 @@ class PlayerSubmissionForm extends Component {
                 value={this.state.noun2}
                 onChange={this.onInputChange}/>
             </div>
+            <p>.</p>
           </div>
 
           <div className="PlayerSubmissionForm__submit">

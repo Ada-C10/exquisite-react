@@ -11,7 +11,8 @@ class Game extends Component {
     this.state = {
       submissions: [],
       formDisplayed: false,
-      recentSubmission: ""
+      recentSubmission: "",
+      firstSubmission: false
     }
   }
 
@@ -20,7 +21,8 @@ class Game extends Component {
   let submission = <p>The {newSubmission.adj1} {newSubmission.noun1} {newSubmission.adverb} {newSubmission.verb} the {newSubmission.adj2} {newSubmission.noun2}.</p>
   submissions.push(submission);
   this.setState({submissions: submissions});
-  this.setState({recentSubmission: submission})
+  this.setState({recentSubmission: submission});
+  this.setState({firstSubmission: true});
   // this.setState({recent: newSubmission});
   // console.log("iiii", newSubmission)
   }
@@ -68,7 +70,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission recentSubmission={this.state.recentSubmission} render={formDisplayed}/>
+        <RecentSubmission recentSubmission={this.state.recentSubmission} render={formDisplayed} firstSubmission={this.state.firstSubmission}/>
 
         <PlayerSubmissionForm addSubmissionCallback={this.addSubmission} player={submissions.length} render={formDisplayed}/>
 
