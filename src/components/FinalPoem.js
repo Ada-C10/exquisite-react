@@ -7,6 +7,7 @@ class FinalPoem extends React.Component {
 
     this.state = {
       finalPoemHeaderClass: "FinalPoem__poem hide",
+      singleLine: "test",
     }
   }
 
@@ -15,11 +16,15 @@ class FinalPoem extends React.Component {
   }
 
   render(){
+
+    const allLines = this.props.linesOfPoem;
+    const final = allLines.join('\n');
+
     return (
       <div className="FinalPoem">
         <section className={this.state.finalPoemHeaderClass}>
           <h3>Final Poem</h3>
-          <p>{this.props.linesOfPoem}</p>
+          <p className="poem">{final}</p>
         </section>
 
         <div className="FinalPoem__reveal-btn-container">
