@@ -23,6 +23,11 @@ class Game extends Component {
     });
   }
 
+  getLineCount = () => {
+    console.log(this.state.poemLines.length)
+    return this.state.poemLines.length + 1
+  }
+
   render() {
 
     const exampleFormat = FIELDS.map((field) => {
@@ -49,7 +54,8 @@ class Game extends Component {
         <RecentSubmission />
 
         <PlayerSubmissionForm
-          addPoemLineCallback={this.addPoemLine}/>
+          addPoemLineCallback={this.addPoemLine}
+          getLineCountCallback={this.getLineCount}/>
 
         <FinalPoem />
 

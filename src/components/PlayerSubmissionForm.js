@@ -61,9 +61,19 @@ class PlayerSubmissionForm extends Component {
   onFormSubmit = (event) => {
     event.preventDefault();
 
-    const poemLine = `${this.state.adjective1} ${this.state.noun1}`
+    const poemLine = `${this.state.adjective1} ${this.state.noun1} ${this.state.adverb} ${this.state.verb} the ${this.state.adjective2} ${this.state.noun2}`
+
+    this.setState({
+      adjective1: '',
+      noun1: '',
+      adverb: '',
+      verb: '',
+      adjective2: '',
+      noun2: ''
+    });
 
     this.props.addPoemLineCallback(poemLine)
+
   }
 
 
@@ -71,7 +81,7 @@ class PlayerSubmissionForm extends Component {
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{}</h3>
+        <h3>Player Submission Form for Player #{this.props.getLineCountCallback()}</h3>
 
         <form className="PlayerSubmissionForm__form" >
 
