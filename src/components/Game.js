@@ -8,9 +8,35 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      submissions: []
+    }
+  }
+
+  addSubmission = (newSubmission) => {
+  const submissions = this.state.submissions;
+  submissions.push(newSubmission);
+  this.setState({submissions: submissions});
+  // this.setState({recent: newSubmission});
+  // console.log("iiii", newSubmission)
   }
 
   render() {
+    const submissions = this.state.submissions
+    const recent = this.state.recent
+
+    // const finalPoem = submissions.map((submission, i) => {
+    //   return <FinalPoem
+    //     key={i}
+    //     adj1={submission.adj1}
+    //     noun1={submission.noun1}
+    //     adverb={submission.adverb}
+    //     verb={submission.verb}
+    //     adj2={submission.adj2}
+    //     noun2={submission.noun} />
+    // });
+
+    // const mostRecentSubmission = this.state.submissions[-1]
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
@@ -34,7 +60,7 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm addSubmissionCallback={this.addSubmission} player={submissions.length}/>
 
         <FinalPoem />
 
@@ -74,3 +100,5 @@ const FIELDS = [
 ];
 
 export default Game;
+
+//piece of state in game that is t/f, and is passed into finalpoem. once true, final poem gets displayed. and each submision is being passed into finalpoem as its being submitted.
