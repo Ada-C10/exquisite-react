@@ -9,7 +9,7 @@ class PlayerSubmissionForm extends Component {
     const baseState = {};
 
     props.fields.forEach((field) => {
-      if (typeof field === 'object') {
+      if (field.key) {
           baseState[field.key] = '';
       }
     });
@@ -22,8 +22,8 @@ class PlayerSubmissionForm extends Component {
     const field = e.target.name;
     const value = e.target.value;
     const newState = {};
-    newState[field] = value;
 
+    newState[field] = value;
     this.setState(newState);
   }
 
@@ -32,16 +32,15 @@ class PlayerSubmissionForm extends Component {
 
     const poemLine = this.props.fields.map((field) => {
 
-      if (typeof field === 'object') {
+      if (field.key) {
         return this.state[field.key];
       } else {
         return field;
       }
-    });
+    }).join(" ");
 
     this.setState(this.baseState);
-
-    this.props.addLine(poemLine.join(' '));
+    this.props.addLine(poemLine);
 
   }
 
@@ -54,11 +53,12 @@ class PlayerSubmissionForm extends Component {
 
     }
 
-    const form = this.props.fields.map((field) => {
-      if (typeof field === 'object') {
+    const form = this.props.fields.map((field, i) => {
+      if (field.key) {
 
         const key = field.key;
         return (<input
+          key = {i}
           className={inputClass[key]}
           name={key}
           placeholder={field.placeholder}
@@ -67,7 +67,7 @@ class PlayerSubmissionForm extends Component {
           type="text" />)
       }
       else {
-        return (<label>{field}</label>)
+        return (<label key = {i}>{field}</label>)
       }
     });
 
