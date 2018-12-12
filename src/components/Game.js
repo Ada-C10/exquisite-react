@@ -8,6 +8,23 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      recentSubmission: '',
+      submissions: [],
+      playerNumber: 1,
+      isSubmitted: false,
+    }
+  }
+
+  onPlayerSubmit = (submission) => {
+    console.log("Game Message - player has submitted");
+    const newState = this.state;
+    newState.recentSubmission = submission
+    newState.submissions.push(submission);
+    newState.playerNumber += 1
+    this.setState(newState);
+    console.log(this.state);
   }
 
   render() {
@@ -34,9 +51,9 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm playerNumber={this.state.playerNumber} onPlayerSubmit={this.onPlayerSubmit}/>
 
-        <FinalPoem />
+        <FinalPoem submissions={this.state.submissions}/>
 
       </div>
     );
