@@ -77,6 +77,7 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange}
               placeholder="adjective"
               type="text"
+              className="input-form"
               />
             <input
               name="firstNoun"

@@ -18,7 +18,7 @@ class Game extends Component {
   addLine = (newLine) => {
     const lines = this.state.lines;
     const line = {...newLine}
-    const fullLine = `The ${line.firstAdjective} ${line.firstNoun} ${line.adverb} ${line.verb} the ${line.secondAdjective} ${line.secondNoun}`
+    const fullLine = `The ${line.firstAdjective} ${line.firstNoun} ${line.adverb} ${line.verb} the ${line.secondAdjective} ${line.secondNoun}.`
 
     lines.push(fullLine);
     this.setState({lines: lines});
@@ -30,6 +30,8 @@ class Game extends Component {
     this.setState({poemReady: poemStatus});
   };
 
+
+
   render() {
 
     const exampleFormat = FIELDS.map((field) => {
@@ -39,6 +41,8 @@ class Game extends Component {
         return field;
       }
     }).join(" ");
+
+    const lastSubmission = this.state.lines[this.state.lines.length - 1]
 
     return (
       <div className="Game">
@@ -52,14 +56,14 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission lastSubmission={lastSubmission}/>
 
         <PlayerSubmissionForm addPoemCallback={this.addLine}/>
 
         <FinalPoem
           changePoemStatus={this.changePoemStatus}
           lines={this.state.lines}
-          finalPoemStatus={this.state.poemReady}/
+          poemStatus={this.state.poemReady}/
           >
       </div>
     );
