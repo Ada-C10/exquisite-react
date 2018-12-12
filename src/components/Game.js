@@ -57,7 +57,8 @@ class Game extends Component {
           addPoemLineCallback={this.addPoemLine}
           getLineCountCallback={this.getLineCount}/>
 
-        <FinalPoem />
+        <FinalPoem
+          poem={this.state.poemLines}/>
 
       </div>
     );
