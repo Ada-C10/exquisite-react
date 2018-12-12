@@ -31,6 +31,10 @@ class Game extends Component {
     this.setState({poemLines: poemLines})
   }
 
+  onFinalPoemClick = () => {
+    this.setState({isFinal: true})
+  }
+
   render() {
 
     const exampleFormat = FIELDS.map((field) => {
@@ -40,8 +44,15 @@ class Game extends Component {
         return field;
       }
     }).join(" ");
+
     const currentPoem = this.state.poemLines
-    const lastLine = currentPoem.length ? <RecentSubmission line={currentPoem[currentPoem.length - 1]} /> : '';
+
+    const lastLine = currentPoem.length && !this.state.isFinal ? <RecentSubmission line={currentPoem[currentPoem.length - 1]} /> : '';
+
+    const displayForm = this.state.isFinal ? "" :
+    <PlayerSubmissionForm
+      addNewPoemLineCallback={this.addNewPoemLine}
+      playerNumber={this.state.poemLines.length + 1}/>
 
     return (
       <div className="Game">
@@ -57,12 +68,12 @@ class Game extends Component {
 
         {lastLine}
 
-        <PlayerSubmissionForm
-          addNewPoemLineCallback={this.addNewPoemLine}
-          playerNumber={this.state.poemLines.length + 1}/>
+        {displayForm}
 
         <FinalPoem
-          allLines={this.state.poemLines}/>
+          allLines={this.state.poemLines}
+          isFinal={this.state.isFinal}
+          onFinalPoemClickCallback={this.onFinalPoemClick}/>
 
       </div>
     );
