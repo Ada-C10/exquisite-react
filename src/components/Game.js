@@ -49,7 +49,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission recentSubmission={this.state.recentSubmission}/>
 
         <PlayerSubmissionForm playerNumber={this.state.playerNumber} onPlayerSubmit={this.onPlayerSubmit}/>
 
