@@ -12,6 +12,7 @@ class PlayerSubmissionForm extends Component {
       verb: "",
       adjectiveSecond: "",
       nounSecond: "",
+      playerCount: 1,
     }
   }
 
@@ -30,19 +31,15 @@ class PlayerSubmissionForm extends Component {
 
   onFormSubmit = (event) => {
     event.preventDefault();
-    // if(!this.emailValid()) {
-    //   // maybe display info to user?
-    //   return;
-    // }
 
-    const newSubmission = {
-      adjectiveFirst: this.state.adjectiveFirst,
-      nounFirst: this.state.nounFirst,
-      adverb: this.state.adverb,
-      verb: this.state.verb,
-      adjectiveSecond: this.state.adjectiveSecond,
-      nounSecond: this.state.nounSecond,
-    };
+    const newSubmission =
+       this.state.adjectiveFirst + 
+       this.state.nounFirst +
+       this.state.adverb +
+       this.state.verb +
+       this.state.adjectiveSecond +
+       this.state.nounSecond
+    ;
 
 
     // clearing form
@@ -53,6 +50,7 @@ class PlayerSubmissionForm extends Component {
       verb: "",
       adjectiveSecond: "",
       nounSecond: "",
+      playerCount: 1 + this.state.playerCount,
     });
 
     // Now we need to do something with the game...
@@ -62,7 +60,7 @@ class PlayerSubmissionForm extends Component {
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <h3>Player Submission Form for Player #{ this.state.playerCount }</h3>
 
         <form
           className="PlayerSubmissionForm__form"

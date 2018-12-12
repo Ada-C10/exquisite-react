@@ -8,15 +8,28 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
-    this.state = []
+    this.state = {
+      submissions: [],
+      clicked: false,
+    }
   }
 
   addSubmission = (submission) => {
     const submissions = this.state.submissions;
     submissions.push(submission);
-    this.state({ submissions })
+    this.setState({ submissions: submissions })
   }
 
+  finalPoem = () => {
+    // const poemList = this.state.submissions.map((submission, i) =>
+    // <li key={i}>
+    //   {submission}</li>
+    // );
+    // const potato = <ul>{ poemList } </ul>
+    return (
+      this.setState({ clicked: true })
+      )
+  };
 
   render() {
 
@@ -44,7 +57,9 @@ class Game extends Component {
 
         <PlayerSubmissionForm addSubmissionCallback={this.addSubmission}/>
 
-        <FinalPoem />
+        <FinalPoem finalPoem={this.finalPoem} submissions={this.state.submissions}
+            clicked={this.state.clicked}
+          />
 
       </div>
     );
