@@ -12,6 +12,7 @@ class Game extends Component {
     this.state = {
       submissions: [],
     }
+    console.log(this.state.submissions.length)
   }
 
   addRecentSubmission = (newRecentSubmission) => {
@@ -43,7 +44,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission recentSubmission = {this.state.submissions.slice(-1)[0]} />
 
         <PlayerSubmissionForm addRecentSubmissionCallback={this.addRecentSubmission}/>
 
