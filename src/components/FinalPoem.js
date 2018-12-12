@@ -18,7 +18,7 @@ const FinalPoem = (props) => {
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
 
-      {fullPoem}
+      <p>{fullPoem}</p>
 
       </section>
 
