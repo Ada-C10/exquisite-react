@@ -17,7 +17,8 @@ class Game extends Component {
     const amendedPoem = [...this.state.poem];
     amendedPoem.push(newSubmission);
     console.log('In addPoemLine function in Game', newSubmission);
-    this.setState({poem: amendedPoem});
+    this.setState({poem: amendedPoem
+    });
   }
 
   render() {
@@ -44,7 +45,8 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm addSubmissionCallback={this.addPoemLine} />
+        <PlayerSubmissionForm addSubmissionCallback={this.addPoemLine}
+            playerNumber={this.state.length + 1} />
 
         <FinalPoem />
 
