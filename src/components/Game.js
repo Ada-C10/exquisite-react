@@ -65,7 +65,7 @@ class Game extends Component {
 
         { this.state.finalSubmit === true ? null : <PlayerSubmissionForm formFields={FIELDS} submissionFormCallback={this.addPartToCadaver} /> }
 
-        <FinalPoem finalPoemCallback={this.displayCadaver} />
+        <FinalPoem finalPoemCallback={this.displayCadaver} finalSumbit={this.state.finalSubmit}/>
 
       </div>
     );
