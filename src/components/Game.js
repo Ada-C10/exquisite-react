@@ -8,7 +8,29 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      submissions: [],
+      showPoem: false,
+      showForm: true,
+      showSubmissionHeader: true,
+    }
   }
+
+  addSubmission = (submission) => {
+    const submissions = this.state.submissions;
+    submissions.push(submission);
+    this.setState({ submissions: submissions })
+  }
+
+  finalPoem = () => {
+    return (
+      this.setState({
+        showPoem: true,
+        showForm: false,
+        showSubmissionHeader: false,
+      })
+    )
+  };
 
   render() {
 
@@ -32,12 +54,20 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission
 
-        <PlayerSubmissionForm />
+          showSubmissionHeader={this.state.showSubmissionHeader}
+           />
 
-        <FinalPoem />
+        <PlayerSubmissionForm
+          addSubmissionCallback={this.addSubmission}
+          showForm={this.state.showForm}
+          />
 
+        <FinalPoem finalPoem={this.finalPoem}
+          submissions={this.state.submissions}
+          showPoem={this.state.showPoem}
+          />
       </div>
     );
   }
