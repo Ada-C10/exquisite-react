@@ -11,6 +11,7 @@ class Game extends Component {
 
     this.state = {
       poems: [],
+      poemCount: 0,
     }
   }
 
@@ -21,6 +22,7 @@ class Game extends Component {
     allPoems.push(newPoem);
     this.setState({
       poems: allPoems,
+      poemCount: allPoems.length,
     });
 
     // return <RecentSubmission recentPoem={this.state.poems[(this.state.poems.length - 1)]}/>
@@ -37,7 +39,7 @@ class Game extends Component {
         return field;
       }
     }).join(" ");
-// console.log(this.state.poems.length);
+// console.log(`GAME: num of poems: ${this.state.poems.length}`);
     return (
 
       <div className="Game">
@@ -53,7 +55,7 @@ class Game extends Component {
 
         <RecentSubmission recentPoem={this.state.poems[(this.state.poems.length - 1)]}/>
 
-        <PlayerSubmissionForm format={FIELDS} callback={this.allPoems}/>
+        <PlayerSubmissionForm format={FIELDS} callback={this.allPoems} numberOfPoems={this.state.poems.length}/>
 
         <FinalPoem finalPoem={this.state.poems}/>
 

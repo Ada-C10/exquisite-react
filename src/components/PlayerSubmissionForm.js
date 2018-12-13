@@ -16,6 +16,7 @@ class PlayerSubmissionForm extends Component {
       verb: "",
       adj2: "",
       noun2: "",
+      numberOfPoems: this.props.numberOfPoems,
     }
   }
 
@@ -60,11 +61,11 @@ class PlayerSubmissionForm extends Component {
 
   }
   render() {
-// console.log(this.state);
+// console.log(`FORM:num of poems: ${this.props.numberOfPoems}`);
     return (
 
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <h3>Player Submission Form for Player #{ this.props.numberOfPoems + 1}</h3>
 
         <form className="PlayerSubmissionForm__form" >
 
