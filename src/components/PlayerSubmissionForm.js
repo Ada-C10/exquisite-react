@@ -77,15 +77,18 @@ class PlayerSubmissionForm extends Component {
 
 
     const filteredInputs = this.state.forEach((input) => {
-      // const key = input.key
-      console.log("state", this.state[input.key])
+
+      // const key =
+      //       // const key =  this.state[Object.keys(input)[0]]
+      //       console.log("state", Object.keys(input)[0])
+      console.log("state", Object.keys(input)[0])
       return(
-        <input name={input.key} placeholder={input.placeholder} type="text" value={this.state[input.key]} onChange={this.onInputChange}/>
+        <input name={input[Object.keys(input)[0]]} placeholder={input.placeholder} type="text" value={input[Object.keys(input)[0]]} onChange={this.onInputChange}/>
       )
     })
 
 
-    console.log(filteredInputs);
+    console.log("inputs", filteredInputs);
 
 
     return (
@@ -96,7 +99,7 @@ class PlayerSubmissionForm extends Component {
 
           <div className="PlayerSubmissionForm__poem-inputs">
 
-            {
+            { filteredInputs
               // Put your form inputs here... We've put in one below as an example
             }
 
@@ -115,5 +118,5 @@ class PlayerSubmissionForm extends Component {
 export default PlayerSubmissionForm;
 
 PlayerSubmissionForm.propTypes = {
-  fields: PropTypes.isRequired,
+  fields: PropTypes.array.isRequired,
 };
