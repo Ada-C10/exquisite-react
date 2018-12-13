@@ -24,7 +24,6 @@ class PlayerSubmissionForm extends Component {
 
     const newState = {};
     newState[field] = value;
-    // newState.field = value;  // not the same :(
     this.setState(newState);
   }
 
@@ -61,10 +60,7 @@ class PlayerSubmissionForm extends Component {
         <form className="PlayerSubmissionForm__form"onSubmit={this.onFormSubmit} >
 
           <div className="PlayerSubmissionForm__poem-inputs">
-
-            {
-              // Put your form inputs here... We've put in one below as an example
-            }
+            The
             <input
               placeholder="adjective"
               type="text"
@@ -93,6 +89,7 @@ class PlayerSubmissionForm extends Component {
               value={this.state.verb}
               onChange={this.onInputChange}
               />
+            the
             <input
               placeholder="adjective"
               type="text"
@@ -107,6 +104,7 @@ class PlayerSubmissionForm extends Component {
               value={this.state.noun2}
               onChange={this.onInputChange}
               />
+            .
           </div>
 
           <div className="PlayerSubmissionForm__submit">
