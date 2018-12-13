@@ -2,26 +2,25 @@ import React from 'react';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
-    console.log(props);
-    const displayFinalLines = (props) => {
+  console.log(props);
+  const displayFinalLines = (props) => {
+    if (props !== undefined){
       if (props.status === true){
-        if (props !== undefined){
 
-          let poemLines = "";
-          props.finalLines.forEach((line, i) => {
+        let poemLines = "";
+        props.finalLines.forEach((line, i) => {
 
-            const linesForFinal = `The ${line.adjective1}  ${line.noun1}  ${line.adverb}  ${line.verb} the  ${line.adjective2}   ${line.noun2}`;
+          const linesForFinal = `The ${line.adjective1} ${line.noun1} ${line.adverb}  ${line.verb} the ${line.adjective2} ${line.noun2}.\n`;
 
-            poemLines += linesForFinal;
-
-          })
-          return poemLines;
-        };
-      }
+          poemLines += linesForFinal;
+        })
+        let newLine = poemLines.split('\n').map(i => {
+          return <p>{i}</p>
+        });
+        return newLine;
+      };
     }
-    // const onClickDisplay = (event) => {
-    //   props.callbackDisplayPoem();
-    // }
+  }
 
   return (
     <div className="FinalPoem">
@@ -31,9 +30,9 @@ const FinalPoem = (props) => {
       </section>
 
       <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn"
+        {!props.status && <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn"
             onClick={()=> props.callbackDisplayPoem()}
-            />
+            />}
       </div>
     </div>
   );
