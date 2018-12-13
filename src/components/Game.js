@@ -55,7 +55,7 @@ class Game extends Component {
         </p>
 
         <RecentSubmission
-
+          showLatestLine={this.state.submissions[this.state.submissions.length-1]}
           showSubmissionHeader={this.state.showSubmissionHeader}
            />
 
