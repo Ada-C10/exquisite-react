@@ -22,8 +22,8 @@ class FinalPoem extends React.Component {
     return (
       <div className="FinalPoem">
         <section className="FinalPoem__poem">
-          <h3>Final Poem</h3>
-            {this.state.cadaver}
+          { this.state.cadaver !== "" ? <h3>Final Poem</h3> : null }
+          { this.state.cadaver !== "" ? (this.state.cadaver) : null }
         </section>
 
         <div className="FinalPoem__reveal-btn-container">
