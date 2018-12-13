@@ -12,12 +12,12 @@ class FinalPoem extends React.Component {
     }
   }
 
+
   render () {
 
     const showPoem = () => {
-
         this.setState({ poemClass: 'FinalPoem_poem', buttonClass: 'Hide_element'})
-        console.log("I was clicked")
+        this.props.hideComponentsCallback()
     }
 
     const finalPoem = this.props.lines.map((line) =>
@@ -34,23 +34,11 @@ class FinalPoem extends React.Component {
 
         <div className="FinalPoem__reveal-btn-container">
           <input type="button" value="We are finished: Reveal the Poem" className= {this.state.buttonClass} onClick={showPoem} />
-
-
         </div>
       </div>
     );
-
-
   }
-
 }
 
 
-
 export default FinalPoem;
-
-
-//on button click, show stuff
-//maybe give it a class that keeps the poem hidden until the button is clicked
-//function should push each line within forEach
-//then print the result below

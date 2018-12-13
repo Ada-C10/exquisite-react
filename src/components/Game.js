@@ -11,6 +11,7 @@ class Game extends Component {
     this.state = {
       submissions: [
       ],
+      hidden: false
     }
   }
 
@@ -20,6 +21,12 @@ class Game extends Component {
     this.setState({newRecentSubmission: newRecentSubmission})
 
     console.log(this.state.submissions[0].line)
+  }
+
+
+  hideComponents =() => {
+    console.log('here is the callback!')
+    this.setState({hidden: true})
   }
 
 
@@ -41,17 +48,6 @@ class Game extends Component {
       lastSubmission = undefined;
     };
 
-    const submissions = this.state.submissions
-
-    const finalPoem = submissions.map((submission, i) => {
-      return <FinalPoem
-        key={i}
-        line={submission.line}
-
-        />
-    })
-
-
     return (
       <div className="Game">
         <h2>Game</h2>
@@ -64,11 +60,17 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        {lastSubmission}
+        {!this.state.hidden ?
+            <div>
+              <div>{lastSubmission}</div>
+              <div><PlayerSubmissionForm addRecentSubmissionCallback={this.addRecentSubmission}/></div>
+            </div>
+            : <p></p>
+        }
 
-        <PlayerSubmissionForm addRecentSubmissionCallback={this.addRecentSubmission}/>
-
-        <FinalPoem lines={this.state.submissions} />
+        <FinalPoem
+          lines={this.state.submissions}
+          hideComponentsCallback={this.hideComponents} />
 
       </div>
     );
