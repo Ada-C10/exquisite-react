@@ -72,6 +72,7 @@ Again, please limit the time you spend on styling, and reach out often and frequ
 1. Make a diagram with all of the components, illustrating which components are nested within each other, and making it clear which components are siblings to each other.
 1. For each component, list out what data needs to be referenced within it, and what data type each piece of data is. Particularly, think about:
     - If the `PlayerSubmissionForm` component handles a player's submission of poetry, what should that component do with that data?
+    This should have the
     - How should the `FinalPoem` component get all of the parts of the poem?
     - What kind of input elements should `PlayerSubmissionForm` use? (aka checkbox, text, button, submit, etc...)
     - What should the `Game` component represent and be responsible for?

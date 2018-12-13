@@ -8,6 +8,11 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+    // set up spot for the array
+    this.state = {
+      // put in a current line string to store the variable
+      poem: [],
+    }
   }
 
   render() {
@@ -34,7 +39,7 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm fieldValues />
 
         <FinalPoem />
 
