@@ -61,9 +61,18 @@ class PlayerSubmissionForm extends Component {
     this.setState(updateState);
   }
 
+  onLineSubmit = (event) => {
+    event.preventDefault();
+
+    this.props.currentLineCallback("pass in state as a parsed string")
+
+    this.setState({
+      //fetch fields to reset state
+      //probably need new implementation of this
+    });
+  }
 
   render() {
-
 
     const inputs = this.fetchFields();
 
@@ -82,7 +91,7 @@ class PlayerSubmissionForm extends Component {
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{  }</h3>
 
-        <form className="PlayerSubmissionForm__form" >
+        <form className="PlayerSubmissionForm__form" onSubmit={this.onLineSubmit}>
 
           <div className="PlayerSubmissionForm__poem-inputs">
 

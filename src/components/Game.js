@@ -8,6 +8,21 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      currentLine: undefined
+    }
+  }
+
+  changeCurrentLine = (line) => {
+    if (line !== "") {
+      this.setState({
+        currentline: line
+      })
+    }
+    else {
+      alert("Oops the player before you forgot to enter stuff!")
+    }
+
   }
 
   render() {
@@ -34,7 +49,7 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm fields={FIELDS}/>
+        <PlayerSubmissionForm fields={FIELDS} currentLineCallback={this.changeCurrentLine}/>
 
         <FinalPoem />
 
