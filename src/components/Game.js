@@ -16,15 +16,27 @@ class Game extends Component {
 
   addNewLine = (newLine) => {
     console.log("Added line", newLine);
-    const lines = [...this.state.lines];
-    lines.push(newLine);
-    this.setState({lines: lines});
+      const lines = [...this.state.lines];
+      lines.push(newLine);
+      this.setState({lines: lines});
   }
 
   readyToDisplay = () => {
     let status = true;
     this.setState({finished: status });
   }
+
+  conditionalDisplay = () => {
+    if (this.state.finished !== true) {
+      return (
+        <div>
+          <RecentSubmission recentLine={this.state.lines[this.state.lines.length-1]}/>
+
+          <PlayerSubmissionForm addLineToRecentCallback={this.addNewLine}
+            />
+        </div>
+      )}
+    }
 
   render() {
 
@@ -47,18 +59,13 @@ class Game extends Component {
         <p className="Game__format-example">
           { exampleFormat }
         </p>
-
-        <RecentSubmission recentLine={this.state.lines[this.state.lines.length-1]}/>
-
-        <PlayerSubmissionForm
-          addLineToRecentCallback={this.addNewLine}
-          />
+        {this.conditionalDisplay()}
 
         <FinalPoem
-          finalLines={this.state.lines}
-          callbackDisplayPoem={this.readyToDisplay}
-          status={this.state.finished}
-          />
+            finalLines={this.state.lines}
+            callbackDisplayPoem={this.readyToDisplay}
+            status={this.state.finished}
+            />
 
       </div>
     );
