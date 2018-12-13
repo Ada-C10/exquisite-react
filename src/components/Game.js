@@ -12,7 +12,7 @@ class Game extends Component {
       submissions: [],
       showPoem: false,
       showForm: true,
-      showSubmissionHeadline: true,
+      showSubmissionHeader: true,
     }
   }
 
@@ -27,7 +27,7 @@ class Game extends Component {
       this.setState({
         showPoem: true,
         showForm: false,
-
+        showSubmissionHeader: false,
       })
     )
   };
@@ -54,7 +54,9 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission
+          showSubmissionHeader={this.state.showSubmissionHeader}
+           />
 
         <PlayerSubmissionForm
           addSubmissionCallback={this.addSubmission}

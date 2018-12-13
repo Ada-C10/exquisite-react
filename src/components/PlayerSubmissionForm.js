@@ -55,10 +55,6 @@ class PlayerSubmissionForm extends Component {
     // Now we need to do something with the game...
     this.props.addSubmissionCallback(newSubmission);
   }
-
-
-
-
   render() {
 
     if (this.props.showForm) {
@@ -132,12 +128,6 @@ class PlayerSubmissionForm extends Component {
       return <ul></ul>
     }
 
-
-
-    // const clearForm = this.props.removeForm ?  <ul></ul> : showComponent
-    // return (
-    //   { clearForm }
-    // );
   }
 }
 
