@@ -8,9 +8,34 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      lines: [],
+      lastSubmission: "",
+      hideForm: false,
+    }
   }
 
+  addSubmitRow = (props) => {
+    let lines = this.state.lines;
+    let line = <p>The {props.adj1} {props.noun1} {props.adverb} {props.verb} the {props.adj2} {props.noun2}.</p>;
+    this.setState({lastSubmission: line})
+    // console.log(line)
+    lines.push(line);
+    this.setState({lines: lines})
+  }
+
+  renderFinal = () => {
+    this.setState({hideForm: true})
+  }
+
+
   render() {
+    let latestLine;
+
+    if (this.state.lastSubmission) {
+      latestLine = <RecentSubmission lastSubmission={this.state.lastSubmission} hideForm={this.state.hideForm}/>
+    };
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
@@ -32,11 +57,11 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        {latestLine}
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm addSubmitRowCallback={this.addSubmitRow} hideForm={this.state.hideForm}/>
 
-        <FinalPoem />
+        <FinalPoem lines={this.state.lines} renderFinalCallback={this.renderFinal} showPoem={this.state.hideForm}/>
 
       </div>
     );
