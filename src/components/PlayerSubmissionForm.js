@@ -30,7 +30,7 @@ class PlayerSubmissionForm extends Component {
   onLineSubmit = (event) => {
     event.preventDefault();
 
-    this.props.currentLineCallback("pass in state as a parsed string")
+    this.props.currentLineCallback(`The ${this.state.adj1} ${this.state.noun1} ${this.state.adv} ${this.state.verb} ${this.state.adj2} ${this.state.noun2}.`)
 
     this.setState({
       //fetch fields to reset state

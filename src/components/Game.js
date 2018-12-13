@@ -15,19 +15,26 @@ class Game extends Component {
 
   changeCurrentLine = (line) => {
 
-    let emptyLine = ""
+    console.log(FIELDS.length)
 
-    for(let i = 0; i < FIELDS.length; i++) {
+
+    let emptyLine = "The"
+
+    for(let i = 0; i < FIELDS.length - 3; i++) {
       emptyLine += " "
     }
 
+    emptyLine += "."
+
     if (line !== emptyLine) {
       this.setState({
-        currentline: line
+        currentLine: line
       })
     }
     else {
-      alert("Oops the player before you forgot to enter stuff!")
+      this.setState({
+        currentLine: "[SKIPPED TURN]"
+      })
     }
   }
 
@@ -53,7 +60,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission line={this.state.currentLine}/>
 
         <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}/>
 
