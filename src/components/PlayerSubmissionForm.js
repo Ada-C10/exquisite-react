@@ -42,6 +42,7 @@ class PlayerSubmissionForm extends Component {
       verb1: this.state.verb1,
       adjective2: this.state.adjective2,
       noun2: this.state.noun2,
+      finishedPoem: false,
     };
 
     this.setState({
