@@ -7,11 +7,11 @@ class PlayerSubmissionForm extends Component {
     super(props);
 
     this.state = {
-      adjective1: '',
+      adj1: '',
       noun1: '',
-      adverb1: '',
-      verb1: '',
-      adjective2: '',
+      adv: '',
+      verb: '',
+      adj2: '',
       noun2: ''
     };
   }
@@ -28,14 +28,20 @@ class PlayerSubmissionForm extends Component {
   onFormSubmit = (event) => {
     event.preventDefault();
 
-    const newLine = `The ${this.state.adjective1} ${this.state.noun1} ${this.state.adverb1} ${this.state.verb1} the ${this.state.adjective2} ${this.state.noun2}`;
-
+    const newLine = this.props.fields.map((field) => {
+      if (field.key) {
+        return this.state[field.key];
+      } else {
+        return field;
+      }
+    }).join(" ");
+    
     this.setState({
-      adjective1: '',
+      adj1: '',
       noun1: '',
-      adverb1: '',
-      verb1: '',
-      adjective2: '',
+      adv: '',
+      verb: '',
+      adj2: '',
       noun2: ''
     });
 
@@ -44,20 +50,30 @@ class PlayerSubmissionForm extends Component {
   }
 
   inputValid = (field) => {
-
-    // return this.state.target
-    // console.log("In on input change");
-    // const field = event.target.name;
-    // const value = event.target.value;
-
-    // console.log("I'm checking input");
-    // console.log(value);
     const newState = {...this.state};
     return newState[field] === '' ? "PlayerSubmissionFormt__input--invalid" : "";
   }
 
-  render() {
+  getFields() {
+    const exampleFormat = this.props.fields.map((field) => {
+      if (field.key) {
+        console.log(field);
+        return <input
+          placeholder={field.placeholder}
+          name={field.key}
+          type="text"
+          value={this.state[field.key]}
+          onChange={this.onInputChange}
+          className={this.inputValid(field.key)}/>
 
+      } else {
+        return field;
+      }
+    });
+    return exampleFormat;
+  }
+
+  render() {
     return (
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{this.props.playerCount + 1}</h3>
@@ -71,52 +87,55 @@ class PlayerSubmissionForm extends Component {
             {
               // Put your form inputs here... We've put in one below as an example
               // The adjective noun adverb verb the adjective noun
+              this.getFields()
             }
-            The
-            <input
-              placeholder="Adjective"
-              name='adjective1'
-              type="text"
-              value={this.state.adjective1}
-              onChange={this.onInputChange}
-              className={this.inputValid('adjective1')}/>
-            <input
-              placeholder="Noun"
-              name='noun1'
-              type="text"
-              value={this.state.noun1}
-              onChange={this.onInputChange}
-              className={this.inputValid('noun1')}/>
-            <input
-              placeholder="Adverb"
-              name='adverb1'
-              type="text"
-              value={this.state.adverb1}
-              onChange={this.onInputChange}
-              className={this.inputValid('adverb1')}/>
-            <input
-              placeholder="Verb"
-              name='verb1'
-              type="text"
-              value={this.state.verb1}
-              onChange={this.onInputChange}
-              className={this.inputValid('verb1')}/>
-            the
-            <input
-              placeholder="Adjective"
-              name='adjective2'
-              type="text"
-              value={this.state.adjective2}
-              onChange={this.onInputChange}
-              className={this.inputValid('adjective2')}/>
-            <input
-              placeholder="Noun"
-              name='noun2'
-              type="text"
-              value={this.state.noun2}
-              onChange={this.onInputChange}
-              className={this.inputValid('noun2')}/>
-            .
+
+            {
+            //   <input
+            //   placeholder="Adjective"
+            //   name='adjective1'
+            //   type="text"
+            //   value={this.state.adjective1}
+            //   onChange={this.onInputChange}
+            //   className={this.inputValid('adjective1')}/>
+            // <input
+            //   placeholder="Noun"
+            //   name='noun1'
+            //   type="text"
+            //   value={this.state.noun1}
+            //   onChange={this.onInputChange}
+            //   className={this.inputValid('noun1')}/>
+            // <input
+            //   placeholder="Adverb"
+            //   name='adverb1'
+            //   type="text"
+            //   value={this.state.adverb1}
+            //   onChange={this.onInputChange}
+            //   className={this.inputValid('adverb1')}/>
+            // <input
+            //   placeholder="Verb"
+            //   name='verb1'
+            //   type="text"
+            //   value={this.state.verb1}
+            //   onChange={this.onInputChange}
+            //   className={this.inputValid('verb1')}/>
+            // the
+            // <input
+            //   placeholder="Adjective"
+            //   name='adjective2'
+            //   type="text"
+            //   value={this.state.adjective2}
+            //   onChange={this.onInputChange}
+            //   className={this.inputValid('adjective2')}/>
+            // <input
+            //   placeholder="Noun"
+            //   name='noun2'
+            //   type="text"
+            //   value={this.state.noun2}
+            //   onChange={this.onInputChange}
+            //   className={this.inputValid('noun2')}/>
+            // .
+          }
 
           </div>
 

@@ -61,7 +61,8 @@ class Game extends Component {
         { poemOngoing &&
           <PlayerSubmissionForm
           addLineCallback={this.addLine}
-          playerCount={this.state.player}/> }
+          playerCount={this.state.player}
+          fields={FIELDS}/> }
 
         <FinalPoem
           poem={this.state.poem}
