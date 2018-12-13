@@ -8,6 +8,31 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      poemLines: []
+    }
+  }
+
+  parseNewPoemLine(newPoemLine) {
+    return `The
+    ${newPoemLine.firstAdjective}
+    ${newPoemLine.firstNoun}
+    ${newPoemLine.adverb}
+    ${newPoemLine.verb}
+    the ${newPoemLine.secondAdjective}
+    ${newPoemLine.secondNoun}.`
+  }
+
+  addNewPoemLine = (newPoemLine) => {
+    const poemLines = this.state.poemLines
+    const parsedLine = this.parseNewPoemLine(newPoemLine);
+    poemLines.push(parsedLine);
+    this.setState({poemLines: poemLines})
+  }
+
+  onFinalPoemClick = () => {
+    this.setState({isFinal: true})
   }
 
   render() {
@@ -19,6 +44,17 @@ class Game extends Component {
         return field;
       }
     }).join(" ");
+
+    const currentPoem = this.state.poemLines;
+
+    const lastLine =
+    currentPoem.length && !this.state.isFinal ?
+    <RecentSubmission line={currentPoem[currentPoem.length - 1]} /> : '';
+
+    const displayForm = this.state.isFinal ? "" :
+    <PlayerSubmissionForm
+      addNewPoemLineCallback={this.addNewPoemLine}
+      playerNumber={this.state.poemLines.length + 1}/>
 
     return (
       <div className="Game">
@@ -32,11 +68,14 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        {lastLine}
 
-        <PlayerSubmissionForm />
+        {displayForm}
 
-        <FinalPoem />
+        <FinalPoem
+          allLines={this.state.poemLines}
+          isFinal={this.state.isFinal}
+          onFinalPoemClickCallback={this.onFinalPoemClick}/>
 
       </div>
     );
