@@ -20,7 +20,6 @@ class Game extends Component {
       poemLines: [],
       showPoem: false,
       showPoemRevealButton: false
-      // poemLines: undefined
     };
   }
 
@@ -35,6 +34,7 @@ class Game extends Component {
     poemLines.push(this.formatLine(poemLine));
 
     this.setState({poemLines: poemLines});
+    this.setState({showPoemRevealButton: true})
 
     this.findRecentLine(poemLine)
 
@@ -72,15 +72,6 @@ class Game extends Component {
 
 
 
-
-      let triggerShowRevealButton = () => {
-        if (numLines > 0) {
-          this.setState({
-            showPoemRevealButton: true
-          });
-        }
-      }
-
       let revealPoem = () => {
         this.setState({
           showPoem: true
@@ -116,7 +107,7 @@ class Game extends Component {
           <PlayerSubmissionForm addPoemLineCB={this.addPoemLine}
             userNum={userNum}/>
 
-          <FinalPoem poemDraft={this.state.poemLines} />
+          <FinalPoem poemDraft={this.state.poemLines} showPoem={this.state.showPoem} showPoemRevealButton={this.state.showPoemRevealButton} />
 
         </div>
       );

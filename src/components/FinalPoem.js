@@ -3,9 +3,6 @@ import './FinalPoem.css';
 
 const FinalPoem = (props) => {
 
-console.log(props.poemDraft)
-console.log(typeof props.poemDraft[0])
-
   // let adjective1 = props.adjective1
   // let noun1 = props.noun1
   // let adverb1 = props.adverb1
@@ -17,10 +14,11 @@ console.log(typeof props.poemDraft[0])
 
   let fullPoem = props.poemDraft.map((row, i) => {
   if (props.poemDraft.length > 0) {
-
-    console.log()
     return <p key={i}>{row}</p>
 }})
+
+let showPoem = props.showPoem
+let showPoemRevealButton = props.showPoemRevealButton
 
 
 
@@ -60,17 +58,17 @@ console.log(typeof props.poemDraft[0])
 
   return (
     <div className="FinalPoem">
-      <section className="FinalPoem__poem">
+      {showPoem ? <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
+          {fullPoem}
 
-      {fullPoem}
 
-      </section>
+      </section> : ''}
 
-      <div className="FinalPoem__reveal-btn-container">
+      {showPoemRevealButton ? <div className="FinalPoem__reveal-btn-container">
         <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn"
          />
-      </div>
+      </div> : ''}
     </div>
   );
 }
