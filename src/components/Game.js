@@ -45,9 +45,10 @@ class Game extends Component {
       }
     }).join(" ");
 
-    const currentPoem = this.state.poemLines
+    const currentPoem = this.state.poemLines;
 
-    const lastLine = currentPoem.length && !this.state.isFinal ?
+    const lastLine =
+    currentPoem.length && !this.state.isFinal ?
     <RecentSubmission line={currentPoem[currentPoem.length - 1]} /> : '';
 
     const displayForm = this.state.isFinal ? "" :
