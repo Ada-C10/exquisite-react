@@ -13,22 +13,22 @@ class Game extends Component {
     }
   }
 
-  fetchFields = () => {
-
-    const fieldArr = []
-
-    const fields = FIELDS.filter((field) => {
-      return field.hasOwnProperty("key");
-    });
-
-    fields.forEach( (field) => {
-      fieldArr.push({
-        [field.key]: "",
-        placeholder: field.placeholder})
-
-    })
-    return fieldArr
-  }
+//once props named 'fields' for playersubmission
+  // fetchFields = () => {
+  //
+  //   const fieldArr = []
+  //
+  //   const fields = FIELDS.filter((field) => {
+  //     return field.hasOwnProperty("key");
+  //   });
+  //
+  //   fields.forEach( (field) => {
+  //     fieldArr.push({
+  //       [field.key]: "",
+  //       placeholder: field.placeholder})
+  //   })
+  //   return fieldArr
+  // }
 
   changeCurrentLine = (line) => {
 
@@ -58,7 +58,7 @@ class Game extends Component {
       }
     }).join(" ");
 
-    const filteredFields = this.fetchFields()
+    // const filteredFields = this.fetchFields()
 
     return (
       <div className="Game">
@@ -74,7 +74,7 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm fields={filteredFields} currentLineCallback={this.changeCurrentLine}/>
+        <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}/>
 
         <FinalPoem />
 

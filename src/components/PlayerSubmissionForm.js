@@ -6,50 +6,33 @@ class PlayerSubmissionForm extends Component {
 
   constructor(props) {
     super(props);
-    this.state = this.props.fields;
-    console.log(this.state)
+    this.state = {
+      adj1: "",
+      noun1: "",
+      adv: "",
+      verb: "",
+      adj2: "",
+      noun2: ""
+    }
+
   }
 
-  fetchFields = () => {
-    const fields = this.props.fields.filter((field) => {
-      return field.hasOwnProperty("key");
-    });
-    return fields;
-  }
+  // fetchFields = () => {
+  //   const fields = this.props.fields.filter((field) => {
+  //     return field.hasOwnProperty("key");
+  //   });
+  //   return fields;
+  // }
 
-  // {
-  //   key: 'adj1',
-  //   placeholder: 'adjective',
-  // },
-  // {
-  //   key: 'noun1',
-  //   placeholder: 'noun',
-  // },
-  // {
-  //   key: 'adv',
-  //   placeholder: 'adverb',
-  // },
-  // {
-  //   key: 'verb',
-  //   placeholder: 'verb',
-  // },f
-  // {
-  //   key: 'adj2',
-  //   placeholder: 'adjective',
-  // },
-  // {
-  //   key: 'noun2',
-  //   placeholder: 'noun',
-  // },
-
-  componentDidMount() {
-    //set state according to field.key
-    // this.fetchFields().forEach( (field) => {
-    //   this.setState({
-    //     [field.key]: ""
-    //   })
-    // })
-  }
+  //
+  // componentDidMount() {
+  //   //set state according to field.key
+  //   // this.fetchFields().forEach( (field) => {
+  //   //   this.setState({
+  //   //     [field.key]: ""
+  //   //   })
+  //   // })
+  // }
 
   onInputChange = (event) => {
     console.log("Some stuff was typed in the form!", event.target.name, event.target.value);
@@ -75,20 +58,26 @@ class PlayerSubmissionForm extends Component {
 
   render() {
 
-
-    const filteredInputs = this.state.forEach((input) => {
-
-      // const key =
-      //       // const key =  this.state[Object.keys(input)[0]]
-      //       console.log("state", Object.keys(input)[0])
-      console.log("state", Object.keys(input)[0])
-      return(
-        <input name={this.state[Object.keys(input)[0]]} placeholder={this.state.placeholder} type="text" value={this.state[Object.keys(input)[0]]} onChange={this.onInputChange}/>
-      )
-    })
-
-
-    console.log("inputs", filteredInputs);
+    //
+    // const filteredInputs = this.state.forEach((input) => {
+    //
+    //   // const key =
+    //   //       // const key =  this.state[Object.keys(input)[0]]
+    //   //       console.log("state", Object.keys(input)[0])
+    //   console.log("state", Object.keys(input)[0])
+    //   return(
+    //     <input name={this.state[Object.keys(input)[0]]} placeholder={this.state.placeholder} type="text" value={this.state[Object.keys(input)[0]]} onChange={this.onInputChange}/>
+    //   )
+    // })
+    //
+    //
+    // console.log("inputs", filteredInputs);
+    // {adj1: "",
+    //   noun1: "",
+    //   adv: "",
+    //   verb: "",
+    //   adj2: "",
+    //   noun2: ""}
 
 
     return (
@@ -99,24 +88,24 @@ class PlayerSubmissionForm extends Component {
 
           <div className="PlayerSubmissionForm__poem-inputs">
 
-            { filteredInputs
-              // Put your form inputs here... We've put in one below as an example
-            }
+              <input name="adj1" placeholder="adjective" type="text" value={this.state.adj1} onChange={this.onInputChange}/>
+              <input name="noun1" placeholder="noun" type="text" value={this.state.noun1} onChange={this.onInputChange}/>
+              <input name="adv" placeholder="adverb" type="text" value={this.state.adv} onChange={this.onInputChange}/>
+              <input name="verb" placeholder="verb" type="text" value={this.state.verb} onChange={this.onInputChange}/>
+              <input name="noun2" placeholder="noun" type="text" value={this.state.noun2} onChange={this.onInputChange}/>
+            </div>
 
-
-          </div>
-
-          <div className="PlayerSubmissionForm__submit">
-            <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
-          </div>
-        </form>
-      </div>
-    );
+            <div className="PlayerSubmissionForm__submit">
+              <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
+            </div>
+          </form>
+        </div>
+      );
+    }
   }
-}
 
-export default PlayerSubmissionForm;
+  export default PlayerSubmissionForm;
 
-PlayerSubmissionForm.propTypes = {
-  fields: PropTypes.array.isRequired,
-};
+  PlayerSubmissionForm.propTypes = {
+    fields: PropTypes.array.isRequired,
+  };
