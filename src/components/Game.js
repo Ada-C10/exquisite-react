@@ -10,7 +10,6 @@ class Game extends Component {
     super(props);
     this.state = {
       submissions: [
-
       ],
     }
   }
@@ -19,10 +18,9 @@ class Game extends Component {
     const submissions = this.state.submissions;
     submissions.push(newRecentSubmission);
     this.setState({newRecentSubmission: newRecentSubmission})
-    console.log(this.state.submissions)
+
+    console.log(this.state.submissions[0].line)
   }
-
-
 
 
   render() {
@@ -37,14 +35,21 @@ class Game extends Component {
 
 
     let lastSubmission;
-
     if (this.state.submissions.length !== 0) {
       lastSubmission = <RecentSubmission recentSubmission={this.state.submissions.slice(-1)[0].line}/>
     } else {
       lastSubmission = undefined;
     };
 
+    const submissions = this.state.submissions
 
+    const finalPoem = submissions.map((submission, i) => {
+      return <FinalPoem
+        key={i}
+        line={submission.line}
+
+        />
+    })
 
 
     return (
@@ -63,7 +68,7 @@ class Game extends Component {
 
         <PlayerSubmissionForm addRecentSubmissionCallback={this.addRecentSubmission}/>
 
-        <FinalPoem />
+        <FinalPoem lines={this.state.submissions} />
 
       </div>
     );
