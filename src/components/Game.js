@@ -9,15 +9,23 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      poem: []
+      submissions: [],
+      isSubmitted: false
     }
   }
   onAddLineToPoem = (newLine) => {
-    console.log(newLine)
-    const { poem } = this.state;
-    poem.push(newLine)
+    console.log('new line added')
+    const { submissions } = this.state;
+    submissions.push(newLine)
     this.setState({
-      poem,
+      submissions,
+    });
+    console.log(this.state.submissions)
+  }
+
+  HandleFinalButtonClick = () => {
+    this.setState({
+      isSubmitted: true,
     });
   }
 
@@ -43,11 +51,15 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission
+          recentSubmission={this.state.submissions[this.state.submissions.length - 1]} />
 
-        <PlayerSubmissionForm addNewSubmissionCallback= {this.onAddLineToPoem}/>
+        <PlayerSubmissionForm onPlayerSubmit= {this.onAddLineToPoem}/>
 
-        <FinalPoem />
+        <FinalPoem
+          onFinalButtonClick= {this.HandleFinalButtonClick}
+          submissions={this.state.submissions}
+          isSubmitted={this.state.isSubmitted} />
 
       </div>
     );

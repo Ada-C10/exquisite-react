@@ -14,7 +14,7 @@ class PlayerSubmissionForm extends Component {
       verb: '',
       adjective2: '',
       noun2: '',
-      count: 1
+      player: 1
     };
   }
   onFieldChangeHandler = (event, fieldToGetValueFrom = "value") => {
@@ -28,11 +28,11 @@ class PlayerSubmissionForm extends Component {
     this.setState(updateState);
   }
 
-  onSubmitHandler = (event)=> {
+  HandlePlayerSubmit = (event)=> {
     event.preventDefault();
-    let count = this.state.count
+    let player = this.state.player
     console.log(event)
-    this.props.addNewSubmissionCallback(this.state);
+    this.props.onPlayerSubmit(this.state);
     this.setState({
       adj1: "",
       adj2: "",
@@ -40,7 +40,7 @@ class PlayerSubmissionForm extends Component {
       noun1: "",
       noun2: "",
       verb: "",
-      count: count+=1,
+      player: player+=1,
     });
   };
 
@@ -48,9 +48,9 @@ class PlayerSubmissionForm extends Component {
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{this.state.count}</h3>
+        <h3>Player Submission Form for Player #{this.state.player}</h3>
 
-        <form className="PlayerSubmissionForm__form" onSubmit = {this.onSubmitHandler}>
+        <form className="PlayerSubmissionForm__form" onSubmit = {this.HandlePlayerSubmit}>
 
           <div className="PlayerSubmissionForm__poem-inputs">
             <p>The</p>
@@ -81,7 +81,7 @@ class PlayerSubmissionForm extends Component {
               name="verb"
               value={this.state.verb}
               onChange={this.onFieldChangeHandler} />
-
+            <p> the</p>
             <input
               placeholder="adjective"
               type="text"
@@ -111,7 +111,7 @@ class PlayerSubmissionForm extends Component {
 }
 
 PlayerSubmissionForm.propTypes = {
-  addNewSubmissionCallback: PropTypes.func.isRequired
+  onPlayerSubmit: PropTypes.func.isRequired
 }
 
 export default PlayerSubmissionForm;
