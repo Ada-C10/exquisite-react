@@ -34,17 +34,20 @@ class PlayerSubmissionForm extends Component {
 
   }
 
-  stopRefresh = (event) => {
+  submitPoem = (event) => {
     console.log("I am in stopRefresh in PlayerSubmissionForm.js");
     event.preventDefault();
 
     let newSubmission = {
+      the1: this.state.format[0],
       adj1: this.state.adj1,
       noun1: this.state.noun1,
       adv: this.state.adv,
       verb: this.state.verb,
+      the2: this.state.format[5],
       adj2: this.state.adj2,
       noun2: this.state.noun2,
+      dot: this.state.format[8],
     };
 
     this.setState({
@@ -61,6 +64,7 @@ class PlayerSubmissionForm extends Component {
 
   }
   render() {
+    // console.log(this.props[0]);
 // console.log(`FORM:num of poems: ${this.props.numberOfPoems}`);
     return (
 
@@ -114,7 +118,7 @@ class PlayerSubmissionForm extends Component {
           </div>
 
           <div className="PlayerSubmissionForm__submit">
-            <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" onClick={this.stopRefresh}/>
+            <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" onClick={this.submitPoem}/>
           </div>
         </form>
       </div>

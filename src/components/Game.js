@@ -11,7 +11,6 @@ class Game extends Component {
 
     this.state = {
       poems: [],
-      poemCount: 0,
     }
   }
 
@@ -24,10 +23,11 @@ class Game extends Component {
       poems: allPoems,
       poemCount: allPoems.length,
     });
-
-    // return <RecentSubmission recentPoem={this.state.poems[(this.state.poems.length - 1)]}/>
-    // return this.showRecent();
   };
+
+  // showFinalSubinGames = () => {
+  //   if ()
+  // }
 
   render() {
 

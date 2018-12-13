@@ -12,7 +12,7 @@ const RecentSubmission = (props) => {
     if (props.recentPoem) {
       console.log("i am in showRecent when adj1 exists");
       if (props.recentPoem.adj1) {
-        let oneLinePoem = `The ${props.recentPoem.adj1} ${props.recentPoem.noun1} ${props.recentPoem.adv} ${props.recentPoem.verb} the ${props.recentPoem.adj2} ${props.recentPoem.noun2}.`;
+          let oneLinePoem = Object.values(props.recentPoem).join(" ")
         return <div className="RecentSubmission">
           <h3>The Most Recent Submission</h3>
           <p className="RecentSubmission__submission">{ oneLinePoem }</p>
@@ -27,7 +27,6 @@ const RecentSubmission = (props) => {
     }
   }
 
-  // let oneLinePoem = `The ${props.recentPoem.adj1} ${props.recentPoem.noun1} ${props.recentPoem.adv} ${props.recentPoem.verb} the ${props.recentPoem.adj2} ${props.recentPoem.noun2}.`
   return (
     <div>
     {showRecent()}
