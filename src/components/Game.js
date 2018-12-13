@@ -16,7 +16,8 @@ class Game extends Component {
   addPoemLine = (newSubmission) => {
     const amendedPoem = [...this.state.poem];
     amendedPoem.push(newSubmission);
-    console.log('In addPoemLine function in Game', newSubmission);
+    console.log('In addPoemLine function in Game. Submission:', newSubmission);
+    console.log(amendedPoem);
     this.setState({poem: amendedPoem
     });
   }

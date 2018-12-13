@@ -30,28 +30,21 @@ class PlayerSubmissionForm extends Component {
   onFormSubmit = (event) => {
     event.preventDefault();
 
-    const newSubmission = {
+    const newLine = ["The", this.state.adj1, this.state.noun1, this.state.adv, this.state.verb, "the", this.state.adj2, this.state.noun2].join(" ");
 
-      adj1: this.state.adjective1,
-      noun1: this.state.noun,
-      adv: this.state.adverb,
-      verb:this.state.verb,
 
-      adj2: this.state.adjective2,
-      noun2: this.state.noun2,
-    };
+    this.props.addSubmissionCallback(newLine);
 
-    this.setState({
-      adj1: "",
-      noun1: "",
-      adv: "",
-      verb: "",
-      adj2: "",
-      noun2: ""
-    });
+    // this.setState({
+    //   adj1: "",
+    //   noun1: "",
+    //   adv: "",
+    //   verb: "",
+    //   adj2: "",
+    //   noun2: ""
+    // });
 
-    console.log("New line form submitted", newSubmission);
-    this.props.addSubmissionCallback(newSubmission);
+    console.log("New line form submitted:", newLine);
   }
 
   render() {
