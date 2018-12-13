@@ -47,7 +47,7 @@ let showPoemRevealButton = props.showPoemRevealButton
 
       </section> : ''}
 
-      {showPoemRevealButton ? <div className="FinalPoem__reveal-btn-container">
+      {!showPoem && showPoemRevealButton ? <div className="FinalPoem__reveal-btn-container">
         <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn"
           onClick={onFinishedPoem}
          />
