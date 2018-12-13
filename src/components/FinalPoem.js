@@ -10,10 +10,10 @@ const FinalPoem = (props) => {
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
       </section>
-      { props.ended &&  (<p>{poem}</p>) }
-      <div className="FinalPoem__reveal-btn-container">
+      { props.ended && (<p>{poem}</p>) }
+    {!props.ended && (<div className="FinalPoem__reveal-btn-container">
         <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={props.revealPoemCallback} />
-      </div>
+      </div>) }
     </div>
   );
 }
