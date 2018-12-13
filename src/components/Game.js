@@ -37,7 +37,7 @@ class Game extends Component {
     }
     else {
       this.setState({
-        currentLine: "[SKIPPED TURN]"
+        currentLine: "[PASSED]"
       })
     }
   }
@@ -70,7 +70,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-      { this.state.currentLine &&  (<RecentSubmission line={this.state.currentLine} ended={this.state.end}/>) }
+        { this.state.currentLine &&  (<RecentSubmission line={this.state.currentLine} ended={this.state.end}/>) }
         <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}
           ended={this.state.end}/>
         <FinalPoem poem={this.state.finalPoem} revealPoemCallback={this.revealPoem} ended={this.state.end}/>
