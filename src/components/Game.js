@@ -8,6 +8,29 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      recentSubmission: '',
+      submissions: [],
+      playerNumber: 1,
+      isSubmitted: false,
+    }
+  }
+
+  onPlayerSubmit = (submission) => {
+    const newState = this.state;
+    newState.recentSubmission = submission
+    newState.submissions.push(submission);
+    newState.playerNumber += 1
+    this.setState(newState);
+  }
+
+  revealPoem = () => {
+    console.log("Game Message - player has clicked reveal button");
+    const newState = {}
+    newState.isSubmitted = true;
+    newState.recentSubmission = '';
+    this.setState(newState);
   }
 
   render() {
@@ -32,11 +55,13 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission recentSubmission={this.state.recentSubmission} submission={this.state.recentSubmission}/>
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm playerNumber={this.state.playerNumber} onPlayerSubmit={this.onPlayerSubmit} isSubmitted={this.state.isSubmitted}/>
 
-        <FinalPoem />
+
+        <FinalPoem submissions={this.state.submissions} onRevealClick={this.revealPoem} isSubmitted={this.state.isSubmitted}/>
+
 
       </div>
     );
