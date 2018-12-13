@@ -2,8 +2,6 @@ import React from 'react';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
-  console.log(props.submissions);
-
   const finalPoem =
     props.submissions.map((submission, i) => {
       return <p key={i}>{submission}</p>

@@ -18,13 +18,11 @@ class Game extends Component {
   }
 
   onPlayerSubmit = (submission) => {
-    console.log("Game Message - player has submitted");
     const newState = this.state;
     newState.recentSubmission = submission
     newState.submissions.push(submission);
     newState.playerNumber += 1
     this.setState(newState);
-    console.log(this.state);
   }
 
   revealPoem = () => {
