@@ -37,7 +37,7 @@ class Game extends Component {
         return field;
       }
     }).join(" ");
-// console.log(this.state.poems);
+// console.log(this.state.poems.length);
     return (
 
       <div className="Game">
