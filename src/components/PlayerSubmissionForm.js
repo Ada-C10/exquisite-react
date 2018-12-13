@@ -14,25 +14,7 @@ class PlayerSubmissionForm extends Component {
       adj2: "",
       noun2: ""
     }
-
   }
-
-  // fetchFields = () => {
-  //   const fields = this.props.fields.filter((field) => {
-  //     return field.hasOwnProperty("key");
-  //   });
-  //   return fields;
-  // }
-
-  //
-  // componentDidMount() {
-  //   //set state according to field.key
-  //   // this.fetchFields().forEach( (field) => {
-  //   //   this.setState({
-  //   //     [field.key]: ""
-  //   //   })
-  //   // })
-  // }
 
   onInputChange = (event) => {
     console.log("Some stuff was typed in the form!", event.target.name, event.target.value);
@@ -57,27 +39,6 @@ class PlayerSubmissionForm extends Component {
   }
 
   render() {
-
-    //
-    // const filteredInputs = this.state.forEach((input) => {
-    //
-    //   // const key =
-    //   //       // const key =  this.state[Object.keys(input)[0]]
-    //   //       console.log("state", Object.keys(input)[0])
-    //   console.log("state", Object.keys(input)[0])
-    //   return(
-    //     <input name={this.state[Object.keys(input)[0]]} placeholder={this.state.placeholder} type="text" value={this.state[Object.keys(input)[0]]} onChange={this.onInputChange}/>
-    //   )
-    // })
-    //
-    //
-    // console.log("inputs", filteredInputs);
-    // {adj1: "",
-    //   noun1: "",
-    //   adv: "",
-    //   verb: "",
-    //   adj2: "",
-    //   noun2: ""}
 
 
     return (

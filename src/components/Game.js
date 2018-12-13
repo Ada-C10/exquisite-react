@@ -13,23 +13,6 @@ class Game extends Component {
     }
   }
 
-//once props named 'fields' for playersubmission
-  // fetchFields = () => {
-  //
-  //   const fieldArr = []
-  //
-  //   const fields = FIELDS.filter((field) => {
-  //     return field.hasOwnProperty("key");
-  //   });
-  //
-  //   fields.forEach( (field) => {
-  //     fieldArr.push({
-  //       [field.key]: "",
-  //       placeholder: field.placeholder})
-  //   })
-  //   return fieldArr
-  // }
-
   changeCurrentLine = (line) => {
 
     let emptyLine = ""
@@ -57,8 +40,6 @@ class Game extends Component {
         return field;
       }
     }).join(" ");
-
-    // const filteredFields = this.fetchFields()
 
     return (
       <div className="Game">
