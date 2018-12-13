@@ -1,10 +1,47 @@
 import React, { Component } from 'react';
 import './PlayerSubmissionForm.css';
+import PropTypes from 'prop-types';
 
 class PlayerSubmissionForm extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  fetchFields = () => {
+    const fields = this.props.fields.filter((field) => {
+      return field.hasOwnProperty("key");
+    });
+    return fields;
+  }
+
+  // {
+  //   key: 'adj1',
+  //   placeholder: 'adjective',
+  // },
+  // {
+  //   key: 'noun1',
+  //   placeholder: 'noun',
+  // },
+  // {
+  //   key: 'adv',
+  //   placeholder: 'adverb',
+  // },
+  // {
+  //   key: 'verb',
+  //   placeholder: 'verb',
+  // },
+  // {
+  //   key: 'adj2',
+  //   placeholder: 'adjective',
+  // },
+  // {
+  //   key: 'noun2',
+  //   placeholder: 'noun',
+  // },
+
+  componentDidMount() {
+    console.log(this.fetchFields())
   }
 
   render() {
@@ -20,9 +57,8 @@ class PlayerSubmissionForm extends Component {
             {
               // Put your form inputs here... We've put in one below as an example
             }
-            <input
-              placeholder="hm..."
-              type="text" />
+            <label htmlFor="adjective">Name</label>
+            <input name="adj1" type="text" defaultValue={1}/>
 
           </div>
 
@@ -36,3 +72,7 @@ class PlayerSubmissionForm extends Component {
 }
 
 export default PlayerSubmissionForm;
+
+PlayerSubmissionForm.propTypes = {
+  fields: PropTypes.array.isRequired,
+};

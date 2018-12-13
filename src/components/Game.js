@@ -34,7 +34,7 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm fields={FIELDS}/>
 
         <FinalPoem />
 
