@@ -8,9 +8,29 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      lines: [],
+      lastSubmission: "",
+    }
   }
 
+  addSubmitRow = (props) => {
+    const lines = this.state.lines;
+    const line = `The ${props.adj1} ${props.noun1} ${props.adverb} ${props.verb} the ${props.adj2} ${props.noun2}.`;
+    console.log(line)
+    lines.push(line);
+    this.setState({lastSubmission: line})
+    this.setState({lines: lines})
+  }
+
+
   render() {
+    let latestLine;
+
+    if (this.state.lastSubmission) {
+      latestLine = <RecentSubmission lastSubmission={this.state.lastSubmission}/>
+    };
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
@@ -32,9 +52,9 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        {latestLine}
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm addSubmitRowCallback={this.addSubmitRow}/>
 
         <FinalPoem />
 
