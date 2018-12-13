@@ -50,7 +50,7 @@ class PlayerSubmissionForm extends Component {
       noun2: ""
     });
 
-    console.log("Created a new poem line submission", newSubmission);
+    console.log("Form submitted", newSubmission);
     this.props.addSubmissionCallback(newSubmission);
   }
 
