@@ -47,7 +47,8 @@ class Game extends Component {
 
     const currentPoem = this.state.poemLines
 
-    const lastLine = currentPoem.length && !this.state.isFinal ? <RecentSubmission line={currentPoem[currentPoem.length - 1]} /> : '';
+    const lastLine = currentPoem.length && !this.state.isFinal ?
+    <RecentSubmission line={currentPoem[currentPoem.length - 1]} /> : '';
 
     const displayForm = this.state.isFinal ? "" :
     <PlayerSubmissionForm
