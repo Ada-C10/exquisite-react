@@ -7,12 +7,10 @@ class PlayerSubmissionForm extends Component {
     super(props);
 
     this.state = {
-      art1: 'The',
       adj1: '',
       noun1: '',
       adv1: '',
       verb1: '',
-      art2: 'The',
       adj2: '',
       noun2: '',
     }
@@ -24,7 +22,6 @@ class PlayerSubmissionForm extends Component {
     const value = event.target.value;
     const newState = {}
     newState[field] = value;
-    event.target.className = "PlayerSubmissionForm__poem-inputs";
     console.log(event.target.className);
     this.setState(newState);
   }
@@ -34,18 +31,24 @@ class PlayerSubmissionForm extends Component {
 
     console.log("Player Submission Message - Submitting player submission");
 
-    const submission = [].concat(...Object.values(this.state)).join(' ').concat('.');
+    const stateValues = [...Object.values(this.state)]
+    console.log(`State Value array = ${stateValues}`);
+    // slice create array of Object.values, slice, concat with the
+    const sub1 = stateValues.slice(0, 5);
+    const sub2 = stateValues.slice(5);
+    console.log(sub1);
+    console.log(sub2);
+    const submission = "The" + sub1 + "the" + sub2
+    // submission = submission.concat["the"].concat(stateValues.slice(5)).join(' ');
+    // const submission = ["The"].concat(...Object.values(this.state)).join(' ').concat('.');
 
     console.log(`Submission is: ${submission}`);
 
-
     this.setState({
-      art1: 'The',
       adj1: '',
       noun1: '',
       adv1: '',
       verb1: '',
-      art2: 'The',
       adj2: '',
       noun2: '',
     });
@@ -54,8 +57,16 @@ class PlayerSubmissionForm extends Component {
   }
 
 
-
   render() {
+    const newState = [...Object.keys(this.state)]
+
+    const placeholderValue = ['adjective', 'noun', 'adverb', 'verb', 'adjective', 'noun']
+
+    const formRender = newState.map((item, i) => {
+      return <input type="text" value={this.state[item]} onChange={this.onInputChange} placeholder={placeholderValue[i]}
+               className={this.state[item] === '' ? "PlayerSubmissionForm__input--invalid" : "PlayerSubmissionForm__poem-inputs"} key={i}
+                />;
+    } );
 
     return (
       <div className="PlayerSubmissionForm">
@@ -63,17 +74,12 @@ class PlayerSubmissionForm extends Component {
 
         <form className="PlayerSubmissionForm__form" onSubmit={this.onFormSubmit}>
 
+
           <div className="PlayerSubmissionForm__poem-inputs">
             The
-            <input type="text" name="adj1" value={this.state.adj1} onChange={this.onInputChange} placeholder="adjective"
-                     className="PlayerSubmissionForm__input--invalid"
-                      />
-            <input type="text" name="noun1" value={this.state.noun1} onChange={this.onInputChange} placeholder="noun" className="PlayerSubmissionForm__input--invalid" />
-            <input type="text" name="adv1" value={this.state.adv1} onChange={this.onInputChange} placeholder="adverb" className="PlayerSubmissionForm__input--invalid" />
-            <input type="text" name="verb1" value={this.state.verb1} onChange={this.onInputChange} placeholder="verb" className="PlayerSubmissionForm__input--invalid" />
+            {formRender.slice(0, 4)}
             the
-            <input type="text" name="adj2" value={this.state.adj2} onChange={this.onInputChange} placeholder="adjective" className="PlayerSubmissionForm__input--invalid" />
-            <input type="text" name="noun2" value={this.state.noun2} onChange={this.onInputChange} placeholder="noun" className="PlayerSubmissionForm__input--invalid" />
+            {formRender.slice(4)}
             .
           </div>
 
