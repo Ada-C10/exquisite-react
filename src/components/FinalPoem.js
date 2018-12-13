@@ -7,7 +7,8 @@ class FinalPoem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      poemClass: 'Poem_hidden'
+      poemClass: 'Hide_element',
+      buttonClass: 'FinalPoem__reveal-btn'
     }
   }
 
@@ -15,7 +16,7 @@ class FinalPoem extends React.Component {
 
     const showPoem = () => {
 
-        this.setState({ poemClass: 'FinalPoem_poem'})
+        this.setState({ poemClass: 'FinalPoem_poem', buttonClass: 'Hide_element'})
         console.log("I was clicked")
     }
 
@@ -32,7 +33,7 @@ class FinalPoem extends React.Component {
         </section>
 
         <div className="FinalPoem__reveal-btn-container">
-          <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={showPoem} />
+          <input type="button" value="We are finished: Reveal the Poem" className= {this.state.buttonClass} onClick={showPoem} />
 
 
         </div>
