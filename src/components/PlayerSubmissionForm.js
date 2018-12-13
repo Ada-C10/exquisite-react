@@ -28,15 +28,13 @@ class PlayerSubmissionForm extends Component {
   onFormSubmit = (event) =>{
       event.preventDefault();
 
-      const newLine = {
-        // playerNum: this.state.playerNum + 1,
+      const row = {
         adj1: this.state.adj1,
         noun1: this.state.noun1,
         adverb: this.state.adverb,
         verb: this.state.verb,
         adj2: this.state.adj2,
         noun2: this.state.noun2,
-
       };
 
       this.setState({
@@ -46,26 +44,22 @@ class PlayerSubmissionForm extends Component {
         verb: "",
         adj2: "",
         noun2: "",
+        playerNum: this.state.playerNum + 1,
       });
 
-      this.props.addSubmitCallback(newLine);
-
+      this.props.addSubmitRowCallback(row);
     }
 
   render() {
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{ this.props.playerNum }</h3>
+        <h3>Player Submission Form for Player #{ this.state.playerNum}</h3>
 
 
         <form className="PlayerSubmissionForm__form" onSubmit={this.onFormSubmit}>
 
           <div className="PlayerSubmissionForm__poem-inputs">
-
-            {
-              // Put your form inputs here... We've put in one below as an example
-            }
             The
             <input
               name="adj1"
