@@ -9,16 +9,17 @@ const FinalPoem = (props) => {
 
   const revealPoem = <ul> { poemList }</ul>
 
-  const showLines = props.showPoem ? revealPoem : <ul></ul>
+  const showAllLines = props.showPoem ? revealPoem : <ul></ul>
 
-const hideButton = props.showPoem ? <ul></ul> : <div className="FinalPoem__reveal-btn-container">
-  <input
-    type="button"
-    value="We are finished: Reveal the Poem"
-    className="FinalPoem__reveal-btn"
-    onClick={props.finalPoem}
-    />
-</div>
+  const hideButton = props.showPoem ? <ul></ul> :
+    <div className="FinalPoem__reveal-btn-container">
+    <input
+      type="button"
+      value="We are finished: Reveal the Poem"
+      className="FinalPoem__reveal-btn"
+      onClick={props.finalPoem}
+      />
+    </div>
 
 
 
@@ -27,14 +28,12 @@ const hideButton = props.showPoem ? <ul></ul> : <div className="FinalPoem__revea
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-
       </section>
-
       <div className="FinalPoem__reveal-btn-container">
-      {hideButton}
+        {hideButton}
       </div>
       <div>
-        { showLines }
+        { showAllLines }
       </div>
     </div>
   );

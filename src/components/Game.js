@@ -55,6 +55,7 @@ class Game extends Component {
         </p>
 
         <RecentSubmission
+
           showSubmissionHeader={this.state.showSubmissionHeader}
            />
 
@@ -63,10 +64,10 @@ class Game extends Component {
           showForm={this.state.showForm}
           />
 
-        <FinalPoem finalPoem={this.finalPoem} submissions={this.state.submissions}
+        <FinalPoem finalPoem={this.finalPoem}
+          submissions={this.state.submissions}
           showPoem={this.state.showPoem}
           />
-
       </div>
     );
   }

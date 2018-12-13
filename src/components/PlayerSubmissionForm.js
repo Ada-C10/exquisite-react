@@ -13,6 +13,7 @@ class PlayerSubmissionForm extends Component {
       adjectiveSecond: "",
       nounSecond: "",
       playerCount: 1,
+      showLatestLine: " ",
     }
   }
 
@@ -50,6 +51,7 @@ class PlayerSubmissionForm extends Component {
       adjectiveSecond: "",
       nounSecond: "",
       playerCount: 1 + this.state.playerCount,
+      showLatestLine: this.state.poemList[0],
     });
 
     // Now we need to do something with the game...
