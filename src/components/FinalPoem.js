@@ -12,12 +12,12 @@ class FinalPoem extends React.Component {
   }
 
   composeCadaver = (e) => {
-    console.log("The Mark Present Button was clicked!");
     const cadaver = this.props.finalPoemCallback();
     this.setState({
       cadaver: cadaver
     });
   }
+  
   render() {
     return (
       <div className="FinalPoem">
