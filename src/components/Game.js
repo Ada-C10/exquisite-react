@@ -70,8 +70,9 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission line={this.state.currentLine}/>
-        <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}/>
+        <RecentSubmission line={this.state.currentLine} ended={this.state.end}/>
+        <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}
+          ended={this.state.end}/>
         <FinalPoem poem={this.state.finalPoem} revealPoemCallback={this.revealPoem} ended={this.state.end}/>
 
       </div>

@@ -44,11 +44,12 @@ class PlayerSubmissionForm extends Component {
   render() {
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        { !this.props.ended &&
+          (<h3>Player Submission Form for Player #{  }</h3> ) }
+          { !this.props.ended &&
+            ( <form className="PlayerSubmissionForm__form" onSubmit={this.onLineSubmit}>
 
-        <form className="PlayerSubmissionForm__form" onSubmit={this.onLineSubmit}>
-
-          <div className="PlayerSubmissionForm__poem-inputs">
+            <div className="PlayerSubmissionForm__poem-inputs">
 
               <input name="adj1" placeholder="adjective" type="text" value={this.state.adj1} onChange={this.onInputChange}/>
               <input name="noun1" placeholder="noun" type="text" value={this.state.noun1} onChange={this.onInputChange}/>
@@ -60,7 +61,7 @@ class PlayerSubmissionForm extends Component {
             <div className="PlayerSubmissionForm__submit">
               <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
             </div>
-          </form>
+          </form> ) }
         </div>
       );
     }
@@ -70,4 +71,5 @@ class PlayerSubmissionForm extends Component {
 
   PlayerSubmissionForm.propTypes = {
     currentLineCallback: PropTypes.func.isRequired,
+    ended: PropTypes.bool.isRequired,
   };
