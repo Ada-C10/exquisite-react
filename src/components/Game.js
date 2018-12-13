@@ -25,6 +25,10 @@ class Game extends Component {
     this.setState({lines: updatedLines})
   }
 
+  revealPoem = () => {
+
+  }
+
   render() {
 
     const exampleFormat = FIELDS.map((field) => {
@@ -51,7 +55,7 @@ class Game extends Component {
 
         <PlayerSubmissionForm addSubmissionCallback={this.addSubmission}/>
 
-        <FinalPoem />
+        <FinalPoem revealPoemCallback={this.revealPoem} />
 
       </div>
     );
