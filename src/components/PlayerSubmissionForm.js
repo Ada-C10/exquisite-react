@@ -50,7 +50,7 @@ class PlayerSubmissionForm extends Component {
       noun2: ""
     });
 
-    console.log("Form submitted", newSubmission);
+    console.log("New line form submitted", newSubmission);
     this.props.addSubmissionCallback(newSubmission);
   }
 
@@ -60,8 +60,9 @@ class PlayerSubmissionForm extends Component {
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{this.props.playerNumber}</h3>
 
-        <form className="PlayerSubmissionForm__form" >
-
+        <form className="PlayerSubmissionForm__form"
+          onSubmit={this.onFormSubmit}
+          >
           <div className="PlayerSubmissionForm__poem-inputs">
             <div>
               The
