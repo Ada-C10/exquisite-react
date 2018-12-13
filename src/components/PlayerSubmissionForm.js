@@ -5,6 +5,15 @@ class PlayerSubmissionForm extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      firstAdjective: "",
+      firstNoun: "",
+      firstAdverb: "",
+      firstVerb: "",
+      secondAdjective: "",
+      secondNoun: "",
+    }
   }
 
   render() {
@@ -21,8 +30,41 @@ class PlayerSubmissionForm extends Component {
               // Put your form inputs here... We've put in one below as an example
             }
             <input
-              placeholder="hm..."
-              type="text" />
+              placeholder="adjective"
+              type="text"
+              name="firstAdjective"
+              value={this.state.firstAdjective} />
+
+            <input
+              placeholder="noun"
+              type="text"
+              name="firstNoun"
+              value={this.state.firstNoun} />
+
+            <input
+              placeholder="adverb"
+              type="text"
+              name="firstAdverb"
+              value={this.state.firstAdverb} />
+
+              <input
+                placeholder="verb"
+                type="text"
+                name="firstVerb"
+                value={this.state.firstVerb} />
+              the
+              <input
+                placeholder="adjective"
+                type="text"
+                name="secondAdjective"
+                value={this.state.secondAdjective} />
+
+                <input
+                  placeholder="noun"
+                  type="text"
+                  name="secondNoun"
+                  value={this.state.secondNoun} />
+                .
 
           </div>
 
