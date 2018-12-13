@@ -12,7 +12,8 @@ class PlayerSubmissionForm extends Component {
       adv: "",
       verb: "",
       adj2: "",
-      noun2: ""
+      noun2: "",
+      playerNum: 1
     }
   }
 
@@ -31,13 +32,16 @@ class PlayerSubmissionForm extends Component {
 
     this.props.currentLineCallback(`The ${this.state.adj1} ${this.state.noun1} ${this.state.adv} ${this.state.verb} ${this.state.adj2} ${this.state.noun2}.`)
 
+    const updatedPlayerNum = this.state.playerNum + 1
+
     this.setState({
       adj1: "",
       noun1: "",
       adv: "",
       verb: "",
       adj2: "",
-      noun2: ""
+      noun2: "",
+      playerNum: updatedPlayerNum
     });
   }
 
@@ -45,12 +49,10 @@ class PlayerSubmissionForm extends Component {
     return (
       <div className="PlayerSubmissionForm">
         { !this.props.ended &&
-          (<h3>Player Submission Form for Player #{  }</h3> ) }
+          (<h3>Player Submission Form for Player #{ this.state.playerNum }</h3> ) }
           { !this.props.ended &&
             ( <form className="PlayerSubmissionForm__form" onSubmit={this.onLineSubmit}>
-
             <div className="PlayerSubmissionForm__poem-inputs">
-
               <input name="adj1" placeholder="adjective" type="text" value={this.state.adj1} onChange={this.onInputChange}/>
               <input name="noun1" placeholder="noun" type="text" value={this.state.noun1} onChange={this.onInputChange}/>
               <input name="adv" placeholder="adverb" type="text" value={this.state.adv} onChange={this.onInputChange}/>
