@@ -50,8 +50,8 @@ class PlayerSubmissionForm extends Component {
     });
 
     // Now we need to do something with the student...
-    console.log("Created a new student:", newSubmission);
-    this.props.addStudentCallback(newSubmission);
+    console.log("Created a new submission:", newSubmission);
+    this.props.addSubmissionCallback(newSubmission);
 
     this.setState({errorMessages: []});
   }
@@ -60,7 +60,7 @@ class PlayerSubmissionForm extends Component {
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <h3>Player Submission Form for Player #{ this.props.playerNumber  }</h3>
 
         <form
           className="PlayerSubmissionForm__form"

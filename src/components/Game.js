@@ -43,7 +43,9 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm
+          playerNumber={this.state.submissions.length + 1}
+           />
 
         <FinalPoem />
 
