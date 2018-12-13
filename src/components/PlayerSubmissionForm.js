@@ -56,11 +56,9 @@ class PlayerSubmissionForm extends Component {
     const field = event.target.name;
     const value = event.target.value;
 
-    const newState = {
-      //reset fields by repopulating field keys 
-    };
-    newState[field] = value;
-    this.setState(newState);
+    const updateState = this.state;
+    updateState[field] = value;
+    this.setState(updateState);
   }
 
 
