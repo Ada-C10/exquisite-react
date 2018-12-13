@@ -52,9 +52,13 @@ class Game extends Component {
         </p>
 
         <RecentSubmission
-          recentSubmission={this.state.submissions[this.state.submissions.length - 1]} />
+          recentSubmission={this.state.submissions[this.state.submissions.length - 1]}
+          isSubmitted={this.state.isSubmitted} />
 
-        <PlayerSubmissionForm onPlayerSubmit= {this.onAddLineToPoem}/>
+        <PlayerSubmissionForm
+          onPlayerSubmit= {this.onAddLineToPoem}
+            isSubmitted={this.state.isSubmitted}
+          />
 
         <FinalPoem
           onFinalButtonClick= {this.HandleFinalButtonClick}
