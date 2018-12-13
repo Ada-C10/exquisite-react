@@ -40,6 +40,16 @@ class Game extends Component {
       recentSub = <RecentSubmission currentLine={this.state.currentLine}/>
     };
 
+    let hideComponent;
+    if((this.state.hideRecent)){
+      hideComponent = <section>
+        {recentSub}
+
+        <PlayerSubmissionForm
+          setCurrentLine = {this.currentLineCallback}/>
+      </section>
+    }
+
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
         return field.placeholder;
@@ -59,13 +69,8 @@ class Game extends Component {
         <p className="Game__format-example">
           { exampleFormat }
         </p>
-        <section className={(!this.state.hideRecent).toString()}>
-          {recentSub}
 
-          <PlayerSubmissionForm
-            setCurrentLine = {this.currentLineCallback}/>
-        </section>
-
+        {hideComponent}
         <FinalPoem
           linesOfPoem={this.state.poem}
           hideRecentCallback = {this.hideRecent}
