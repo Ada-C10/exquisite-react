@@ -2,6 +2,10 @@ import React from 'react';
 import './RecentSubmission.css';
 
 const RecentSubmission = (props) => {
+  if (props.hideForm) {
+    return (<div className="RecentSubmission" />)
+  };
+
   let lastSubmission = props.lastSubmission
   return (
     <div className="RecentSubmission">

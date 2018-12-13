@@ -12,16 +12,21 @@ class Game extends Component {
     this.state = {
       lines: [],
       lastSubmission: "",
+      hideForm: false,
     }
   }
 
   addSubmitRow = (props) => {
-    const lines = this.state.lines;
-    const line = `The ${props.adj1} ${props.noun1} ${props.adverb} ${props.verb} the ${props.adj2} ${props.noun2}.`;
-    console.log(line)
-    lines.push(line);
+    let lines = this.state.lines;
+    let line = `The ${props.adj1} ${props.noun1} ${props.adverb} ${props.verb} the ${props.adj2} ${props.noun2}.`;
     this.setState({lastSubmission: line})
+    // console.log(line)
+    lines.push(line);
     this.setState({lines: lines})
+  }
+
+  renderFinal = () => {
+    this.setState({hideForm: true})
   }
 
 
@@ -29,7 +34,7 @@ class Game extends Component {
     let latestLine;
 
     if (this.state.lastSubmission) {
-      latestLine = <RecentSubmission lastSubmission={this.state.lastSubmission}/>
+      latestLine = <RecentSubmission lastSubmission={this.state.lastSubmission} hideForm={this.state.hideForm}/>
     };
 
     const exampleFormat = FIELDS.map((field) => {
@@ -54,9 +59,9 @@ class Game extends Component {
 
         {latestLine}
 
-        <PlayerSubmissionForm addSubmitRowCallback={this.addSubmitRow}/>
+        <PlayerSubmissionForm addSubmitRowCallback={this.addSubmitRow} hideForm={this.state.hideForm}/>
 
-        <FinalPoem />
+        <FinalPoem lines={this.state.lines} renderFinalCallback={this.renderFinal} showPoem={this.state.hideForm}/>
 
       </div>
     );

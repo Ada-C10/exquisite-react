@@ -51,7 +51,9 @@ class PlayerSubmissionForm extends Component {
     }
 
   render() {
-
+    if (this.props.hideForm) {
+      return (<div className="PlayerSubmissionForm"/>);
+    };
     return (
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{ this.state.playerNum}</h3>
