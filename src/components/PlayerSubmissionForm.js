@@ -74,20 +74,18 @@ class PlayerSubmissionForm extends Component {
   }
 
   render() {
-//
-//     const inputs = this.fetchFields();
-//     let filteredInputs = []
-// if (inputs) {
-//     filteredInputs = inputs.forEach((input) => {
-//       // const key = input.key
-//       console.log("state", this.state[input.key])
-//       return(
-//         <input name={input.key} placeholder={input.placeholder} type="text" value={this.state[input.key]} onChange={this.onInputChange}/>
-//       )
-//     })
-//   }
 
-    // console.log(filteredInputs)
+
+    const filteredInputs = this.state.forEach((input) => {
+      // const key = input.key
+      console.log("state", this.state[input.key])
+      return(
+        <input name={input.key} placeholder={input.placeholder} type="text" value={this.state[input.key]} onChange={this.onInputChange}/>
+      )
+    })
+
+
+    console.log(filteredInputs);
 
 
     return (

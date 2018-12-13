@@ -15,16 +15,19 @@ class Game extends Component {
 
   fetchFields = () => {
 
-    const fieldObj = {}
+    const fieldArr = []
 
     const fields = FIELDS.filter((field) => {
       return field.hasOwnProperty("key");
     });
 
     fields.forEach( (field) => {
-      fieldObj[field.key] = ""
+      fieldArr.push({
+        [field.key]: "",
+        placeholder: field.placeholder})
+
     })
-    return fieldObj
+    return fieldArr
   }
 
   changeCurrentLine = (line) => {
