@@ -40,6 +40,7 @@ class Game extends Component {
         currentLine: "[PASSED]"
       })
     }
+    window.scrollTo(0, 200)
   }
 
   revealPoem = () => {
