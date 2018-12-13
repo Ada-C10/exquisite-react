@@ -9,7 +9,8 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lines: []
+      lines: [],
+      finished: false,
     };
   }
 
@@ -18,6 +19,11 @@ class Game extends Component {
     const lines = [...this.state.lines];
     lines.push(newLine);
     this.setState({lines: lines});
+  }
+
+  readyToDisplay = () => {
+    let status = true;
+    this.setState({finished: status });
   }
 
   render() {
@@ -48,7 +54,11 @@ class Game extends Component {
           addLineToRecentCallback={this.addNewLine}
           />
 
-        <FinalPoem />
+        <FinalPoem
+          finalLines={this.state.lines}
+          callbackDisplayPoem={this.readyToDisplay}
+          status={this.state.finished}
+          />
 
       </div>
     );
