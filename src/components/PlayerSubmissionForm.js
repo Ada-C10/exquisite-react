@@ -28,11 +28,20 @@ class PlayerSubmissionForm extends Component {
     this.setState(updateState);
   }
 
+  WriteLine = (props) => {
+    const newLine = `The ${props.adj1} ${props.noun1} ${props.adverb} ${props.verb} the ${props.adj2} ${props.noun2}`
+
+    return newLine
+
+  }
+
   HandlePlayerSubmit = (event)=> {
     event.preventDefault();
     let player = this.state.player
     console.log(event)
-    this.props.onPlayerSubmit(this.state);
+    const newLine = `The ${this.state.adj1} ${this.state.noun1} ${this.state.adverb} ${this.state.verb} the ${this.state.adj2} ${this.state.noun2}`
+
+    this.props.onPlayerSubmit(newLine);
     this.setState({
       adj1: "",
       adj2: "",
