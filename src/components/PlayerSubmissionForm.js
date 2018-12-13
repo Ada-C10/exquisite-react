@@ -35,16 +35,16 @@ class PlayerSubmissionForm extends Component {
 
     this.props.addSubmissionCallback(newLine);
 
-    // this.setState({
-    //   adj1: "",
-    //   noun1: "",
-    //   adv: "",
-    //   verb: "",
-    //   adj2: "",
-    //   noun2: ""
-    // });
-
     console.log("New line form submitted:", newLine);
+
+    this.setState({
+      adj1: "",
+      noun1: "",
+      adv: "",
+      verb: "",
+      adj2: "",
+      noun2: ""
+    });
   }
 
   render() {
