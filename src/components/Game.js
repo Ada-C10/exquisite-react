@@ -44,6 +44,12 @@ class Game extends Component {
     return poemLine;
   }
 
+  revealPoemHandler = () => {
+    this.setState({
+      showPoem: true
+    });
+  }
+
 
 
 
@@ -70,13 +76,6 @@ class Game extends Component {
       //     />
       // );}}
 
-
-
-      let revealPoem = () => {
-        this.setState({
-          showPoem: true
-        });
-      }
 
 
 
@@ -107,7 +106,9 @@ class Game extends Component {
           <PlayerSubmissionForm addPoemLineCB={this.addPoemLine}
             userNum={userNum}/>
 
-          <FinalPoem poemDraft={this.state.poemLines} showPoem={this.state.showPoem} showPoemRevealButton={this.state.showPoemRevealButton} />
+          <FinalPoem poemDraft={this.state.poemLines} showPoem={this.state.showPoem}
+          revealPoemCB={this.revealPoemHandler}
+          showPoemRevealButton={this.state.showPoemRevealButton} />
 
         </div>
       );

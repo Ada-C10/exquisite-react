@@ -22,13 +22,11 @@ let showPoemRevealButton = props.showPoemRevealButton
 
 
 
+  const onFinishedPoem = (event) => {
+    event.preventDefault();
 
-
-
-  // const onFinishedPoem = (event) => {
-  //   event.preventDefault();
-  //
-  //   props.revealPoem();
+    props.revealPoemCB();
+  }
 
 
 
@@ -37,23 +35,7 @@ let showPoemRevealButton = props.showPoemRevealButton
     //
     //   }
     // }
-    // const submittedPoemLine = {
-    //   adjective1: this.state.adjective1,
-    //   noun1: this.state.noun1,
-    //   adverb1: this.state.adverb1,
-    //   verb1: this.state.verb1,
-    //   adjective2: this.state.adjective2,
-    //   noun2: this.state.noun2,
-    // };
-    //
-    // this.setState({
-    //   adjective1: '',
-    //   noun1: '',
-    //   adverb1: '',
-    //   verb1: '',
-    //   adjective2: '',
-    //   noun2: '',
-    // });
+
 
 
   return (
@@ -67,6 +49,7 @@ let showPoemRevealButton = props.showPoemRevealButton
 
       {showPoemRevealButton ? <div className="FinalPoem__reveal-btn-container">
         <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn"
+          onClick={onFinishedPoem}
          />
       </div> : ''}
     </div>
