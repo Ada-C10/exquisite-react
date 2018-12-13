@@ -13,7 +13,7 @@ class PlayerSubmissionForm extends Component {
       verb: "",
       adj2: "",
       noun2: "",
-      submissionCount: 0
+      submissionCount: 0,
     };
   }
 
@@ -111,7 +111,7 @@ class PlayerSubmissionForm extends Component {
 
 
   render() {
-
+    if (this.state.finalSubmit !== true) {
     return (
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{ this.state.submissionCount + 1 }</h3>
@@ -136,6 +136,7 @@ class PlayerSubmissionForm extends Component {
         </form>
       </div>
     );
+  }
   }
 }
 

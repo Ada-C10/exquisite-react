@@ -11,12 +11,12 @@ class Game extends Component {
 
     this.state = {
       cadaver: [],
-      recentSubmission: ""
+      recentSubmission: "",
+      finalSubmit: false,
     }
   }
 
   addPartToCadaver = (cadaverPart) => {
-    console.log("in Cadaver", this.state.cadaver, cadaverPart)
     const cadaver = this.state.cadaver;
     cadaver.push(cadaverPart);
 
@@ -34,6 +34,7 @@ class Game extends Component {
     this.setState({
       cadaver: [],
       recentSubmission: "",
+      finalSubmit: true,
     })
     return cadaver
   }
@@ -62,7 +63,7 @@ class Game extends Component {
 
         { this.state.recentSubmission !== "" ? <RecentSubmission mostRecent={this.state.recentSubmission}/> : null }
 
-        <PlayerSubmissionForm formFields={FIELDS} submissionFormCallback={this.addPartToCadaver}/>
+        { this.state.finalSubmit === true ? null : <PlayerSubmissionForm formFields={FIELDS} submissionFormCallback={this.addPartToCadaver} /> }
 
         <FinalPoem finalPoemCallback={this.displayCadaver} />
 
