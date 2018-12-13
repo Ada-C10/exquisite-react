@@ -14,7 +14,14 @@ class Game extends Component {
   }
 
   changeCurrentLine = (line) => {
-    if (line !== "") {
+
+    let emptyLine = ""
+
+    for(let i=0; i < FIELDS.length; i++){
+      emptyLine += " "
+    }
+
+    if (line !== emptyLine) {
       this.setState({
         currentline: line
       })
@@ -22,7 +29,6 @@ class Game extends Component {
     else {
       alert("Oops the player before you forgot to enter stuff!")
     }
-
   }
 
   render() {
