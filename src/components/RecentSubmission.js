@@ -4,6 +4,7 @@ import './RecentSubmission.css';
 const RecentSubmission = (props) => {
 
   const recentSentence = props.sentences
+
   let sentence = recentSentence[(recentSentence.length) -1]
 
   if (sentence) {
@@ -11,6 +12,11 @@ const RecentSubmission = (props) => {
   }
 
   console.log(sentence);
+
+  if(props.recentSubBool === false){
+  return <div></div>  
+  }
+
   return (
     <div className="RecentSubmission">
       <h3>The Most Recent Submission</h3>

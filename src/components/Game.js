@@ -11,27 +11,37 @@ class Game extends Component {
 
     this.state = {
       sentence: [],
-      count: 1
-      poem: ""
+      count: 1,
+      poem: [],
+      finalPoemBool: true,
+      playerSubBool: true,
+      recentSubBool: true,
     }
 
   }
 
+  poem = () => {
+    let tempArray = []
+    const lyrics = this.state.sentence
 
-const poem = () => {
-  sentences
-//parse sentence make them go into poem
-  sentences
-  this.setState('poem': )
-}
+    lyrics.forEach(function(sentence) {
+      const element = (sentence.adjective1 + " " +  sentence.noun1  + " " + sentence.adverb + " " + sentence.verb  + " " + sentence.adjective2 + " " + sentence.noun2)
+      tempArray.push(element)
+    });
 
 
-addSentence = (newSentence) => {
-  const sentence = this.state.sentence;
-  sentence.push(newSentence);
-  const count = this.state.count + 1
-  this.setState({'sentence': sentence, 'count': count})
-}
+    this.setState({'poem': tempArray, 'finalPoemBool': false, 'playerSubBool': false, 'recentSubBool': false })
+
+    return console.log(lyrics);
+  }
+
+
+  addSentence = (newSentence) => {
+    const sentence = this.state.sentence;
+    sentence.push(newSentence);
+    const count = this.state.count + 1
+    this.setState({'sentence': sentence, 'count': count})
+  }
 
 
   render() {
@@ -56,11 +66,11 @@ addSentence = (newSentence) => {
           { exampleFormat }
         </p>
 
-        <RecentSubmission sentences={this.state.sentence}/>
+        <RecentSubmission sentences={this.state.sentence} recentSubBool={this.state.recentSubBool}/>
 
-        <PlayerSubmissionForm addSentenceCallback={this.addSentence} count={this.state.count} />
+        <PlayerSubmissionForm addSentenceCallback={this.addSentence} count={this.state.count} playerSubBool={this.state.playerSubBool} />
 
-        <FinalPoem poem={this.state.poem}/>
+        <FinalPoem poem={this.poem} finalpoem={this.state.poem} finalPoemBool={this.state.finalPoemBool}/>
 
       </div>
     );

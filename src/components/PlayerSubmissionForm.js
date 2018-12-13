@@ -60,6 +60,10 @@ this.setState(newState);
 
   render() {
 
+    if (this.props.playerSubBool === false) {
+      return <div></div>
+    }
+
     return (
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{ this.props.count }</h3>
