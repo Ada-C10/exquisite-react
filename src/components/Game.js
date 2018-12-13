@@ -8,6 +8,34 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      cadaver: [],
+      recentSubmission: ""
+    }
+  }
+
+  addPartToCadaver = (cadaverPart) => {
+    console.log("in Cadaver", this.state.cadaver, cadaverPart)
+    const cadaver = this.state.cadaver;
+    cadaver.push(cadaverPart);
+
+    this.setState({
+      cadaver: cadaver,
+      recentSubmission: cadaverPart,
+    });
+  }
+
+  displayCadaver = () => {
+    const cadaverParts = this.state.cadaver
+    const cadaver = cadaverParts.map((line) => {
+      return <p>{line}</p>
+    })
+    this.setState({
+      cadaver: [],
+      recentSubmission: "",
+    })
+    return cadaver
   }
 
   render() {
@@ -32,11 +60,11 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission mostRecent={this.state.recentSubmission}/>
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm formFields={FIELDS} submissionFormCallback={this.addPartToCadaver}/>
 
-        <FinalPoem />
+        <FinalPoem finalPoemCallback={this.displayCadaver} />
 
       </div>
     );
