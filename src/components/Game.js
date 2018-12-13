@@ -10,7 +10,9 @@ class Game extends Component {
     super(props);
     this.state = {
       submissions: [],
-      clicked: false,
+      showPoem: false,
+      showForm: true,
+      showSubmissionHeadline: true,
     }
   }
 
@@ -21,14 +23,13 @@ class Game extends Component {
   }
 
   finalPoem = () => {
-    // const poemList = this.state.submissions.map((submission, i) =>
-    // <li key={i}>
-    //   {submission}</li>
-    // );
-    // const potato = <ul>{ poemList } </ul>
     return (
-      this.setState({ clicked: true })
-      )
+      this.setState({
+        showPoem: true,
+        showForm: false,
+
+      })
+    )
   };
 
   render() {
@@ -55,10 +56,13 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm addSubmissionCallback={this.addSubmission}/>
+        <PlayerSubmissionForm
+          addSubmissionCallback={this.addSubmission}
+          showForm={this.state.showForm}
+          />
 
         <FinalPoem finalPoem={this.finalPoem} submissions={this.state.submissions}
-            clicked={this.state.clicked}
+          showPoem={this.state.showPoem}
           />
 
       </div>

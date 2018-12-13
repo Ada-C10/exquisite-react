@@ -2,7 +2,6 @@ import React from 'react';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
-
   const poemList = props.submissions.map((submission, i) =>
   <li key={i}>
     {submission.toString()}</li>
@@ -10,7 +9,9 @@ const FinalPoem = (props) => {
 
   const revealPoem = <ul> { poemList }</ul>
 
-  const potato = props.clicked ? revealPoem : <ul></ul>
+  const showLines = props.showPoem ? revealPoem : <ul></ul>
+
+
 
   return (
     <div className="FinalPoem">
@@ -28,7 +29,7 @@ const FinalPoem = (props) => {
           />
       </div>
       <div>
-        {potato}
+        { showLines }
       </div>
     </div>
   );

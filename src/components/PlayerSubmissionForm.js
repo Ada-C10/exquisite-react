@@ -16,7 +16,7 @@ class PlayerSubmissionForm extends Component {
     }
   }
 
-// event handler updates the state
+  // event handler updates the state
   onInputChange = (event) => {
     console.log("Im input change");
 
@@ -33,14 +33,13 @@ class PlayerSubmissionForm extends Component {
     event.preventDefault();
 
     const newSubmission =
-       this.state.adjectiveFirst + 
-       this.state.nounFirst +
-       this.state.adverb +
-       this.state.verb +
-       this.state.adjectiveSecond +
-       this.state.nounSecond
+    this.state.adjectiveFirst +
+    this.state.nounFirst +
+    this.state.adverb +
+    this.state.verb +
+    this.state.adjectiveSecond +
+    this.state.nounSecond
     ;
-
 
     // clearing form
     this.setState({
@@ -56,12 +55,15 @@ class PlayerSubmissionForm extends Component {
     // Now we need to do something with the game...
     this.props.addSubmissionCallback(newSubmission);
   }
+
+
+
+
   render() {
 
-    return (
-      <div className="PlayerSubmissionForm">
+    if (this.props.showForm) {
+      return <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{ this.state.playerCount }</h3>
-
         <form
           className="PlayerSubmissionForm__form"
           onSubmit={this.onFormSubmit}
@@ -126,7 +128,16 @@ class PlayerSubmissionForm extends Component {
           </div>
         </form>
       </div>
-    );
+    } else {
+      return <ul></ul>
+    }
+
+
+
+    // const clearForm = this.props.removeForm ?  <ul></ul> : showComponent
+    // return (
+    //   { clearForm }
+    // );
   }
 }
 
