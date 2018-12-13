@@ -1,5 +1,6 @@
 import React from 'react';
 import './FinalPoem.css';
+import PropTypes from 'prop-types';
 
 const FinalPoem = (props) => {
   let poem = ""
@@ -9,7 +10,6 @@ const FinalPoem = (props) => {
     <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-
       </section>
       <p>{poem}</p>
 
@@ -21,3 +21,9 @@ const FinalPoem = (props) => {
 }
 
 export default FinalPoem;
+
+FinalPoem.propTypes = {
+  poem: PropTypes.array.isRequired,
+  revealPoemCallback: PropTypes.func.isRequired,
+  ended: PropTypes.bool.isRequired,
+};

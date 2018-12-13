@@ -1,8 +1,8 @@
 import React from 'react';
 import './RecentSubmission.css';
+import PropTypes from 'prop-types';
 
 const RecentSubmission = (props) => {
-  console.log(props.line)
   return (
     <div className="RecentSubmission">
       <h3>The Most Recent Submission</h3>
@@ -12,3 +12,7 @@ const RecentSubmission = (props) => {
 }
 
 export default RecentSubmission;
+
+RecentSubmission.propTypes = {
+  line: PropTypes.string,
+};

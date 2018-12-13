@@ -17,7 +17,6 @@ class PlayerSubmissionForm extends Component {
   }
 
   onInputChange = (event) => {
-    console.log("Some stuff was typed in the form!", event.target.name, event.target.value);
 
     const field = event.target.name;
     const value = event.target.value;
@@ -33,14 +32,16 @@ class PlayerSubmissionForm extends Component {
     this.props.currentLineCallback(`The ${this.state.adj1} ${this.state.noun1} ${this.state.adv} ${this.state.verb} ${this.state.adj2} ${this.state.noun2}.`)
 
     this.setState({
-      //fetch fields to reset state
-      //probably need new implementation of this
+      adj1: "",
+      noun1: "",
+      adv: "",
+      verb: "",
+      adj2: "",
+      noun2: ""
     });
   }
 
   render() {
-
-
     return (
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{  }</h3>
@@ -68,5 +69,5 @@ class PlayerSubmissionForm extends Component {
   export default PlayerSubmissionForm;
 
   PlayerSubmissionForm.propTypes = {
-    fields: PropTypes.array.isRequired,
+    currentLineCallback: PropTypes.func.isRequired,
   };

@@ -43,17 +43,9 @@ class Game extends Component {
   }
 
   revealPoem = () => {
-      console.log("start end", this.state.end)
-
-
     this.setState({
       end: true
     })
-      console.log("end end", this.state.end)
-        console.log("final", this.state.finalPoem)
-
-    console.log("we in here")
-
   }
 
   render() {
@@ -79,9 +71,7 @@ class Game extends Component {
         </p>
 
         <RecentSubmission line={this.state.currentLine}/>
-
         <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}/>
-
         <FinalPoem poem={this.state.finalPoem} revealPoemCallback={this.revealPoem} ended={this.state.end}/>
 
       </div>
