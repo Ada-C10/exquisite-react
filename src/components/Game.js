@@ -9,7 +9,8 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentLine: undefined
+      currentLine: undefined,
+      finalPoem: []
     }
   }
 
@@ -27,8 +28,13 @@ class Game extends Component {
     emptyLine += "."
 
     if (line !== emptyLine) {
+
+      const updatedPoem = this.state.finalPoem
+      updatedPoem.push(line)
+
       this.setState({
-        currentLine: line
+        currentLine: line,
+        finalPoem: updatedPoem
       })
     }
     else {
