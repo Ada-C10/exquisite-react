@@ -6,6 +6,7 @@ class PlayerSubmissionForm extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {};
   }
 
   fetchFields = () => {
@@ -30,7 +31,7 @@ class PlayerSubmissionForm extends Component {
   // {
   //   key: 'verb',
   //   placeholder: 'verb',
-  // },
+  // },f
   // {
   //   key: 'adj2',
   //   placeholder: 'adjective',
@@ -41,10 +42,43 @@ class PlayerSubmissionForm extends Component {
   // },
 
   componentDidMount() {
-    console.log(this.fetchFields())
+    //set state according to field.key
+    this.fetchFields().forEach( (field) => {
+      this.setState({
+        [field.key]: ""
+      })
+    })
   }
 
+  onInputChange = (event) => {
+    console.log("Some stuff was typed in the form!", event.target.name, event.target.value);
+
+    const field = event.target.name;
+    const value = event.target.value;
+
+    const newState = {
+      //reset fields by repopulating field keys 
+    };
+    newState[field] = value;
+    this.setState(newState);
+  }
+
+
   render() {
+
+
+    const inputs = this.fetchFields();
+
+    const filteredInputs = inputs.forEach((input) => {
+      // const key = input.key
+      // return(
+      //   <input name={input.key} placeholder={input.placeholder} type="text" value={this.state[input.key]} onChange={this.onInputChange}/>
+      // )
+      console.log("state", this.state)
+    })
+
+    console.log(filteredInputs)
+
 
     return (
       <div className="PlayerSubmissionForm">
@@ -57,8 +91,7 @@ class PlayerSubmissionForm extends Component {
             {
               // Put your form inputs here... We've put in one below as an example
             }
-            <label htmlFor="adjective">Name</label>
-            <input name="adj1" type="text" defaultValue={1}/>
+
 
           </div>
 
