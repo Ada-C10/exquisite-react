@@ -12,6 +12,7 @@ class Game extends Component {
     this.state = {
       currentLine: "",
       poem: [],
+      hideRecent: true,
     }
   }
 
@@ -53,10 +54,11 @@ class Game extends Component {
         <p className="Game__format-example">
           { exampleFormat }
         </p>
+        <section className={(!this.state.hideRecent).toString()}>
+          {recentSub}
 
-        {recentSub}
-
-        <PlayerSubmissionForm setCurrentLine = {this.currentLineCallback}/>
+          <PlayerSubmissionForm setCurrentLine = {this.currentLineCallback}/>
+        </section>
 
         <FinalPoem linesOfPoem={this.state.poem}/>
 
