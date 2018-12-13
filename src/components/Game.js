@@ -16,6 +16,10 @@ class Game extends Component {
     }
   }
 
+  hideRecent = () => {
+    console.log("Inside hideRecent");
+  }
+
   currentLineCallback = (sentence) => {
     this.setState({currentLine: sentence}, () => {
       console.log(this.state.currentLine);
@@ -57,10 +61,14 @@ class Game extends Component {
         <section className={(!this.state.hideRecent).toString()}>
           {recentSub}
 
-          <PlayerSubmissionForm setCurrentLine = {this.currentLineCallback}/>
+          <PlayerSubmissionForm
+            setCurrentLine = {this.currentLineCallback}/>
         </section>
 
-        <FinalPoem linesOfPoem={this.state.poem}/>
+        <FinalPoem
+          linesOfPoem={this.state.poem}
+          hideRecentCallback = {this.hideRecent}
+          />
 
       </div>
     );

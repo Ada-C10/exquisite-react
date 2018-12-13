@@ -13,6 +13,7 @@ class FinalPoem extends React.Component {
 
   showPoem = () => {
     this.setState({finalPoemHeaderClass: "FinalPoem__poem"});
+    this.props.hideRecentCallback();
   }
 
   render(){
