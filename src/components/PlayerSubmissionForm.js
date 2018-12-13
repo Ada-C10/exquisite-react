@@ -68,8 +68,9 @@ class PlayerSubmissionForm extends Component {
                 />;
     } );
 
-    return (
-      <div className="PlayerSubmissionForm">
+    let submissionForm;
+    if (!this.props.isSubmitted) {
+      submissionForm = <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{this.props.playerNumber}</h3>
 
         <form className="PlayerSubmissionForm__form" onSubmit={this.onFormSubmit}>
@@ -87,6 +88,12 @@ class PlayerSubmissionForm extends Component {
             <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
           </div>
         </form>
+      </div>
+    }
+
+    return (
+      <div className="PlayerSubmissionForm">
+        {submissionForm}
       </div>
     );
   }

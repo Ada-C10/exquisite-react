@@ -27,6 +27,14 @@ class Game extends Component {
     console.log(this.state);
   }
 
+  revealPoem = () => {
+    console.log("Game Message - player has clicked reveal button");
+    const newState = {}
+    newState.isSubmitted = true;
+    newState.recentSubmission = '';
+    this.setState(newState);
+  }
+
   render() {
 
     const exampleFormat = FIELDS.map((field) => {
@@ -49,11 +57,13 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission recentSubmission={this.state.recentSubmission}/>
+        <RecentSubmission recentSubmission={this.state.recentSubmission} submission={this.state.recentSubmission}/>
 
-        <PlayerSubmissionForm playerNumber={this.state.playerNumber} onPlayerSubmit={this.onPlayerSubmit}/>
+        <PlayerSubmissionForm playerNumber={this.state.playerNumber} onPlayerSubmit={this.onPlayerSubmit} isSubmitted={this.state.isSubmitted}/>
 
-        <FinalPoem submissions={this.state.submissions}/>
+
+        <FinalPoem submissions={this.state.submissions} onRevealClick={this.revealPoem} isSubmitted={this.state.isSubmitted}/>
+
 
       </div>
     );
