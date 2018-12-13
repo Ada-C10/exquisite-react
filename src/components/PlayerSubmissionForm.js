@@ -30,7 +30,7 @@ class PlayerSubmissionForm extends Component {
   onFormSubmit = (event) => {
     event.preventDefault();
 
-    const newLine = ["The", this.state.adj1, this.state.noun1, this.state.adv, this.state.verb, "the", this.state.adj2, this.state.noun2].join(" ");
+    const newLine = ["The", this.state.adj1, this.state.noun1, this.state.adv, this.state.verb, "the", this.state.adj2, this.state.noun2, ". "].join(" ");
 
 
     this.props.addSubmissionCallback(newLine);
