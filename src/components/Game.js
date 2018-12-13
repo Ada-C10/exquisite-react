@@ -10,7 +10,8 @@ class Game extends Component {
     super(props);
 
     this.state = {
-      poemLines: []
+      poemLines: [],
+      poemFinalized: false
     }
   }
 
@@ -21,7 +22,13 @@ class Game extends Component {
     const { adjective, noun, adverb, verb, adjective2, noun2 } = newSubmission;
     const newSentence = `The ${adjective} ${noun} ${adverb} ${verb} the ${adjective2} ${noun2}`;
     poemLines.push(newSentence);
-    this.setState({poemLines: poemLines})
+    this.setState({ poemLines: poemLines })
+  }
+
+  handlePoemFinalized = () => {
+    if (this.state.poemLines.length > 0) {
+      this.setState({ poemFinalized: true });
+    }
   }
 
   render() {
@@ -47,12 +54,22 @@ class Game extends Component {
         <p className="Game__format-example">
           { exampleFormat }
         </p>
+        { /* Will only execute if the first statement is true, guts of an if statement, just have the comparision. Will also work with || Once it fails if will stop for && */ }
+        {lastEntry && !this.state.poemFinalized && (
+          <RecentSubmission addSubmission={lastEntry} />
+        )}
 
-        <RecentSubmission addSubmission={lastEntry} />
+        {!this.state.poemFinalized && (
+          <PlayerSubmissionForm
+            addSubmissionCallback={this.addSubmission}
+          />
+        )}
 
-        <PlayerSubmissionForm addSubmissionCallback={this.addSubmission} />
-
-        <FinalPoem poemLines={this.state.poemLines} />
+        <FinalPoem
+          poemLines={this.state.poemLines}
+          poemFinalized={this.state.poemFinalized}
+          onPoemFinalized={this.handlePoemFinalized}
+        />
 
       </div>
     );
