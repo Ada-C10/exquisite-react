@@ -11,6 +11,16 @@ const FinalPoem = (props) => {
 
   const showLines = props.showPoem ? revealPoem : <ul></ul>
 
+const hideButton = props.showPoem ? <ul></ul> : <div className="FinalPoem__reveal-btn-container">
+  <input
+    type="button"
+    value="We are finished: Reveal the Poem"
+    className="FinalPoem__reveal-btn"
+    onClick={props.finalPoem}
+    />
+</div>
+
+
 
 
   return (
@@ -21,12 +31,7 @@ const FinalPoem = (props) => {
       </section>
 
       <div className="FinalPoem__reveal-btn-container">
-        <input
-          type="button"
-          value="We are finished: Reveal the Poem"
-          className="FinalPoem__reveal-btn"
-          onClick={props.finalPoem}
-          />
+      {hideButton}
       </div>
       <div>
         { showLines }
