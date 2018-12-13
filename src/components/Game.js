@@ -16,9 +16,6 @@ class Game extends Component {
 
   changeCurrentLine = (line) => {
 
-    console.log(FIELDS.length)
-
-
     let emptyLine = "The"
 
     for(let i = 0; i < FIELDS.length - 3; i++) {
@@ -30,7 +27,7 @@ class Game extends Component {
     if (line !== emptyLine) {
 
       const updatedPoem = this.state.finalPoem
-      updatedPoem.push(line)
+      updatedPoem.push(`${line} `)
 
       this.setState({
         currentLine: line,
@@ -70,7 +67,7 @@ class Game extends Component {
 
         <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}/>
 
-        <FinalPoem />
+        <FinalPoem poem={this.state.finalPoem}/>
 
       </div>
     );
