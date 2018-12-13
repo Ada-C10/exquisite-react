@@ -10,7 +10,7 @@ class Game extends Component {
     super(props);
     this.state = {
       submissions: [],
-      formDisplayed: false,
+      mountFinalPoem: false,
       recentSubmission: "",
       firstSubmission: false
     }
@@ -23,32 +23,16 @@ class Game extends Component {
   this.setState({submissions: submissions});
   this.setState({recentSubmission: submission});
   this.setState({firstSubmission: true});
-  // this.setState({recent: newSubmission});
-  // console.log("iiii", newSubmission)
   }
 
-  finalPoemRender = (event) => {
-    this.setState({formDisplayed: true});
-    console.log('woo', this.state.submissions[0])
+  mountFinalPoem = (event) => {
+    this.setState({mountFinalPoem: true});
   }
 
   render() {
     const submissions = this.state.submissions
-    const formDisplayed = this.state.formDisplayed
+    const mountFinalPoem = this.state.mountFinalPoem
     const recentSubmission = [submissions - 1]
-
-    // const finalPoem = submissions.map((submission, i) => {
-    //   return <FinalPoem
-    //     key={i}
-    //     adj1={submission.adj1}
-    //     noun1={submission.noun1}
-    //     adverb={submission.adverb}
-    //     verb={submission.verb}
-    //     adj2={submission.adj2}
-    //     noun2={submission.noun} />
-    // });
-
-    // const mostRecentSubmission = this.state.submissions[-1]
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
@@ -70,17 +54,17 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission recentSubmission={this.state.recentSubmission} render={formDisplayed} firstSubmission={this.state.firstSubmission}/>
+        <RecentSubmission recentSubmission={this.state.recentSubmission} render={mountFinalPoem} firstSubmission={this.state.firstSubmission}/>
 
-        <PlayerSubmissionForm addSubmissionCallback={this.addSubmission} player={submissions.length} render={formDisplayed}/>
+        <PlayerSubmissionForm addSubmissionCallback={this.addSubmission} player={submissions.length} render={mountFinalPoem}/>
 
-        <FinalPoem submissions={this.state.submissions} render={formDisplayed} finalPoemCallback={this.finalPoemRender}/>
+        <FinalPoem submissions={this.state.submissions} render={mountFinalPoem} mountFinalPoemCallback={this.mountFinalPoem}/>
 
       </div>
     );
   }
 }
-//how come this.finalPoemRender doesnt need .state but for submissions, without .state it was undefined?
+//how come this.mountFinalPoem doesnt need .state but for submissions, without .state it was undefined?
 
 const FIELDS = [
   "The",
@@ -113,5 +97,3 @@ const FIELDS = [
 ];
 
 export default Game;
-
-//piece of state in game that is t/f, and is passed into finalpoem. once true, final poem gets displayed. and each submision is being passed into finalpoem as its being submitted.

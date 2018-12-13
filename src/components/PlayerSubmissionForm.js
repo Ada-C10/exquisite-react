@@ -15,10 +15,6 @@ class PlayerSubmissionForm extends Component {
     }
   }
 
-  // inputValid = (input) => {
-  //   return this.state.input.match(/[a-zA-Z]+/g);
-  // }
-
   onInputChange = (event) => {
     event.target.className = ' '
     const field = event.target.name;
@@ -48,16 +44,12 @@ class PlayerSubmissionForm extends Component {
       noun2: ""
     });
 
-    // Now we need to do something with the student...
-    console.log("Created a new submission:", newLine);
     this.props.addSubmissionCallback(newLine);
   }
-
 
   render() {
 
     if (this.props.render) {
-      // console.log(props.submissions)
       return <div></div>
     }
 
@@ -132,4 +124,3 @@ class PlayerSubmissionForm extends Component {
 }
 
 export default PlayerSubmissionForm;
-// className={this.inputValid(adv) ? "valid": "invalid"} />
