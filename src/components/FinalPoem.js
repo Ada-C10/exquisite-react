@@ -12,7 +12,6 @@ class FinalPoem extends React.Component {
     }
   }
 
-
   render () {
 
     const showPoem = () => {

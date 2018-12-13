@@ -14,13 +14,10 @@ class PlayerSubmissionForm extends Component {
       adj2: '',
       noun2: '',
       number: 1
-
     }
   }
 
   onInputChange = (event) => {
-    console.log("input change")
-
     const field = event.target.name;
     const value = event.target.value;
 
@@ -29,7 +26,6 @@ class PlayerSubmissionForm extends Component {
     this.setState(newState);
   }
 
-
   onFormSubmit = (event) => {
     event.preventDefault();
 
@@ -37,7 +33,6 @@ class PlayerSubmissionForm extends Component {
 
     {line: `The ${this.state.adj1} ${this.state.noun1} ${this.state.adv} ${this.state.verb} the ${this.state.adj2} ${this.state.noun2}.`
     }
-
 
     this.setState({
       adj1: '',
@@ -49,7 +44,6 @@ class PlayerSubmissionForm extends Component {
       number: this.state.number + 1
     });
 
-    console.log('created new poem line', newRecentSubmission);
     this.props.addRecentSubmissionCallback(newRecentSubmission);
   }
 

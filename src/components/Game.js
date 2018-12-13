@@ -19,16 +19,12 @@ class Game extends Component {
     const submissions = this.state.submissions;
     submissions.push(newRecentSubmission);
     this.setState({newRecentSubmission: newRecentSubmission})
-
-    console.log(this.state.submissions[0].line)
   }
-
 
   hideComponents =() => {
     console.log('here is the callback!')
     this.setState({hidden: true})
   }
-
 
   render() {
 
