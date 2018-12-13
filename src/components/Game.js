@@ -10,6 +10,7 @@ class Game extends Component {
     super(props);
     this.state = {
       poem: [],
+      poemVisible: false,
     }
   }
 
@@ -20,6 +21,11 @@ class Game extends Component {
     console.log(amendedPoem);
     this.setState({poem: amendedPoem
     });
+  }
+
+  showFullPoem = () => {
+    const poemVisibility = !this.state.poemVisible;
+    this.setState({poemVisible: poemVisibility});
   }
 
   render() {
@@ -49,7 +55,8 @@ class Game extends Component {
         <PlayerSubmissionForm addSubmissionCallback={this.addPoemLine}
             playerNumber={this.state.poem.length + 1} />
 
-        <FinalPoem />
+          <FinalPoem poem={this.state.poem}
+            showFullPoemCallback={this.showFullPoem} />
 
       </div>
     );
