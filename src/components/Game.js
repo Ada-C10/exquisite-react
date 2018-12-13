@@ -60,7 +60,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission mostRecent={this.state.recentSubmission}/>
+        { this.state.recentSubmission !== "" ? <RecentSubmission mostRecent={this.state.recentSubmission}/> : null }
 
         <PlayerSubmissionForm formFields={FIELDS} submissionFormCallback={this.addPartToCadaver}/>
 

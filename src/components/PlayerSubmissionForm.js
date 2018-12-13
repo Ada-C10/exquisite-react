@@ -41,42 +41,36 @@ class PlayerSubmissionForm extends Component {
   // }
 
   onAdj1Change = (event) => {
-    console.log(`Adj1 updated ${event.target.value}`);
     this.setState({
       adj1: event.target.value,
     });
   }
 
   onAdj2Change = (event) => {
-    console.log(`Adj2 updated ${event.target.value}`);
     this.setState({
       adj2: event.target.value,
     });
   }
 
   onNoun1Change = (event) => {
-    console.log(`Noun1 updated ${event.target.value}`);
     this.setState({
       noun1: event.target.value,
     });
   }
 
   onNoun2Change = (event) => {
-    console.log(`Noun2 updated ${event.target.value}`);
     this.setState({
       noun2: event.target.value,
     });
   }
 
   onAdverbChange = (event) => {
-    console.log(`Adverb updated ${event.target.value}`);
     this.setState({
       adv: event.target.value,
     });
   }
 
   onVerbChange = (event) => {
-    console.log(`Verb updated ${event.target.value}`);
     this.setState({
       verb: event.target.value,
     });
@@ -86,7 +80,6 @@ class PlayerSubmissionForm extends Component {
     event.preventDefault();
 
     if (this.state.adj1 === '' || this.state.adj2 === '' || this.state.noun1 === '' || this.state.noun2 === '' || this.state.adv === '' || this.state.verb === '') {
-      console.log ("oops!")
     } else {
       const newLine = {
         adj1: this.state.adj1,
