@@ -11,19 +11,52 @@ class Game extends Component {
     // set up spot for the array
     this.state = {
       // put in a current line string to store the variable
+      currentLine: "",
       poem: [],
+      hideRecent: true,
     }
+  };
+
+  hideRecent = () => {
+    console.log("hideRecent connected");
+    this.state.hideRecent ? this.setState({hideRecent: false}): this.setState({hideRecent: true});
+  };
+
+  // set state of current line closures
+  currentLineCallback = (line) => {
+    this.setState({currentLine: line}, () => {
+      console.log(this.state.currentline);
+    });
+
+    let createPoem = this.state.poem
+    createPoem.push(line);
+    this.setState({poem: createPoem}, () => {
+      console.log(this.state.poem);
+    })
   }
 
+
   render() {
+
+    let hideComponent
+    if((this.state.hideRecent)){
+      hideComponent =
+      <section>
+        {RecentSubmission}
+        <PlayerSubmissionForm
+          setCurrentLine = {this.currentLineCallback}/>
+      </section>
+    }
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
         return field.placeholder;
       } else {
-        return field;
+        return field
       }
     }).join(" ");
+
+
 
     return (
       <div className="Game">
@@ -36,12 +69,11 @@ class Game extends Component {
         <p className="Game__format-example">
           { exampleFormat }
         </p>
-
-        <RecentSubmission />
-
-        <PlayerSubmissionForm fieldValues />
-
-        <FinalPoem />
+        {hideComponent}
+        < FinalPoem
+          poemLines={this.state.poem}
+          hideRecentCallback = {this.hideRecent}
+          />
 
       </div>
     );

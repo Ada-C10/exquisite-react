@@ -14,8 +14,10 @@ class PlayerSubmissionForm extends Component {
       verb: "",
       adverb2: "",
       noun2: "",
+      playerNumber: 1,
     }
   }
+
   onInputChange = (event) => {
     const field = event.target.name;
     const value = event.target.value;
@@ -28,8 +30,10 @@ class PlayerSubmissionForm extends Component {
   onFormSubmit = (event) => {
     event.preventDefault();
     // validation check to make sure the word passed in is not an empty string
-
     console.log("poemLine");
+
+    const nextPlayer = this.state.playerNumber +1;
+    this.setState({playerNumber: nextPlayer});
 
     const poemLine = "The " + this.state.adjective + " "  + this.state.noun + " " + this.state.adverb + " " + this.state.verb + " the " + this.state.adverb2 + " " + this.state.noun2 + ".";
     this.props.addLine(poemLine);
@@ -78,21 +82,21 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange}
               />
 
-              <input
-                placeholder="adverb2"
-                adjective="adverb2"
-                type="text"
-                value={this.state.adverb2}
-                onChange={this.onInputChange}
-                />
+            <input
+              placeholder="adverb2"
+              adjective="adverb2"
+              type="text"
+              value={this.state.adverb2}
+              onChange={this.onInputChange}
+              />
 
-                <input
-                  placeholder="noun"
-                  adjective="noun"
-                  type="text"
-                  value={this.state.noun}
-                  onChange={this.onInputChange}
-                  />
+            <input
+              placeholder="noun"
+              adjective="noun"
+              type="text"
+              value={this.state.noun}
+              onChange={this.onInputChange}
+              />
           </div>
 
           <div className="PlayerSubmissionForm__submit">
