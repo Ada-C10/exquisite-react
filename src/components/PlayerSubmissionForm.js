@@ -13,7 +13,7 @@ class PlayerSubmissionForm extends Component {
       verb: "",
       adjective2: "",
       noun2: "",
-      playerNumber: 0
+      playerNumber: 1
     }
   }
 
