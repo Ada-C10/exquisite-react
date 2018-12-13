@@ -51,7 +51,7 @@ class PlayerSubmissionForm extends Component {
     });
 
     console.log("Created a new poem line submission", newSubmission);
-    this.props.addSubmission(newSubmission);
+    this.props.addSubmissionCallback(newSubmission);
   }
 
   render() {
@@ -63,10 +63,6 @@ class PlayerSubmissionForm extends Component {
         <form className="PlayerSubmissionForm__form" >
 
           <div className="PlayerSubmissionForm__poem-inputs">
-
-            {
-              // Put your form inputs here... We've put in one below as an example
-            }
             <div>
               The
               <input
@@ -101,7 +97,7 @@ class PlayerSubmissionForm extends Component {
                 />
             </div>
             <div>
-              the 
+              the
               <input
                 name="adj2"
                 placeholder="adjective"
