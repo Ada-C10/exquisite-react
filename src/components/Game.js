@@ -26,7 +26,7 @@ class Game extends Component {
   formatLine = (line) => {
     let {adjective1, noun1, adverb1, verb1, adjective2, noun2} = line;
 
-    return `The ${adjective1} ${noun1} ${adverb1} ${verb1} the ${adjective2} ${noun2}`
+    return `The ${adjective1} ${noun1} ${adverb1} ${verb1} the ${adjective2} ${noun2} .`
   }
 
   addPoemLine = (poemLine) => {
@@ -55,6 +55,7 @@ class Game extends Component {
 
     render() {
 
+      let showPoem = this.state.showPoem
       let poemLines = this.state.poemLines;
       let numLines = (poemLines.length)
       let userNum = numLines+1
@@ -101,12 +102,12 @@ class Game extends Component {
           <p className="Game__format-example">The adjective noun adverb verb the adjective noun .</p>
 
 
-          <RecentSubmission poemDraft={this.state.poemLines} />
+          {!showPoem ? <RecentSubmission poemDraft={this.state.poemLines} /> : ''}
 
-          <PlayerSubmissionForm addPoemLineCB={this.addPoemLine}
-            userNum={userNum}/>
+          {!showPoem ? <PlayerSubmissionForm addPoemLineCB={this.addPoemLine}
+            userNum={userNum}/> : ''}
 
-          <FinalPoem poemDraft={this.state.poemLines} showPoem={this.state.showPoem}
+           <FinalPoem poemDraft={this.state.poemLines} showPoem={showPoem}
           revealPoemCB={this.revealPoemHandler}
           showPoemRevealButton={this.state.showPoemRevealButton} />
 
