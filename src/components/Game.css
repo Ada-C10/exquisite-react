@@ -2,3 +2,7 @@
   text-align: center;
   font-style: italic;
 }
+
+.true{
+  visibility: hidden;
+}

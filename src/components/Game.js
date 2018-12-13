@@ -8,9 +8,47 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      currentLine: "",
+      poem: [],
+      hideRecent: true,
+    }
+  }
+
+  hideRecent = () => {
+    console.log("Inside hideRecent");
+    this.state.hideRecent? this.setState({hideRecent: false}): this.setState({hideRecent: true});
+  }
+
+  currentLineCallback = (sentence) => {
+    this.setState({currentLine: sentence}, () => {
+      console.log(this.state.currentLine);
+    });
+
+    let createPoem = this.state.poem;
+    createPoem.push(sentence);
+    this.setState({poem: createPoem}, () => {
+      console.log(this.state.poem);
+    })
+
   }
 
   render() {
+    let recentSub;
+    if(this.state.currentLine.length > 0){
+      recentSub = <RecentSubmission currentLine={this.state.currentLine}/>
+    };
+
+    let hideComponent;
+    if((this.state.hideRecent)){
+      hideComponent = <section>
+        {recentSub}
+
+        <PlayerSubmissionForm
+          setCurrentLine = {this.currentLineCallback}/>
+      </section>
+    }
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
@@ -32,11 +70,11 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
-
-        <PlayerSubmissionForm />
-
-        <FinalPoem />
+        {hideComponent}
+        <FinalPoem
+          linesOfPoem={this.state.poem}
+          hideRecentCallback = {this.hideRecent}
+          />
 
       </div>
     );

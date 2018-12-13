@@ -1,20 +1,44 @@
 import React from 'react';
 import './FinalPoem.css';
 
-const FinalPoem = (props) => {
+class FinalPoem extends React.Component {
+  constructor(props) {
+    super(props)
 
-  return (
-    <div className="FinalPoem">
-      <section className="FinalPoem__poem">
-        <h3>Final Poem</h3>
+    this.state = {
+      finalPoemHeaderClass: "FinalPoem__poem hide",
+      singleLine: "test",
+      revealPoemButton: "FinalPoem__reveal-btn",
+    }
+  }
 
-      </section>
+  showPoem = () => {
+    this.setState({finalPoemHeaderClass: "FinalPoem__poem"});
+    this.setState({revealPoemButton: "FinalPoem__reveal-btn hide"})
+    this.props.hideRecentCallback();
+  }
 
-      <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+  render(){
+
+    const allLines = this.props.linesOfPoem;
+    const final = allLines.join('\n');
+
+    return (
+      <div className="FinalPoem">
+        <section className={this.state.finalPoemHeaderClass}>
+          <h3>Final Poem</h3>
+          <p className="poem">{final}</p>
+        </section>
+
+        <div className="FinalPoem__reveal-btn-container">
+          <input type="button" value="We are finished: Reveal the Poem" className={this.state.revealPoemButton}
+            onClick={this.showPoem}
+            />
+        </div>
       </div>
-    </div>
-  );
+    )
+  }
 }
+
 
 export default FinalPoem;
