@@ -8,7 +8,41 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      sentence: [],
+      count: 1,
+      poem: [],
+      finalPoemBool: true,
+      playerSubBool: true,
+      recentSubBool: true,
+    }
+
   }
+
+  poem = () => {
+    let tempArray = []
+    const lyrics = this.state.sentence
+
+    lyrics.forEach(function(sentence) {
+      const element = (sentence.adjective1 + " " +  sentence.noun1  + " " + sentence.adverb + " " + sentence.verb  + " " + sentence.adjective2 + " " + sentence.noun2)
+      tempArray.push(element)
+    });
+
+
+    this.setState({'poem': tempArray, 'finalPoemBool': false, 'playerSubBool': false, 'recentSubBool': false })
+
+    return console.log(lyrics);
+  }
+
+
+  addSentence = (newSentence) => {
+    const sentence = this.state.sentence;
+    sentence.push(newSentence);
+    const count = this.state.count + 1
+    this.setState({'sentence': sentence, 'count': count})
+  }
+
 
   render() {
 
@@ -32,11 +66,11 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission sentences={this.state.sentence} recentSubBool={this.state.recentSubBool}/>
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm addSentenceCallback={this.addSentence} count={this.state.count} playerSubBool={this.state.playerSubBool} />
 
-        <FinalPoem />
+        <FinalPoem poem={this.poem} finalpoem={this.state.poem} finalPoemBool={this.state.finalPoemBool}/>
 
       </div>
     );
