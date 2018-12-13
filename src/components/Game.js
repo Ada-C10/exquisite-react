@@ -18,6 +18,7 @@ class Game extends Component {
 
   hideRecent = () => {
     console.log("Inside hideRecent");
+    this.state.hideRecent? this.setState({hideRecent: false}): this.setState({hideRecent: true});
   }
 
   currentLineCallback = (sentence) => {
