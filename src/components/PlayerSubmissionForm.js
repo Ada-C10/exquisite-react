@@ -110,8 +110,15 @@ class PlayerSubmissionForm extends Component {
   }
 
 
+
   render() {
-    if (this.state.finalSubmit !== true) {
+
+    const inputValidator = (name) => {
+      if (this.state[name] === ""){
+        return "PlayerSubmissionFormt__input--invalid";
+      }
+    }
+
     return (
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player #{ this.state.submissionCount + 1 }</h3>
@@ -120,13 +127,27 @@ class PlayerSubmissionForm extends Component {
 
           <div className="PlayerSubmissionForm__poem-inputs">
             The
-            <input name="adj1" type="text" placeholder={"adjective"} onChange= {this.onAdj1Change} />
-            <input name="noun1" type="text" placeholder={"noun"} onChange= {this.onNoun1Change} />
-            <input name="adverb" type="text" placeholder={"adverb"} onChange= {this.onAdverbChange} />
-            <input name="verb" type="text" placeholder={"verb"} onChange= {this.onVerbChange} />
+            <input name="adj1" type="text" className={inputValidator("adj1")} placeholder={"adjective"}
+                onChange= {this.onAdj1Change} />
+            <input name="noun1" type="text" className={inputValidator("noun1")} placeholder={"noun"}
+                onChange= {this.onNoun1Change} />
+            <input name="adv" type="text"
+                className={inputValidator("adv")}
+                placeholder={"adverb"}
+                onChange= {this.onAdverbChange} />
+            <input name="verb" type="text"
+                className={inputValidator("verb")}
+                placeholder={"verb"}
+                onChange= {this.onVerbChange} />
             the
-            <input name="adj2" type="text" placeholder={"adjective"}  onChange= {this.onAdj2Change}/>
-            <input name="noun2" type="text" placeholder={"noun"} onChange= {this.onNoun2Change} />
+            <input name="adj2" type="text"
+                className={inputValidator("adj2")}
+                placeholder={"adjective"}
+                onChange= {this.onAdj2Change}/>
+            <input name="noun2" type="text"
+                className={inputValidator("noun2")}
+                placeholder={"noun"}
+                onChange= {this.onNoun2Change} />
             .
           </div>
 
@@ -137,7 +158,7 @@ class PlayerSubmissionForm extends Component {
       </div>
     );
   }
-  }
 }
+
 
 export default PlayerSubmissionForm;

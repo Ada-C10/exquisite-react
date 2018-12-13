@@ -17,7 +17,7 @@ class FinalPoem extends React.Component {
       cadaver: cadaver
     });
   }
-  
+
   render() {
     return (
       <div className="FinalPoem">
