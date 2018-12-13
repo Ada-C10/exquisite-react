@@ -12,6 +12,7 @@ class PlayerSubmissionForm extends Component {
       verb: "",
       adjective2: "",
       noun2: "",
+      count: 1,
     }
   }
 
@@ -45,16 +46,17 @@ class PlayerSubmissionForm extends Component {
       verb: '',
       adjective2: '',
       noun2: '',
+      count: this.state.count + 1,
     });
     console.log("create a line from input:", newLine);
-    // this.props.addLineToRecentCallback(newLine);
+    this.props.addLineToRecentCallback(newLine);
   }
 
   render() {
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <h3>Player Submission Form for Player #{ this.state.count}</h3>
 
         <form className="PlayerSubmissionForm__form"onSubmit={this.onFormSubmit} >
 
