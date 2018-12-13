@@ -57,11 +57,14 @@ class PlayerSubmissionForm extends Component {
     this.props.addPoemLineCB(submittedPoemLine);
   }
 
-
+checksEmptyInput = (value) => {
+    return value==='' ? `PlayerSubmissionFormt__input--invalid` : ''
+  }
 
 render() {
 
   let userNum = this.props.userNum
+
 
   return (
     <div className="PlayerSubmissionForm">
@@ -73,23 +76,29 @@ render() {
           The
           <input name="adjective1" placeholder="adjective" type="text"
             value={this.state.adjective1}
-            onChange={this.onInputChange}/>
+            onChange={this.onInputChange}
+            className={this.checksEmptyInput(this.state.adjective1)}/>
           <input name="noun1" placeholder="noun" type="text"
             value={this.state.noun1}
-            onChange={this.onInputChange}/>
+            onChange={this.onInputChange}
+            className={this.checksEmptyInput(this.state.noun1)}/>
           <input name="adverb1" placeholder="adverb" type="text"
             value={this.state.adverb1}
-            onChange={this.onInputChange}/>
+            onChange={this.onInputChange}
+            className={this.checksEmptyInput(this.state.adverb1)}/>
           <input name="verb1" placeholder="verb" type="text"
             value={this.state.verb1}
-            onChange={this.onInputChange}/>
+            onChange={this.onInputChange}
+            className={this.checksEmptyInput(this.state.verb1)}/>
           the
           <input name="adjective2" placeholder="adjective" type="text"
             value={this.state.adjective2}
-            onChange={this.onInputChange}/>
+            onChange={this.onInputChange}
+            className={this.checksEmptyInput(this.state.adjective2)}/>
           <input name="noun2" placeholder="noun" type="text"
             value={this.state.noun2}
-            onChange={this.onInputChange}/>
+            onChange={this.onInputChange}
+            className={this.checksEmptyInput(this.state.noun2)}/>
         </div>
 
         <div className="PlayerSubmissionForm__submit">
