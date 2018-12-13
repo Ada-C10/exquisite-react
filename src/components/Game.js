@@ -13,11 +13,25 @@ class Game extends Component {
     }
   }
 
+  fetchFields = () => {
+
+    const fieldObj = {}
+
+    const fields = FIELDS.filter((field) => {
+      return field.hasOwnProperty("key");
+    });
+
+    fields.forEach( (field) => {
+      fieldObj[field.key] = ""
+    })
+    return fieldObj
+  }
+
   changeCurrentLine = (line) => {
 
     let emptyLine = ""
 
-    for(let i=0; i < FIELDS.length; i++){
+    for(let i = 0; i < FIELDS.length; i++) {
       emptyLine += " "
     }
 
@@ -41,6 +55,8 @@ class Game extends Component {
       }
     }).join(" ");
 
+    const filteredFields = this.fetchFields()
+
     return (
       <div className="Game">
         <h2>Game</h2>
@@ -55,7 +71,7 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm fields={FIELDS} currentLineCallback={this.changeCurrentLine}/>
+        <PlayerSubmissionForm fields={filteredFields} currentLineCallback={this.changeCurrentLine}/>
 
         <FinalPoem />
 

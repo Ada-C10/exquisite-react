@@ -6,7 +6,8 @@ class PlayerSubmissionForm extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = this.props.fields;
+    console.log(this.state)
   }
 
   fetchFields = () => {
@@ -43,11 +44,11 @@ class PlayerSubmissionForm extends Component {
 
   componentDidMount() {
     //set state according to field.key
-    this.fetchFields().forEach( (field) => {
-      this.setState({
-        [field.key]: ""
-      })
-    })
+    // this.fetchFields().forEach( (field) => {
+    //   this.setState({
+    //     [field.key]: ""
+    //   })
+    // })
   }
 
   onInputChange = (event) => {
@@ -73,18 +74,20 @@ class PlayerSubmissionForm extends Component {
   }
 
   render() {
+//
+//     const inputs = this.fetchFields();
+//     let filteredInputs = []
+// if (inputs) {
+//     filteredInputs = inputs.forEach((input) => {
+//       // const key = input.key
+//       console.log("state", this.state[input.key])
+//       return(
+//         <input name={input.key} placeholder={input.placeholder} type="text" value={this.state[input.key]} onChange={this.onInputChange}/>
+//       )
+//     })
+//   }
 
-    const inputs = this.fetchFields();
-
-    const filteredInputs = inputs.forEach((input) => {
-      // const key = input.key
-      // return(
-      //   <input name={input.key} placeholder={input.placeholder} type="text" value={this.state[input.key]} onChange={this.onInputChange}/>
-      // )
-      console.log("state", this.state)
-    })
-
-    console.log(filteredInputs)
+    // console.log(filteredInputs)
 
 
     return (
@@ -114,5 +117,5 @@ class PlayerSubmissionForm extends Component {
 export default PlayerSubmissionForm;
 
 PlayerSubmissionForm.propTypes = {
-  fields: PropTypes.array.isRequired,
+  fields: PropTypes.isRequired,
 };
