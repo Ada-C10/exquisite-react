@@ -45,12 +45,13 @@ class Game extends Component {
       <PlayerSubmissionForm addSubmissionCallback={this.addPoemLine} playerNumber={this.state.poem.length + 1} />
         ;
 
-      const displayButton = this.state.poemVisible == false ?
-        <div className="FinalPoem__reveal-btn-container">
-          <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={this.showFullPoem}/>
-        </div>
-        :
-        " ";
+      // const displayButton = this.state.poemVisible === false ?
+      //   <div className="FinalPoem__reveal-btn-container">
+      //     <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={this.showFullPoem}/>
+      //   </div>
+      // :
+      // " ";
+
 
     return (
       <div className="Game">
@@ -69,7 +70,13 @@ class Game extends Component {
 
         <div>
           {displayPoem}
-          {displayButton}
+
+          {this.state.poemVisible === false &&
+           <div className="FinalPoem__reveal-btn-container">
+             <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={this.showFullPoem}/>
+           </div>
+         }
+
         </div>
       </div>
     );
