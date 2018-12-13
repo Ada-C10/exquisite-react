@@ -18,7 +18,7 @@ class Game extends Component {
 
   addSubmitRow = (props) => {
     let lines = this.state.lines;
-    let line = `The ${props.adj1} ${props.noun1} ${props.adverb} ${props.verb} the ${props.adj2} ${props.noun2}.`;
+    let line = <p>The {props.adj1} {props.noun1} {props.adverb} {props.verb} the {props.adj2} {props.noun2}.</p>;
     this.setState({lastSubmission: line})
     // console.log(line)
     lines.push(line);
