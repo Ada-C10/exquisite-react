@@ -83,7 +83,7 @@ class PlayerSubmissionForm extends Component {
       //       console.log("state", Object.keys(input)[0])
       console.log("state", Object.keys(input)[0])
       return(
-        <input name={input[Object.keys(input)[0]]} placeholder={input.placeholder} type="text" value={input[Object.keys(input)[0]]} onChange={this.onInputChange}/>
+        <input name={this.state[Object.keys(input)[0]]} placeholder={this.state.placeholder} type="text" value={this.state[Object.keys(input)[0]]} onChange={this.onInputChange}/>
       )
     })
 
