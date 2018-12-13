@@ -10,7 +10,8 @@ class Game extends Component {
     super(props);
     this.state = {
       currentLine: undefined,
-      finalPoem: []
+      finalPoem: [],
+      end: false
     }
   }
 
@@ -41,6 +42,20 @@ class Game extends Component {
     }
   }
 
+  revealPoem = () => {
+      console.log("start end", this.state.end)
+
+
+    this.setState({
+      end: true
+    })
+      console.log("end end", this.state.end)
+        console.log("final", this.state.finalPoem)
+
+    console.log("we in here")
+
+  }
+
   render() {
 
     const exampleFormat = FIELDS.map((field) => {
@@ -67,7 +82,7 @@ class Game extends Component {
 
         <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}/>
 
-        <FinalPoem poem={this.state.finalPoem}/>
+        <FinalPoem poem={this.state.finalPoem} revealPoemCallback={this.revealPoem} ended={this.state.end}/>
 
       </div>
     );
