@@ -11,16 +11,26 @@ class Game extends Component {
 
     this.state = {
       sentence: [],
+      count: 1
+      poem: ""
     }
 
   }
 
 
+const poem = () => {
+  sentences
+//parse sentence make them go into poem
+  sentences
+  this.setState('poem': )
+}
+
 
 addSentence = (newSentence) => {
   const sentence = this.state.sentence;
   sentence.push(newSentence);
-  this.setState({'sentence': sentence})
+  const count = this.state.count + 1
+  this.setState({'sentence': sentence, 'count': count})
 }
 
 
@@ -46,11 +56,11 @@ addSentence = (newSentence) => {
           { exampleFormat }
         </p>
 
-        <RecentSubmission sentences={this.sentence}/>
+        <RecentSubmission sentences={this.state.sentence}/>
 
-        <PlayerSubmissionForm addSentenceCallback={this.addSentence} />
+        <PlayerSubmissionForm addSentenceCallback={this.addSentence} count={this.state.count} />
 
-        <FinalPoem />
+        <FinalPoem poem={this.state.poem}/>
 
       </div>
     );

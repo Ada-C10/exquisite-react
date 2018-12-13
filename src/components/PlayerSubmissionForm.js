@@ -33,12 +33,12 @@ this.setState(newState);
     event.preventDefault();
 
     const newSentence = {
-      noun: this.state.noun1,
-      adjective: this.state.adjective1,
+      noun1: this.state.noun1,
+      adjective1: this.state.adjective1,
       adverb: this.state.adverb,
       verb: this.state.verb,
-      Adjective: this.state.adjective2,
-      Noun: this.state.noun2,
+      adjective2: this.state.adjective2,
+      noun2: this.state.noun2,
 
     };
 
@@ -62,7 +62,7 @@ this.setState(newState);
 
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <h3>Player Submission Form for Player #{ this.props.count }</h3>
 
         <form className="PlayerSubmissionForm__form"
           onSubmit={this.onFormSubmit}
