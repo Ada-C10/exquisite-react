@@ -5,6 +5,7 @@ import './FinalPoem.css';
 const FinalPoem = (props) => {
 
   let parsePoems = () => {
+    console.log("i am in parsePoems");
     let allPoemsShown = [];
     for (let onePoem of props.finalPoem) {
       allPoemsShown.push(Object.values(onePoem).join(" "));
@@ -13,18 +14,34 @@ const FinalPoem = (props) => {
     return allPoemsShown.map((line) => {
       return <p>{line}</p>
     });
-  }
+  };
 
-  return (
-    <div className="FinalPoem">
-      <section className="FinalPoem__poem">
+  let showFinalPoem = () => {
+    console.log("im in showFinalPoem");
+    if (props.showresults) {
+      return <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
         <div>{parsePoems()}</div>
       </section>
-
-      <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+    }
+    else {
+      return <div className="FinalPoem__reveal-btn-container">
+        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={props.callback}/>
       </div>
+    }
+  };
+
+  // let changeShowResultsToTrue = () => {
+  //   console.log("I'm in changeShowResultsToTrue in FinalPoem");
+  //   console.log(props.callback);
+  //   return props.callback;
+  // };
+
+  return (
+    <div className="FinalPoem">
+      <div>{showFinalPoem()}</div>
+
+
 
     </div>
   );
