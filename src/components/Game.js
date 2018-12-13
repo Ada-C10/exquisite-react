@@ -38,6 +38,20 @@ class Game extends Component {
       }
     }).join(" ");
 
+    const displayPoem = this.state.poemVisible?
+      <FinalPoem poem={this.state.poem}
+          />
+       :
+      <PlayerSubmissionForm addSubmissionCallback={this.addPoemLine} playerNumber={this.state.poem.length + 1} />
+        ;
+
+      const displayButton = this.state.poemVisible == false ?
+        <div className="FinalPoem__reveal-btn-container">
+          <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={this.showFullPoem}/>
+        </div>
+        :
+        " ";
+
     return (
       <div className="Game">
         <h2>Game</h2>
@@ -52,12 +66,11 @@ class Game extends Component {
 
         <RecentSubmission />
 
-        <PlayerSubmissionForm addSubmissionCallback={this.addPoemLine}
-            playerNumber={this.state.poem.length + 1} />
 
-          <FinalPoem poem={this.state.poem}
-            showFullPoemCallback={this.showFullPoem} />
-
+        <div>
+          {displayPoem}
+          {displayButton}
+        </div>
       </div>
     );
   }
