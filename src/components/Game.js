@@ -10,28 +10,23 @@ class Game extends Component {
     super(props);
 
     this.state = {
-      submissions: [
-        {
-          adjective: 'happy',
-          noun: 'monkey balls',
-          adverb: 'laughingly',
-          verb: 'fires',
-          adjective2: 'sunny',
-          noun2: 'trees'
-        }
-      ]
+      poemLines: []
     }
   }
 
   addSubmission = (newSubmission) => {
     console.log("A new submission was made!")
-    const submissions = this.state.submissions;
-    submissions.push(newSubmission);
-    this.setState({submissions: submissions})
+    const poemLines = [...this.state.poemLines];
+    // destructuring technique
+    const { adjective, noun, adverb, verb, adjective2, noun2 } = newSubmission;
+    const newSentence = `The ${adjective} ${noun} ${adverb} ${verb} the ${adjective2} ${noun2}`;
+    poemLines.push(newSentence);
+    this.setState({poemLines: poemLines})
   }
 
   render() {
-    // const submissions = this.state.submissions
+    const lastEntry = this.state.poemLines[this.state.poemLines.length - 1]
+    console.log(lastEntry)
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
@@ -53,9 +48,9 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission addSubmission={lastEntry} />
 
-        <PlayerSubmissionForm addSubmissionCallback={this.addSubmission}/>
+        <PlayerSubmissionForm addSubmissionCallback={this.addSubmission} />
 
         <FinalPoem />
 
