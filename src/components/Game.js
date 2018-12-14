@@ -6,19 +6,57 @@ import RecentSubmission from './RecentSubmission';
 
 class Game extends Component {
 
+  // TODO:
+  // - hm, show recent line biz?
+  // in submissionform- use objects/arrays for words to make more DRY
+
   constructor(props) {
     super(props);
-  }
+
+    this.state = {
+      poemLines: [],
+      showPoem: false,
+      showPoemRevealButton: false
+    };
+  };
+
+  formatLine = (line) => {
+    let {adjective1, noun1, adverb1, verb1, adjective2, noun2} = line;
+
+    return `The ${adjective1} ${noun1} ${adverb1} ${verb1} the ${adjective2} ${noun2} .`
+  };
+
+  addPoemLine = (poemLine) => {
+    const poemLines = this.state.poemLines;
+    poemLines.push(this.formatLine(poemLine));
+
+    this.setState({poemLines: poemLines});
+    this.setState({showPoemRevealButton: true});
+  };
+
+  findRecentLine = (poemLine) => {
+    return poemLine
+  };
+
+  revealPoemHandler = () => {
+    this.setState({showPoem: true});
+  };
 
   render() {
 
-    const exampleFormat = FIELDS.map((field) => {
-      if (field.key) {
-        return field.placeholder;
-      } else {
-        return field;
-      }
-    }).join(" ");
+    let showPoem = this.state.showPoem;
+    let showPoemRevealButton = this.state.showPoemRevealButton
+    let poemLines = this.state.poemLines;
+    let numLines = (poemLines.length);
+    let userNum = numLines+1;
+
+    // const exampleFormat = FIELDS.map((field) => {
+    //   if (field.key) {
+    //     return field.placeholder;
+    //   } else {
+    //     return field;
+    //   }
+    // }).join(" ");
 
     return (
       <div className="Game">
@@ -28,49 +66,52 @@ class Game extends Component {
 
         <p>Please follow the following format for your poetry submission:</p>
 
-        <p className="Game__format-example">
-          { exampleFormat }
-        </p>
+        <p className="Game__format-example">The adjective noun adverb verb the adjective noun .</p>
 
-        <RecentSubmission />
 
-        <PlayerSubmissionForm />
+        {!showPoem && showPoemRevealButton ? <RecentSubmission poemDraft={this.state.poemLines} /> : ''}
 
-        <FinalPoem />
+        {!showPoem ? <PlayerSubmissionForm addPoemLineCB={this.addPoemLine}
+        userNum={userNum}/> : ''}
+
+        {showPoemRevealButton ? <FinalPoem
+        poemDraft={poemLines}
+        showPoem={showPoem}
+        revealPoemCB={this.revealPoemHandler} /> : ''}
 
       </div>
     );
   }
 }
 
-const FIELDS = [
-  "The",
-  {
-    key: 'adj1',
-    placeholder: 'adjective',
-  },
-  {
-    key: 'noun1',
-    placeholder: 'noun',
-  },
-  {
-    key: 'adv',
-    placeholder: 'adverb',
-  },
-  {
-    key: 'verb',
-    placeholder: 'verb',
-  },
-  "the",
-  {
-    key: 'adj2',
-    placeholder: 'adjective',
-  },
-  {
-    key: 'noun2',
-    placeholder: 'noun',
-  },
-  ".",
-];
+// const FIELDS = [
+//   "The",
+//   {
+//     key: 'adj1',
+//     placeholder: 'adjective',
+//   },
+//   {
+//     key: 'noun1',
+//     placeholder: 'noun',
+//   },
+//   {
+//     key: 'adv',
+//     placeholder: 'adverb',
+//   },
+//   {
+//     key: 'verb',
+//     placeholder: 'verb',
+//   },
+//   "the",
+//   {
+//     key: 'adj2',
+//     placeholder: 'adjective',
+//   },
+//   {
+//     key: 'noun2',
+//     placeholder: 'noun',
+//   },
+//   ".",
+// ];
 
 export default Game;
