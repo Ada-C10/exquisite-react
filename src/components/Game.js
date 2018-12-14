@@ -37,8 +37,13 @@ class Game extends Component {
 
 
   render() {
+    let recent;
+    if(this.state.currentLine.length > 0){
+      recent = <RecentSubmission currentLine={this.state.currentLine}/>
+    };
 
-    let hideComponent
+
+    let hideComponent;
     if((this.state.hideRecent)){
       hideComponent =
       <section>

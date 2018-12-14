@@ -49,11 +49,11 @@ class PlayerSubmissionForm extends Component {
     const sentence = `The ${adjective} ${noun} ${adverb} ${verb} the ${adverb2} ${noun2}.`
 
     this.setState({
-      adj1: "",
-      noun1: "",
+      adjective: "",
+      noun: "",
       adverb: "",
       verb: "",
-      adj2: "",
+      adverb2: "",
       noun2: "",
     })
 
@@ -65,7 +65,7 @@ class PlayerSubmissionForm extends Component {
   render() {
     return (
       <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <h3>Player Submission Form for Player #{ this.state.playerNumber }</h3>
 
         <form
           className="PlayerSubmissionForm__form"
@@ -78,7 +78,7 @@ class PlayerSubmissionForm extends Component {
 
             <input
               placeholder="adjective"
-              adjective="adjective"
+              name="adjective"
               type="text"
               value={this.state.adjective}
               onChange={this.onInputChange}
@@ -86,7 +86,7 @@ class PlayerSubmissionForm extends Component {
 
             <input
               placeholder="noun"
-              adjective="noun"
+              name="noun"
               type="text"
               value={this.state.noun}
               onChange={this.onInputChange}
@@ -94,7 +94,7 @@ class PlayerSubmissionForm extends Component {
 
             <input
               placeholder="adverb"
-              adjective="adverb"
+              name="adverb"
               type="text"
               value={this.state.adverb}
               onChange={this.onInputChange}
@@ -102,7 +102,7 @@ class PlayerSubmissionForm extends Component {
 
             <input
               placeholder="verb"
-              adjective="verb"
+              name="verb"
               type="text"
               value={this.state.verb}
               onChange={this.onInputChange}
@@ -112,7 +112,7 @@ class PlayerSubmissionForm extends Component {
 
             <input
               placeholder="adverb2"
-              adjective="adverb2"
+              name="adverb2"
               type="text"
               value={this.state.adverb2}
               onChange={this.onInputChange}
@@ -120,7 +120,7 @@ class PlayerSubmissionForm extends Component {
 
             <input
               placeholder="noun"
-              adjective="noun"
+              name="noun"
               type="text"
               value={this.state.noun}
               onChange={this.onInputChange}
