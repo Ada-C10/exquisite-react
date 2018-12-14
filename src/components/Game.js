@@ -7,7 +7,8 @@ import RecentSubmission from './RecentSubmission';
 class Game extends Component {
 
   // TODO:
-  // = hm, show recent line biz?
+  // - hm, show recent line biz?
+  // in submissionform- use objects/arrays for words to make more DRY
 
   constructor(props) {
     super(props);
@@ -74,10 +75,9 @@ class Game extends Component {
         userNum={userNum}/> : ''}
 
         {showPoemRevealButton ? <FinalPoem
-          poemDraft={poemLines}
-           showPoem={showPoem}
-          showPoemRevealButton={showPoemRevealButton}
-          revealPoemCB={this.revealPoemHandler} /> : ''}
+        poemDraft={poemLines}
+        showPoem={showPoem}
+        revealPoemCB={this.revealPoemHandler} /> : ''}
 
       </div>
     );
