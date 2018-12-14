@@ -6,6 +6,9 @@ import RecentSubmission from './RecentSubmission';
 
 class Game extends Component {
 
+  // TODO:
+  // = hm, show recent line biz?
+
   constructor(props) {
     super(props);
 
@@ -70,9 +73,11 @@ class Game extends Component {
         {!showPoem ? <PlayerSubmissionForm addPoemLineCB={this.addPoemLine}
         userNum={userNum}/> : ''}
 
-        <FinalPoem poemDraft={this.state.poemLines} showPoem={showPoem}
-          revealPoemCB={this.revealPoemHandler}
-          showPoemRevealButton={showPoemRevealButton} />
+        {showPoemRevealButton ? <FinalPoem
+          poemDraft={poemLines}
+           showPoem={showPoem}
+          showPoemRevealButton={showPoemRevealButton}
+          revealPoemCB={this.revealPoemHandler} /> : ''}
 
       </div>
     );
