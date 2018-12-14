@@ -11,21 +11,15 @@ class Game extends Component {
 
     this.state = {
       poem: [],
-      player: 0,
     }
   }
 
   addLine = (newLine) => {
     const newState = {...this.state};
     const newPoem = newState.poem;
-    console.log(newLine);
-    console.log(newPoem);
     newPoem.push(newLine);
 
     this.setState(newState);
-    this.setState({
-      player: this.state.player + 1
-    });
   };
 
   render() {
@@ -38,9 +32,9 @@ class Game extends Component {
       }
     }).join(" ");
 
-    console.log(this.state.poem[this.state.poem.length - 1]);
     const poemStarted = this.state.poem.length === 0 ? false : true;
     const poemOngoing = !this.state.finalize;
+    const numPlayers = this.state.poem.length;
 
     return (
       <div className="Game">
@@ -61,7 +55,7 @@ class Game extends Component {
         { poemOngoing &&
           <PlayerSubmissionForm
           addLineCallback={this.addLine}
-          playerCount={this.state.player}
+          playerCount={numPlayers}
           fields={FIELDS}/> }
 
         <FinalPoem

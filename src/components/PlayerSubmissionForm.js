@@ -35,7 +35,7 @@ class PlayerSubmissionForm extends Component {
         return field;
       }
     }).join(" ");
-    
+
     this.setState({
       adj1: '',
       noun1: '',
@@ -46,7 +46,6 @@ class PlayerSubmissionForm extends Component {
     });
 
     this.props.addLineCallback(newLine);
-    console.log(this.state);
   }
 
   inputValid = (field) => {
@@ -57,7 +56,6 @@ class PlayerSubmissionForm extends Component {
   getFields() {
     const exampleFormat = this.props.fields.map((field) => {
       if (field.key) {
-        console.log(field);
         return <input
           placeholder={field.placeholder}
           name={field.key}
