@@ -35,9 +35,33 @@ class PlayerSubmissionForm extends Component {
     const nextPlayer = this.state.playerNumber +1;
     this.setState({playerNumber: nextPlayer});
 
-    const poemLine = "The " + this.state.adjective + " "  + this.state.noun + " " + this.state.adverb + " " + this.state.verb + " the " + this.state.adverb2 + " " + this.state.noun2 + ".";
-    this.props.addLine(poemLine);
+    const line = {
+      adj1: this.state.adjective,
+      noun1: this.state.noun,
+      adverb: this.state.adverb,
+      verb: this.state.verb,
+      adj2: this.state.adverb2,
+      noun2: this.state.noun2,
+    }
+
+    const {adjective, noun, adverb, verb, adverb2, noun2} = line;
+
+    const sentence = `The ${adjective} ${noun} ${adverb} ${verb} the ${adverb2} ${noun2}.`
+
+    this.setState({
+      adj1: "",
+      noun1: "",
+      adverb: "",
+      verb: "",
+      adj2: "",
+      noun2: "",
+    })
+
+    // console.log(sentence);
+    this.props.setCurrentLine(sentence);
   }
+
+
   render() {
     return (
       <div className="PlayerSubmissionForm">
@@ -49,6 +73,8 @@ class PlayerSubmissionForm extends Component {
           >
 
           <div className="PlayerSubmissionForm__poem-inputs">
+
+            <h4>The</h4>
 
             <input
               placeholder="adjective"
@@ -82,6 +108,8 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange}
               />
 
+            <h4>the</h4>
+
             <input
               placeholder="adverb2"
               adjective="adverb2"
@@ -97,6 +125,7 @@ class PlayerSubmissionForm extends Component {
               value={this.state.noun}
               onChange={this.onInputChange}
               />
+            <h4>.</h4>
           </div>
 
           <div className="PlayerSubmissionForm__submit">

@@ -20,7 +20,7 @@ class FinalPoem extends React.Component {
 
   render(){
 
-    const allLines = this.props.linesOfPoem;
+    const allLines = this.props.poemLines;
     const final = allLines.join('\n');
 
     return (
