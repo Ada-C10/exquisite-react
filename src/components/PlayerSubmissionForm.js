@@ -16,6 +16,19 @@ class PlayerSubmissionForm extends Component {
     };
   }
 
+  resetState = () => {
+    let updatedPlayer = this.state.player + 1;
+    this.setState({
+      adj1: '',
+      noun1: '',
+      adv: '',
+      verb: '',
+      adj2: '',
+      noun2: '',
+      player: updatedPlayer
+    })
+  }
+
   onInputChange = (event) => {
     const field = event.target.name;
     const value = event.target.value;
@@ -27,7 +40,6 @@ class PlayerSubmissionForm extends Component {
 
   onFormSubmit = (event) => {
     event.preventDefault();
-    const updatedPlayer = this.state.player + 1;
 
     const playerSubmission = {
       adj1: this.state.adj1,
@@ -38,18 +50,8 @@ class PlayerSubmissionForm extends Component {
       noun2: `${this.state.noun2}.`
     };
 
-    this.setState({
-      adj1: '',
-      noun1: '',
-      adv: '',
-      verb: '',
-      adj2: '',
-      noun2: '',
-      player: updatedPlayer
-    });
-
-    console.log("created a new submission")
     this.props.addSubmissionCallback(playerSubmission);
+    this.resetState();
   };
 
   render() {
