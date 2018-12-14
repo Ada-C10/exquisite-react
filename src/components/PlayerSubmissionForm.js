@@ -52,8 +52,28 @@ class PlayerSubmissionForm extends Component {
   };
 
 
-
   render() {
+
+    let inputValues = Object.values(this.state);
+
+    const hasInput = () => {
+      inputValues.forEach((value) => {
+        if (value === '') {
+          return 'input-form-background'
+        } else {
+          return 'boop'
+        };
+        console.log(value);
+      });
+    };
+
+    const classFirstAdj = this.state.firstAdjective ? '' : 'input-form-background';
+    const classFirstNoun = this.state.firstNoun ? '' : 'input-form-background';
+    const classAdverb = this.state.adverb ? '' : 'input-form-background';
+    const classVerb = this.state.verb ? '' : 'input-form-background';
+    const classSecondAdj = this.state.secondAdjective ? '' : 'input-form-background';
+    const classSecondNoun = this.state.secondNoun ? '' : 'input-form-background';
+
 
     return (
       <div className="PlayerSubmissionForm">
@@ -73,7 +93,7 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange}
               placeholder="adjective"
               type="text"
-              className="input-form-background"
+              className={classFirstAdj}
               />
             <input
               name="firstNoun"
@@ -81,7 +101,7 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange}
               placeholder="noun"
               type="text"
-              className="input-form-background"
+              className={classFirstNoun}
               />
             <input
               name="adverb"
@@ -89,7 +109,7 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange}
               placeholder="adverb"
               type="text"
-              className="input-form-background"
+              className={classAdverb}
               />
             <input
               name="verb"
@@ -97,7 +117,7 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange}
               placeholder="verb"
               type="text"
-              className="input-form-background"
+              className={classVerb}
               />
             the
             <input
@@ -106,7 +126,7 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange}
               placeholder="adjective"
               type="text"
-              className="input-form-background"
+              className={classSecondAdj}
               />
             <input
               name="secondNoun"
@@ -114,7 +134,7 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange}
               placeholder="noun"
               type="text"
-              className="input-form-background"
+              className={classSecondNoun}
               />
             .
           </div>

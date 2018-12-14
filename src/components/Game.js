@@ -22,7 +22,6 @@ class Game extends Component {
 
     lines.push(fullLine);
     this.setState({lines: lines});
-
   };
 
   changePoemStatus = () => {
@@ -50,7 +49,7 @@ class Game extends Component {
           changePoemStatus={this.changePoemStatus}
           lines={this.state.lines}
           poemStatus={this.state.poemReady}/
-          > : <PlayerSubmissionForm addPoemCallback={this.addLine} playerNumber={this.state.lines.length + 1}/> ;
+          > : <PlayerSubmissionForm addPoemCallback={this.addLine} playerNumber={this.state.lines.length + 1} fields={FIELDS}/> ;
 
     const displaySubmitPoemButton = !this.state.poemReady ?
     <div className="FinalPoem__reveal-btn-container">
