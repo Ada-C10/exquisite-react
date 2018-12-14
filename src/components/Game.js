@@ -8,6 +8,27 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      poem: [],
+      poemVisible: false,
+      lastLine: "",
+    }
+  }
+
+  addPoemLine = (newSubmission) => {
+    const amendedPoem = [...this.state.poem];
+    amendedPoem.push(newSubmission);
+    console.log('In addPoemLine function in Game. Submission:', newSubmission);
+    console.log(amendedPoem);
+    this.setState({poem: amendedPoem
+    });
+    this.setState({lastLine: newSubmission
+    });
+  }
+
+  showFullPoem = () => {
+    const poemVisibility = !this.state.poemVisible;
+    this.setState({poemVisible: poemVisibility});
   }
 
   render() {
@@ -19,6 +40,25 @@ class Game extends Component {
         return field;
       }
     }).join(" ");
+
+    const displayPoem = this.state.poemVisible?
+      <FinalPoem poem={this.state.poem}
+          />
+       :
+      <PlayerSubmissionForm addSubmissionCallback={this.addPoemLine} playerNumber={this.state.poem.length + 1} />
+        ;
+
+      // const displayButton = this.state.poemVisible === false ?
+      //   <div className="FinalPoem__reveal-btn-container">
+      //     <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={this.showFullPoem}/>
+      //   </div>
+      // :
+      // " ";
+      let mostRecentSubmission;
+
+      if (this.state.lastLine !== "") {
+        mostRecentSubmission = <RecentSubmission lastSubmission={this.state.lastLine} />
+      };
 
     return (
       <div className="Game">
@@ -32,12 +72,18 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        {mostRecentSubmission}
 
-        <PlayerSubmissionForm />
+        <div>
+          {displayPoem}
 
-        <FinalPoem />
+          {this.state.poemVisible === false &&
+           <div className="FinalPoem__reveal-btn-container">
+             <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={this.showFullPoem}/>
+           </div>
+         }
 
+        </div>
       </div>
     );
   }
