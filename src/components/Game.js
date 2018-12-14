@@ -11,6 +11,7 @@ class Game extends Component {
     this.state = {
       poem: [],
       poemVisible: false,
+      lastLine: "",
     }
   }
 
@@ -20,6 +21,8 @@ class Game extends Component {
     console.log('In addPoemLine function in Game. Submission:', newSubmission);
     console.log(amendedPoem);
     this.setState({poem: amendedPoem
+    });
+    this.setState({lastLine: newSubmission
     });
   }
 
@@ -51,7 +54,11 @@ class Game extends Component {
       //   </div>
       // :
       // " ";
+      let mostRecentSubmission;
 
+      if (this.state.lastLine !== "") {
+        mostRecentSubmission = <RecentSubmission lastSubmission={this.state.lastLine} />
+      };
 
     return (
       <div className="Game">
@@ -65,8 +72,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
-
+        {mostRecentSubmission}
 
         <div>
           {displayPoem}
