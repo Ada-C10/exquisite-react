@@ -2,9 +2,9 @@ import React from 'react';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
-  
+
   let poemLines = props.lines.map ((line) => {
-    return <p>{line}</p>
+    return <p key={line}>{line}</p>
   });
 
   return (
