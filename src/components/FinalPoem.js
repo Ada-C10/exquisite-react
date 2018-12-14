@@ -3,8 +3,9 @@ import './FinalPoem.css';
 
 const FinalPoem = (props) => {
 
-  let poemLines = props.lines.map ((line) => {
-    return <p key={line}>{line}</p>
+  let poemLines = props.lines.map ((line, i) => {
+    return <p key={i}>{line}</p>
+
   });
 
   return (

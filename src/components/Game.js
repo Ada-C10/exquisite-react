@@ -12,7 +12,6 @@ class Game extends Component {
     this.state = {
       lines: [],
       showFinalPoem: false,
-      hideForm: false,
       lastLine: '',
     }
   };
