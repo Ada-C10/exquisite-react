@@ -11,7 +11,8 @@ class Game extends Component {
 
     this.state = {
       lines: [],
-      showFinalPoem: false
+      showFinalPoem: false,
+      hideForm: false,
     }
   };
 
