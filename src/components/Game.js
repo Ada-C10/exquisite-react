@@ -13,18 +13,21 @@ class Game extends Component {
       lines: [],
       showFinalPoem: false,
       hideForm: false,
+      lastLine: '',
     }
   };
 
   addSubmission = (playerSubmission) => {
     let line = "The ";
     for (let word in playerSubmission) {
-      line += (`${playerSubmission[word]}` )
+      line += (`${playerSubmission[word]} ` )
     };
 
     const updatedLines = this.state.lines
     updatedLines.push(line);
-    this.setState({lines: updatedLines})
+    this.setState({lines: updatedLines,
+      lastLine: line
+    })
   }
 
   revealPoem = () => {
@@ -53,7 +56,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission submission={this.state.lastLine} />
 
         <PlayerSubmissionForm addSubmissionCallback={this.addSubmission}/>
 
