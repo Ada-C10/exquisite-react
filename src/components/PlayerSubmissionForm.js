@@ -56,6 +56,23 @@ class PlayerSubmissionForm extends Component {
 
   render() {
 
+    let validation = {
+      adj1: '',
+      noun1: '',
+      adv: '',
+      verb: '',
+      adj2: '',
+      noun2: '',
+      player: 1
+    };
+
+    for (let key in validation) {
+      if ( this.state[key] === '' ) {
+        validation[key] = "PlayerSubmissionFormt__input--invalid";
+      };
+    };
+
+
     return (
       <div className="PlayerSubmissionForm">
         <h3>Player Submission Form for Player {this.state.player}</h3>
@@ -65,24 +82,28 @@ class PlayerSubmissionForm extends Component {
           <div className="PlayerSubmissionForm__poem-inputs">
             The
             <input
+              className= {validation.adj1}
               placeholder="adjective"
               type="text"
               name="adj1"
               value={this.state.adj1}
               onChange={this.onInputChange} />
             <input
+              className= {validation.noun1}
               type="text"
               placeholder="noun"
               name="noun1"
               value={this.state.noun1}
               onChange={this.onInputChange}  />
             <input
+              className= {validation.adv}
               type="text"
               placeholder="adverb"
               name="adv"
               value={this.state.adv}
               onChange={this.onInputChange}  />
             <input
+              className= {validation.verb}
               type="text"
               placeholder="verb"
               name="verb"
@@ -90,12 +111,14 @@ class PlayerSubmissionForm extends Component {
               onChange={this.onInputChange} />
             the
             <input
+              className= {validation.adj2}
               type="text"
               placeholder="adjective"
               name="adj2"
               value={this.state.adj2}
               onChange={this.onInputChange}  />
             <input
+              className= {validation.noun2}
               type="text"
               placeholder="noun"
               name="noun2"
