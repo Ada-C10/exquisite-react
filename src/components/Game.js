@@ -8,7 +8,26 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
-  }
+
+    this.state = {
+      lines: [],
+      poemReady: false,
+    };
+  };
+
+  addLine = (newLine) => {
+    const lines = this.state.lines;
+    const line = {...newLine}
+    const fullLine = `The ${line.firstAdjective} ${line.firstNoun} ${line.adverb} ${line.verb} the ${line.secondAdjective} ${line.secondNoun}.`
+
+    lines.push(fullLine);
+    this.setState({lines: lines});
+  };
+
+  changePoemStatus = () => {
+    const poemStatus = !(this.state.poemReady);
+    this.setState({poemReady: poemStatus});
+  };
 
   render() {
 
@@ -19,6 +38,23 @@ class Game extends Component {
         return field;
       }
     }).join(" ");
+
+    const lastSubmission = this.state.lines[this.state.lines.length - 1]
+
+    const displayRecentSubmission = this.state.lines.length > 0 && !this.state.poemReady ? <RecentSubmission lastSubmission={lastSubmission}/> : '' ;
+
+    const displayFinalPoem =
+      this.state.poemReady ?
+        <FinalPoem
+          changePoemStatus={this.changePoemStatus}
+          lines={this.state.lines}
+          poemStatus={this.state.poemReady}/
+          > : <PlayerSubmissionForm addPoemCallback={this.addLine} playerNumber={this.state.lines.length + 1} fields={FIELDS}/> ;
+
+    const displaySubmitPoemButton = !this.state.poemReady ?
+    <div className="FinalPoem__reveal-btn-container">
+      <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={this.changePoemStatus} />
+    </div> : '';
 
     return (
       <div className="Game">
@@ -32,11 +68,11 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        {displayRecentSubmission}
 
-        <PlayerSubmissionForm />
+        {displayFinalPoem}
 
-        <FinalPoem />
+        {displaySubmitPoemButton}
 
       </div>
     );

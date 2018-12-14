@@ -2,6 +2,14 @@
   line-height: 3rem;
 }
 
+.input-form-background {
+  background-color: rgba(180,210,177,.67);
+}
+
+.boop {
+  background-color: black;
+}
+
 .PlayerSubmissionForm__form {
   margin: 2rem auto 3rem auto;
 }
