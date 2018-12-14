@@ -41,6 +41,7 @@ class Game extends Component {
   render() {
 
     let showPoem = this.state.showPoem;
+    let showPoemRevealButton = this.state.showPoemRevealButton
     let poemLines = this.state.poemLines;
     let numLines = (poemLines.length);
     let userNum = numLines+1;
@@ -64,14 +65,14 @@ class Game extends Component {
         <p className="Game__format-example">The adjective noun adverb verb the adjective noun .</p>
 
 
-        {!showPoem && (numLines>0) ? <RecentSubmission poemDraft={this.state.poemLines} /> : ''}
+        {!showPoem && showPoemRevealButton ? <RecentSubmission poemDraft={this.state.poemLines} /> : ''}
 
         {!showPoem ? <PlayerSubmissionForm addPoemLineCB={this.addPoemLine}
         userNum={userNum}/> : ''}
 
         <FinalPoem poemDraft={this.state.poemLines} showPoem={showPoem}
           revealPoemCB={this.revealPoemHandler}
-          showPoemRevealButton={this.state.showPoemRevealButton} />
+          showPoemRevealButton={showPoemRevealButton} />
 
       </div>
     );
