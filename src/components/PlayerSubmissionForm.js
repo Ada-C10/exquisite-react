@@ -35,7 +35,7 @@ class PlayerSubmissionForm extends Component {
       adv: this.state.adv,
       verb: `${this.state.verb} the`,
       adj2: this.state.adj2,
-      noun2: this.state.noun2
+      noun2: `${this.state.noun2}.`
     };
 
     this.setState({
