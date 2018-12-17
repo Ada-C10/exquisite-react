@@ -13,6 +13,7 @@ class PlayerSubmissionForm extends Component {
       verb: '',
       adjectiveTwo: '',
       nounTwo: '',
+      submissionCount: 0,
     };
   }
 
@@ -62,8 +63,7 @@ class PlayerSubmissionForm extends Component {
     event.preventDefault();
 
     const newSubmission = `The ${this.state.adjectiveOne} ${this.state.nounOne} ${this.state.adverb} ${this.state.verb} the ${this.state.adjectiveTwo} ${this.state.nounTwo}`;
-
-    console.log("hello world");
+    const newCount = this.state.submissionCount + 1;
 
     this.setState({
       adjectiveOne: '',
@@ -72,61 +72,62 @@ class PlayerSubmissionForm extends Component {
       verb: '',
       adjectiveTwo: '',
       nounTwo: '',
+      submissionCount: newCount,
     });
 
-    this.props.addSubmisionCallback(newSubmission)
-
+    this.props.addSubmissionCallback(newSubmission)
+    this.props.endGameCallback()
   }
 
   render() {
 
     return (
-      <div className="PlayerSubmissionForm">
-        <h3>Player Submission Form for Player #{  }</h3>
+        <div className="PlayerSubmissionForm">
+        <h3>Player Submission Form for Player #{ this.state.submissionCount + 1}</h3>
 
-        <form className="PlayerSubmissionForm__form" >
+        <form className="PlayerSubmissionForm__form" onSubmit={this.onFormSubmit}>
 
           <div className="PlayerSubmissionForm__poem-inputs">
 
             <div>
-              <label htmlFor="adjectiveOne">The </label>
+              <label htmlFor="adjectiveOne">Enter in an adjective:</label>
               <input placeholder="tall" name="adjectiveOne"
-                value={this.adjectiveOne}
+                value={this.state.adjectiveOne}
                 onChange={this.onAdjOneChange} />
             </div>
             <div>
-              <label htmlFor="nounOne"> </label>
+              <label htmlFor="nounOne">Place in a noun:</label>
               <input placeholder="heart" name="nounOne"
-                value={this.nounOne}
+                value={this.state.nounOne}
                 onChange={this.onNounOneChange} />
             </div>
             <div>
-              <label htmlFor="adverb">is </label>
+              <label htmlFor="adverb">Choose an adverb:</label>
               <input placeholder="gently" name="adverb"
-                value={this.adverb}
+                value={this.state.adverb}
                 onChange={this.onAdverbChange} />
             </div>
             <div>
-              <label htmlFor="verb">Verb:</label>
+              <label htmlFor="verb">Choose a verb:</label>
               <input placeholder="bathed"name="verb"
-                value={this.verb}
+                value={this.state.verb}
                 onChange={this.onVerbChange} />
             </div>
             <div>
-              <label htmlFor="name">in a</label>
+              <label htmlFor="name">Choose another adjective:</label>
               <input placeholder="scary" name="adjectiveTwo"
-                value={this.adjectiveTwo}
+                value={this.state.adjectiveTwo}
                 onChange={this.onAdjTwoChange} />
             </div>
             <div>
-              <label htmlFor="nounTwo"></label>
+              <label htmlFor="nounTwo">Choose another noun:</label>
               <input placeholder="home"
                 name="nounTwo"
-                value={this.nounTwo}
+                value={this.state.nounTwo}
                 onChange={this.onNounTwoChange} />
             </div>
             <div className="PlayerSubmissionForm__submit">
-              <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" onSubmit={this.onFormSubmit}/>
+              <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
             </div>
           </div>
         </form>

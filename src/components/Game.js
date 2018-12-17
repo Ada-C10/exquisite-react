@@ -11,18 +11,30 @@ class Game extends Component {
 
     this.state = {
       recentSubmission: undefined,
-      wholePoem: [],
+      submissionsList: [],
+      shouldShowPlayerSubmissionForm: true,
     };
   }
 
-  addSubmission = (submission) => {
-    console.log(submission);
+//multiple things in one state
+//copy over eveything from state
+//change the state of the copy
+//save the state by calling setState and assign the copied version
+addSubmission = (newSubmission) => {
+    const poemArray = this.state.submissionsList;
+    poemArray.push(newSubmission);
 
-    const poemArray = this.state.wholePoem.push(submission);
+  console.log("state after recent submit", this.state.newSubmission);
 
     this.setState({
-      recentSubmission: submission,
-      wholePoem: poemArray,
+      recentSubmission: newSubmission,
+      submissionsList: poemArray,
+    });
+  }
+
+  endIt = () => {
+    this.setState({
+      shouldShowPlayerSubmissionForm: false,
     });
   }
 
@@ -36,7 +48,11 @@ class Game extends Component {
       }
     }).join(" ");
 
+    console.log("poem array", this.state.submissionsList);
+
+
     return (
+
       <div className="Game">
         <h2>Game</h2>
 
@@ -48,11 +64,12 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission submission={this.state.recentSubmission}/>
+        { this.state.recentSubmission ? <RecentSubmission submission={this.state.recentSubmission} /> : "" }
 
-        <PlayerSubmissionForm addSubmisionCallback={this.addSubmission.bind(this)}/>
 
-        <FinalPoem poem={ this.state.wholePoem.join(" ")} />
+        <PlayerSubmissionForm addSubmissionCallback={this.addSubmission} endGame={this.state.shouldShowPlayerSubmissionForm}/>
+
+        <FinalPoem poem={this.state.submissionsList}  />
 
       </div>
     );
