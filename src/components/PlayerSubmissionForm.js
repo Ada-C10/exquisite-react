@@ -54,19 +54,6 @@ class PlayerSubmissionForm extends Component {
 
   render() {
 
-    let inputValues = Object.values(this.state);
-
-    const hasInput = () => {
-      inputValues.forEach((value) => {
-        if (value === '') {
-          return 'input-form-background'
-        } else {
-          return 'boop'
-        };
-        console.log(value);
-      });
-    };
-
     const classFirstAdj = this.state.firstAdjective ? '' : 'input-form-background';
     const classFirstNoun = this.state.firstNoun ? '' : 'input-form-background';
     const classAdverb = this.state.adverb ? '' : 'input-form-background';
