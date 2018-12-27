@@ -21,6 +21,8 @@ class PlayerSubmissionForm extends Component {
       return acc
     }, {});
 
+    startingState.playerNum = this.props.playerNum;
+
     return startingState;
   }
 
@@ -39,7 +41,7 @@ class PlayerSubmissionForm extends Component {
 
     this.props.currentLineCallback(`The ${this.state.adj1} ${this.state.noun1} ${this.state.adv} ${this.state.verb} ${this.state.adj2} ${this.state.noun2}.`)
 
-    const updatedPlayerNum = this.state.playerNum + 1
+
 
     this.setState({
       adj1: "",
@@ -47,8 +49,7 @@ class PlayerSubmissionForm extends Component {
       adv: "",
       verb: "",
       adj2: "",
-      noun2: "",
-      playerNum: updatedPlayerNum
+      noun2: ""
     });
   }
 
@@ -83,7 +84,7 @@ class PlayerSubmissionForm extends Component {
     return (
       <div className="PlayerSubmissionForm">
         { !this.props.ended &&
-          (<h3>Player Submission Form for Player #{ this.state.playerNum }</h3> ) }
+          (<h3>Player Submission Form for Player #{ this.props.playerNum }</h3> ) }
           { !this.props.ended &&
             ( <form className="PlayerSubmissionForm__form" onSubmit={this.onLineSubmit}>
             <div className="PlayerSubmissionForm__poem-inputs">
@@ -115,4 +116,5 @@ class PlayerSubmissionForm extends Component {
     currentLineCallback: PropTypes.func.isRequired,
     ended: PropTypes.bool.isRequired,
     fields: PropTypes.array.isRequired,
+    playerNum: PropTypes.number.isRequired,
   };

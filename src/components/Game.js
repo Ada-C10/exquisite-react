@@ -11,7 +11,8 @@ class Game extends Component {
     this.state = {
       currentLine: undefined,
       finalPoem: [],
-      end: false
+      end: false,
+      playerNum: 1
     }
   }
 
@@ -30,9 +31,12 @@ class Game extends Component {
       const updatedPoem = this.state.finalPoem
       updatedPoem.push(`${line} `)
 
+        const updatedPlayerNum = this.state.playerNum + 1
+
       this.setState({
         currentLine: line,
-        finalPoem: updatedPoem
+        finalPoem: updatedPoem,
+        playerNum: updatedPlayerNum
       })
     }
     else {
@@ -48,6 +52,8 @@ class Game extends Component {
       end: true
     })
   }
+
+
 
   render() {
 
@@ -73,7 +79,7 @@ class Game extends Component {
 
         { this.state.currentLine &&  (<RecentSubmission line={this.state.currentLine} ended={this.state.end}/>) }
         <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}
-          ended={this.state.end} fields={FIELDS}/>
+          ended={this.state.end} fields={FIELDS} playerNum={this.state.playerNum}/>
         <FinalPoem poem={this.state.finalPoem} revealPoemCallback={this.revealPoem} ended={this.state.end}/>
 
       </div>
