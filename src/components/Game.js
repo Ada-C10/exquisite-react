@@ -53,8 +53,6 @@ class Game extends Component {
     })
   }
 
-
-
   render() {
 
     const exampleFormat = FIELDS.map((field) => {
@@ -81,7 +79,6 @@ class Game extends Component {
         <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}
           ended={this.state.end} fields={FIELDS} playerNum={this.state.playerNum}/>
         <FinalPoem poem={this.state.finalPoem} revealPoemCallback={this.revealPoem} ended={this.state.end}/>
-
       </div>
     );
   }

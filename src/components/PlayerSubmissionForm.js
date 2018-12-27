@@ -34,7 +34,7 @@ class PlayerSubmissionForm extends Component {
   onLineSubmit = (event) => {
     event.preventDefault();
 
-    this.props.currentLineCallback(`The ${this.state.adj1[0]} ${this.state.noun1[0]} ${this.state.adv[0]} ${this.state.verb[0]} ${this.state.adj2[0]} ${this.state.noun2[0]}.`);
+    this.props.currentLineCallback(`The ${this.state.adj1[0]} ${this.state.noun1[0]} ${this.state.adv[0]} ${this.state.verb[0]} the ${this.state.adj2[0]} ${this.state.noun2[0]}.`);
 
     this.setState( this.fetchFields() );
   }
