@@ -6,15 +6,22 @@ class PlayerSubmissionForm extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      adj1: "",
-      noun1: "",
-      adv: "",
-      verb: "",
-      adj2: "",
-      noun2: "",
-      playerNum: 1
-    }
+    this.state = this.fetchFields()
+    console.log(this.state)
+  }
+
+  fetchFields = () => {
+    const fields = this.props.fields.filter((field) => {
+      return field.hasOwnProperty("key");
+    });
+
+    const startingState = fields.reduce((acc, field) => {
+      console.log(field.key)
+      acc[field.key] = ["", field.placeholder];
+      return acc
+    }, {});
+
+    return startingState;
   }
 
   onInputChange = (event) => {
@@ -47,9 +54,23 @@ class PlayerSubmissionForm extends Component {
 
   render() {
 
+    // const filteredInputs = this.fetchFields().forEach((input) => {
+    //   // const key = input.key
+    //   console.log("state", this.state[input.key])
+    //
+    //   // const key =
+    //   //       // const key =  this.state[Object.keys(input)[0]]
+    //   //       console.log("state", Object.keys(input)[0])
+    //   console.log("state", Object.keys(input)[0])
+    //   return(
+    //     <input name={input.key} placeholder={input.placeholder} type="text" value={this.state[input.key]} onChange={this.onInputChange}/>
+    //     <input name={input[Object.keys(input)[0]]} placeholder={input.placeholder} type="text" value={input[Object.keys(input)[0]]} onChange={this.onInputChange}/>
+    //   )
+    // })
+    //
     const chooseInputClass = (currentState) => {
       if (currentState === "") {
-      return "PlayerSubmissionForm__input--invalid"
+        return "PlayerSubmissionForm__input--invalid"
       }
     }
 
@@ -93,4 +114,5 @@ class PlayerSubmissionForm extends Component {
   PlayerSubmissionForm.propTypes = {
     currentLineCallback: PropTypes.func.isRequired,
     ended: PropTypes.bool.isRequired,
+    fields: PropTypes.array.isRequired,
   };
