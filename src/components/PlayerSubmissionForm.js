@@ -41,14 +41,11 @@ class PlayerSubmissionForm extends Component {
 
   render() {
 
-    const chooseInputClass = (currentState) => {
-      return currentState ? "PlayerSubmissionForm__input--invalid" : "";
-    };
-
     const filteredInputs = Object.keys(this.state).map( (key) => {
-      const className = chooseInputClass(this.state[key][0]);
       return(
-        <input name={key} className={className} placeholder={this.state[key][1]} type="text" value={this.state[key][0]} onChange={this.onInputChange}/>
+        <input name={ key } type="text" value={ this.state[key][0] }
+          className={ this.state[key][0] ? "PlayerSubmissionForm__input--invalid" : "" }
+          placeholder={ this.state[key][1] } onChange={ this.onInputChange }/>
       )
     });
 
