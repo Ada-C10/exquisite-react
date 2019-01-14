@@ -8,6 +8,29 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      lines: [],
+      showFinalPoem: false,
+      lastLine: '',
+    }
+  };
+
+  addSubmission = (playerSubmission) => {
+    let line = "The ";
+    for (let word in playerSubmission) {
+      line += (`${playerSubmission[word]} ` )
+    };
+
+    const updatedLines = this.state.lines
+    updatedLines.push(line);
+    this.setState({lines: updatedLines,
+      lastLine: line
+    })
+  }
+
+  revealPoem = () => {
+    this.setState({showFinalPoem: true})
   }
 
   render() {
@@ -32,11 +55,11 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
+        <RecentSubmission submission={this.state.lastLine} />
 
-        <PlayerSubmissionForm />
+        <PlayerSubmissionForm addSubmissionCallback={this.addSubmission}/>
 
-        <FinalPoem />
+        <FinalPoem lines={this.state.lines} showPoem={this.state.showFinalPoem} revealPoemCallback={this.revealPoem} />
 
       </div>
     );
