@@ -8,9 +8,49 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      poems: [],
+      showresults: false,
+    }
+  }
+
+  changeShowResults = (boolean) => {
+    console.log("I'm changeShowResults in Game");
+    this.setState({
+      showresults: true,
+    })
+  };
+
+  allPoems = (newPoem) => {
+    console.log("I am in allPoems in GAME.JS");
+    let allPoems = this.state.poems;
+
+    allPoems.push(newPoem);
+    this.setState({
+      poems: allPoems,
+      poemCount: allPoems.length,
+    });
+  };
+
+  switchWhatUserSees = () => {
+    if (!this.state.showresults) {
+      return <section>
+        <RecentSubmission recentPoem={this.state.poems[(this.state.poems.length - 1)]}/>
+        <PlayerSubmissionForm format={FIELDS} callback={this.allPoems} numberOfPoems={this.state.poems.length}/>
+        <FinalPoem finalPoem={this.state.poems} showresults={this.state.showresults} callback={this.changeShowResults} />
+      </section>
+    }
+    else {
+      return <section>
+      <FinalPoem finalPoem={this.state.poems} showresults={this.state.showresults}/>
+    </section>
+
+    }
   }
 
   render() {
+console.log(this.state.showresults);
 
     const exampleFormat = FIELDS.map((field) => {
       if (field.key) {
@@ -21,6 +61,7 @@ class Game extends Component {
     }).join(" ");
 
     return (
+
       <div className="Game">
         <h2>Game</h2>
 
@@ -32,12 +73,7 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
-
-        <PlayerSubmissionForm />
-
-        <FinalPoem />
-
+        <div>{this.switchWhatUserSees()}</div>
       </div>
     );
   }
