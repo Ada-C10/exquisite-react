@@ -8,6 +8,49 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      currentLine: undefined,
+      finalPoem: [],
+      end: false,
+      playerNum: 1
+    }
+  }
+
+  changeCurrentLine = (line) => {
+
+    let emptyLine = "The"
+
+    for(let i = 0; i < FIELDS.length - 3; i++) {
+      emptyLine += " "
+    }
+
+    emptyLine += "."
+
+    if (line !== emptyLine) {
+
+      const updatedPoem = this.state.finalPoem
+      updatedPoem.push(`${line} `)
+
+        const updatedPlayerNum = this.state.playerNum + 1
+
+      this.setState({
+        currentLine: line,
+        finalPoem: updatedPoem,
+        playerNum: updatedPlayerNum
+      })
+    }
+    else {
+      this.setState({
+        currentLine: "[PASSED]"
+      })
+    }
+    window.scrollTo(0, 200)
+  }
+
+  revealPoem = () => {
+    this.setState({
+      end: true
+    })
   }
 
   render() {
@@ -32,12 +75,10 @@ class Game extends Component {
           { exampleFormat }
         </p>
 
-        <RecentSubmission />
-
-        <PlayerSubmissionForm />
-
-        <FinalPoem />
-
+        { this.state.currentLine &&  (<RecentSubmission line={this.state.currentLine} ended={this.state.end}/>) }
+        <PlayerSubmissionForm  currentLineCallback={this.changeCurrentLine}
+          ended={this.state.end} fields={FIELDS} playerNum={this.state.playerNum}/>
+        <FinalPoem poem={this.state.finalPoem} revealPoemCallback={this.revealPoem} ended={this.state.end}/>
       </div>
     );
   }
